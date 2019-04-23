@@ -1,0 +1,681 @@
+<template>
+<ui-view>
+    <ui-view class="chart_wrap"  style="{{{ 'min-height' : winHeight + 'px' }}}">
+      <ui-view class="bg tl"></ui-view>
+			<ui-view class="bg tr"></ui-view>
+			<ui-view class="bg bl"></ui-view>
+			<ui-view class="bg br"></ui-view>
+      <ui-view class="top_title">Quick V 数据可视化展示</ui-view>
+      <ui-view class="content">
+        <ui-view id="container" class="container"></ui-view>
+        <ui-view class="left_content">
+          <ui-row height="110">
+            <ui-col vertical-align="top" align="center" width="90">
+              <ui-view class="circular">
+                <ui-view>
+                  <ui-image src="{{ require('#/images/v-003/circular02.png') }}"></ui-image>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="center" width="80">
+              <ui-view class="line"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="left">
+              <ui-view class="text">
+                <ui-view class="border"></ui-view>
+                <ui-view>交通流量 _</ui-view>
+                <ui-view class="dot">
+                  <ui-view style="background: #05C6FA;"></ui-view>
+                  <ui-view style="background: #029BC3;"></ui-view>
+                  <ui-view style="background: #167AA8;"></ui-view>
+                  <ui-view style="background: #006B91;"></ui-view>
+                  <ui-view style="background: #074B74;"></ui-view>
+                  <ui-view style="background: #083D69;"></ui-view>
+                </ui-view>
+                <ui-text block>This paragraph explains</ui-text>
+                <ui-text block>Take a good look at it</ui-text>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="110">
+            <ui-col vertical-align="top" align="center" width="90">
+              <ui-view class="circular">
+                <ui-view>
+                  <ui-image src="{{ require('#/images/v-003/circular01.png') }}"></ui-image>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="center" width="80">
+              <ui-view class="line"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="left">
+              <ui-view class="text">
+                <ui-view class="border"></ui-view>
+                <ui-view>流量预测 _</ui-view>
+                <ui-view class="dot">
+                  <ui-view style="background: #05C6FA;"></ui-view>
+                  <ui-view style="background: #029BC3;"></ui-view>
+                  <ui-view style="background: #167AA8;"></ui-view>
+                  <ui-view style="background: #006B91;"></ui-view>
+                  <ui-view style="background: #074B74;"></ui-view>
+                  <ui-view style="background: #083D69;"></ui-view>
+                </ui-view>
+                <ui-text block>This paragraph explains</ui-text>
+                <ui-text block>Take a good look at it</ui-text>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="110">
+            <ui-col vertical-align="top" align="center" width="90">
+              <ui-view class="circular">
+                <ui-view>
+                  <ui-image src="{{ require('#/images/v-003/circular01.png') }}"></ui-image>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="center" width="80">
+              <ui-view class="line"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="left">
+              <ui-view class="text">
+                <ui-view class="border"></ui-view>
+                <ui-view>延误分析 _</ui-view>
+                <ui-view class="dot">
+                  <ui-view style="background: #05C6FA;"></ui-view>
+                  <ui-view style="background: #029BC3;"></ui-view>
+                  <ui-view style="background: #167AA8;"></ui-view>
+                  <ui-view style="background: #006B91;"></ui-view>
+                  <ui-view style="background: #074B74;"></ui-view>
+                  <ui-view style="background: #083D69;"></ui-view>
+                </ui-view>
+                <ui-text block>This paragraph explains</ui-text>
+                <ui-text block>Take a good look at it</ui-text>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="110">
+            <ui-col vertical-align="top" align="center" width="90">
+              <ui-view class="circular">
+                <ui-view>
+                  <ui-image src="{{ require('#/images/v-003/circular01.png') }}"></ui-image>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="center" width="80">
+              <ui-view class="line"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="left">
+              <ui-view class="text">
+                <ui-view class="border"></ui-view>
+                <ui-view>运行动态 _</ui-view>
+                <ui-view class="dot">
+                  <ui-view style="background: #05C6FA;"></ui-view>
+                  <ui-view style="background: #029BC3;"></ui-view>
+                  <ui-view style="background: #167AA8;"></ui-view>
+                  <ui-view style="background: #006B91;"></ui-view>
+                  <ui-view style="background: #074B74;"></ui-view>
+                  <ui-view style="background: #083D69;"></ui-view>
+                </ui-view>
+                <ui-text block>This paragraph explains</ui-text>
+                <ui-text block>Take a good look at it</ui-text>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+        </ui-view>
+        <ui-view class="right_content">
+          <ui-view class="title">02-22</ui-view>
+          <ui-view class="color_wrap">
+            <ui-view class="max">100</ui-view>
+            <ui-view class="min">0</ui-view>
+          </ui-view>
+        </ui-view>
+      </ui-view>
+      <ui-row class="bottom_wrap">
+        <ui-col vertical-align="middle" align="center">
+          <ui-view class="bottom_content">
+            <ui-view class="bg tl"></ui-view>
+            <ui-view class="bg tr"></ui-view>
+            <ui-view class="bg bl"></ui-view>
+            <ui-view class="bg br"></ui-view>
+            <ui-view class="title">扇区繁忙情况</ui-view>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>名称（代码）</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>日均流量</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>高峰日流量</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>高峰小时流量</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>高峰小时</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>TW</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>AL</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>AL</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>AL</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+          </ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view class="bottom_content">
+            <ui-view class="bg tl"></ui-view>
+            <ui-view class="bg tr"></ui-view>
+            <ui-view class="bg bl"></ui-view>
+            <ui-view class="bg br"></ui-view>
+            <ui-view class="title">扇区繁忙情况</ui-view>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>名称（代码）</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>日均流量</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>高峰日流量</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>高峰小时流量</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>高峰小时</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>TW</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>AL</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>AL</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="center"><ui-view>AL</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>309.3</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>358</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>21.1</ui-view></ui-col>
+              <ui-col vertical-align="middle" align="center"><ui-view>1500-1600</ui-view></ui-col>
+            </ui-row>
+          </ui-view>
+        </ui-col>
+      </ui-row>
+    </ui-view>
+  </ui-view>
+</template>
+<script>
+import * as echarts from '#/static/utils/echarts.min.js'
+import registerMap from '#/static/utils/world'
+registerMap(echarts)
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      resizeListener: null
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+    var dom = document.getElementById('container')
+    var myChart = echarts.init(dom)
+    var app = {}
+    option = null
+    var geoCoordMap = {
+      'Australia' : [142.2748046875,-22.704785156250011],
+      'Lesotho': [29.098046875000023,-29.919042968750006],
+      'Russia': [81.29541015625003,60.715185546875],
+      'Brazil': [-59.990673828124955,5.082861328124991],
+      'Greenland': [-38.15625,72.9986328125],
+      'Japan': [142.88476562499997,44.670117187499955],
+
+      '北京': [116.4551, 40.2539]
+    }
+
+    var BJData = [
+      [{ name: '北京' }, { name: 'Australia', value: 95 }],
+      [{ name: '北京' }, { name: 'Lesotho', value: 90 }],
+      [{ name: '北京' }, { name: 'Russia', value: 80 }],
+      [{ name: '北京' }, { name: 'Brazil', value: 70 }],
+      [{ name: '北京' }, { name: 'Greenland', value: 60 }],
+      [{ name: '北京' }, { name: 'Japan', value: 50 }]
+    ]
+
+    var convertData = function (data) {
+      var res = []
+      for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i]
+        var fromCoord = geoCoordMap[dataItem[0].name]
+        var toCoord = geoCoordMap[dataItem[1].name]
+        if (fromCoord && toCoord) {
+          res.push({
+            fromName: dataItem[0].name,
+            toName: dataItem[1].name,
+            coords: [fromCoord, toCoord]
+          })
+        }
+      }
+      return res
+    }
+
+    var color = ['#a6c84c', '#ffa022', '#46bee9']
+    var series = [];
+    [['北京', BJData]].forEach(function (
+      item,
+      i
+    ) {
+      series.push(
+        {
+          name: item[0] + ' Top10',
+          type: 'lines',
+          zlevel: 1,
+          effect: {
+            show: true,
+            period: 6,
+            trailLength: 0.7,
+            color: '#fff',
+            symbolSize: 3
+          },
+          lineStyle: {
+            normal: {
+              color: color[i],
+              width: 0,
+              curveness: 0.2,
+              opacity: 0
+            }
+          },
+          data: convertData(item[1])
+        },
+        {
+          name: item[0] + ' Top10',
+          type: 'lines',
+          zlevel: 2,
+          symbol: ['none', 'arrow'],
+          symbolSize: 1,
+          effect: {
+            show: true,
+            period: 6,
+            trailLength: 0,
+            symbol: 'emptyCircle',
+            symbolSize: 1,
+            shadowBlur: 10
+          },
+          lineStyle: {
+            normal: {
+              color: color[i],
+              width: 1,
+              opacity: 0.6,
+              curveness: 0.2
+            }
+          },
+          data: convertData(item[1])
+        },
+        {
+          name: item[0] + ' Top10',
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          effectType: 'ripple',
+          showEffectOn: 'render',
+          zlevel: 2,
+          rippleEffect: {
+            brushType: 'stroke',
+            scale: 40,
+            period: 4
+          },
+          label: {
+            normal: {
+              show: true,
+              position: 'right',
+              formatter: ''
+            }
+          },
+          symbolSize: function (val) {
+            return 2
+          },
+          markPoint: {
+            itemStyle: {
+              normal: {
+                label:{show:false}
+              }
+            }
+          },
+          data: item[1].map(function (dataItem) {
+            return {
+              name: dataItem[1].name,
+              value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+            }
+          })
+        }
+      )
+    })
+
+    var option = {
+      backgroundColor: 'transparent',
+      color: ['gold', 'aqua', 'lime'],
+      title: {
+        text: '',
+        subtext: '',
+        x: 'center',
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      toolbox: {
+        show: false
+      },
+      legend: {
+        orient: 'vertical',
+        x: 'left',
+        data: [],
+        textStyle: {
+          color: '#fff'
+        },
+        selectedMode: 'single',
+        selected: {
+          '上海 Top10': false,
+          '广州 Top10': false
+        },
+      },
+      dataRange: {
+        show: false,
+        min: 0,
+        max: 100,
+        x: 'right',
+        calculable: true,
+        color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      geo: {
+        map: 'world',
+        label: {
+          emphasis: {
+            show: false
+          }
+        },
+        roam: false,
+        symbol: ['none', 'circle'],
+        smooth:true,
+        symbolSize : 1,
+        itemStyle: {
+          normal: {
+            areaColor: '#0C315E',
+            borderColor: '#1DA1D2',
+            borderWidth:1,
+          },
+          emphasis: {
+            areaColor: '#0C315E'
+          }
+        }
+      },
+      series: series
+    }
+    if (option && typeof option === 'object') {
+      myChart.setOption(option, true)
+    }
+    this.resizeListener = () => {
+      myChart.resize()
+    }
+    ui.addWindowResizeListener(this.resizeListener)
+  },
+  beforeDestroy () {
+    ui.removeWindowResizeListener(this.resizeListener)
+  }
+}
+</script>
+<style lang="less">
+.chart_wrap{
+  width: 100%;
+  height: 100%;
+  background-color: #0E152F;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+  .bg{
+    width: 45px;
+	  height: 45px;
+    position: absolute;
+    background: url('~images/v-003/img.png') no-repeat;
+    &.tl{
+      top: 20px;
+      left: 20px;
+      background-position: 0 -139px;
+    }
+    &.tr{
+      top: 20px;
+      right: 20px;
+      background-position: 0 -93px;
+    }
+    &.bl{
+      bottom: 20px;
+      left: 20px;
+    }
+    &.br{
+      bottom: 20px;
+      right: 20px;
+      background-position: 0 -46px;
+    }
+  }
+  .top_title{
+    font-size: 24px;
+    color: #1AE0F0;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 30px;
+  }
+  .container{
+    width: 100%;
+    margin:0 auto;
+    height: 650px;
+  }
+  .content{
+    position: relative;
+  }
+  .left_content{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    // border: 1px solid red;
+    width:420px;
+    .ui-row{
+      .circular{
+        width: 90px;
+        height: 90px;
+        border: 1px solid #5089CE;
+        border-radius: 50%;
+        .ui-view{
+          width: 74px;
+          height: 74px;
+          border: 6px solid #21749D;
+          border-radius: 50%;
+          margin: 7px 0 0 7px;
+          .ui-image{
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin: 16px auto;
+          }
+        }
+      }
+      .line{
+        width: 100%;
+        height: 45px;
+        border-bottom: 1px dashed #21749D;
+      }
+      .text{
+        width: 100%;
+        height: 90px;
+        position: relative;
+        padding: 5px 0 5px 20px;
+        .ui-view{
+          font-size: 18px;
+          font-weight: bold;
+          color: #05C6FA;
+
+        }
+        .ui-text{
+          color: #05C6FA;
+          font-size: 12px;
+          line-height: 15px;
+        }
+        .border{
+          width: 30px;
+          height: 90px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: 1px solid #05C6FA;
+          border-right: 0;
+        }
+        .dot{
+          line-height: 20px;
+          .ui-view{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #05C6FA;
+            border-radius: 50%;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+  .right_content{
+    position: absolute;
+    right: 80px;
+    top: 50px;
+    .title{
+      width: 150px;
+      line-height: 40px;
+      background: rgba(15,76,128,.3);
+      box-shadow: 0 0 20px #1E5A88 inset;
+      border: 1px solid #3BC6F5;
+      border-width: 1px 0 1px 0;
+      color: #3BC6F5;
+      font-size: 18px;
+      text-align: center;
+    }
+    .color_wrap{
+      width: 20px;
+      height: 300px;
+      background: linear-gradient(#0E152F,#9F1A42,#B3621C,#C9F529,#0DB9CE,#36C4F5,#0E152F);
+      margin-top: 30px;
+      float: right;
+      position: relative;
+      .ui-view{
+        position: absolute;
+        font-size: 12px;
+        right: -30px;
+        text-align: left;
+      }
+      .max{
+        top: 10px;
+        color: #9F1A42;
+      }
+      .min{
+        bottom: 0px;
+        color: #36C4F5;
+      }
+    }
+  }
+  .bottom_content{
+    border: 1px solid #375c88;
+    position: relative;
+    width: 70%;
+    margin: auto;
+    height: 250px;
+    .bg{
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      background: #0E152F url('~images/v-003/content_bottom.png') no-repeat center center;
+      &.tl{
+        top: -12px;
+        left: -18px;
+        background-position: 0 -100px;
+      }
+      &.tr{
+        top: -8px;
+        right: -13px;
+        background-position: 0 -156px;
+      }
+      &.bl{
+        bottom: -20px;
+        left: -18px;
+        background-position: 0 -50px;
+      }
+      &.br{
+        bottom: -23px;
+        right: -13px;
+        background-position: 0 1px;
+      }
+    }
+    .title{
+      color: #5DDFEC;
+      font-size: 14px;
+      text-align: center;
+      line-height: 50px;
+    }
+    .ui-row{
+      .ui-col{
+        .ui-view{
+          color: #5DDFEC;
+          font-size: 14px;
+          text-align: center;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 1280px) and (min-width: 900px){
+  .container{
+    width:60%!important;
+  }
+  .bottom_wrap{
+    .bottom_content{
+      width:95%!important;
+    }
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 900px){
+  .chart_wrap{
+    width:1200px!important;
+    overflow: hidden;
+  }
+}
+</style>

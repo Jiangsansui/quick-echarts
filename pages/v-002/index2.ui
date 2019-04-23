@@ -1,0 +1,576 @@
+<template>
+  <ui-view class="content-wrap">
+    <ui-row class="content-win">
+      <ui-col vertical-align="top" align="center" width="350" class="left-content">
+        <ui-view style="width:100%;">
+          <ui-view class="title">
+            <ui-view>中国城市空气质量（AQI）实时排名</ui-view>
+            <ui-text>今天 15:00:00 发布（中国环境监测总站）</ui-te>
+          </ui-view>
+          <ui-row height="40" class="data-head">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>排名</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>城市</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>中标</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>美标</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" class="data-content" ui:for="{{ AqiData }}" ui:for-item="item">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>{{ index+1 }}</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>{{ item.city }}</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="active" style="background: {{ item.color }}">{{ item.chinaNum }}</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="active" style="background: {{ item.color }}">{{ item.americaNum }}</ui-view>
+            </ui-col>
+          </ui-row>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="center">
+        <ui-view style="padding-top:105px;width:100%;">
+          <ui-row class="dashboard_wrap">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view style="width:100%;">
+                <ui-view class="title">梦想小镇17号楼展示厅（室内）</ui-view>
+                <ui-text class="title2">15:24 发布</ui-text>
+                <ui-row style="">
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view class="dashboard1">
+                      <ui-view>
+                        <ui-dashboard
+                        radius="85"
+                        line-width="5"
+                        center-top= "150"
+                        center-left= "150"
+                        width="300"
+                        height="300"
+                        angle= "270"
+                        min= "0"
+                        max= "3000"
+                        circular-animation= "true"
+                        have-pointer= "false"
+                        shadow-color="#50D15C"
+                        value= "{{ 20 }}"
+                        color= "#50D15C"
+                        show-pointer= "false"
+                        bg-color= "rgba(80, 209, 92, 0.5)"
+                        have-outside-pointer= "false"
+                        ></ui-dashboard>
+                      </ui-view>
+                      <ui-view class="dashboard7_text">
+                        <ui-view class="text1">PM2.5</ui-view>
+                        <ui-view class="text2">{{dashboard1TextValue}}</ui-view>
+                        <ui-view class="text3">优质</ui-view>
+                      </ui-view>
+                      <ui-view class="huan-wrap"></ui-view>
+                    </ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-view class="title">温馨提示：室内空气颗粒含量较少，但CO2浓度高，氧气不足</ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view style="width:100%;">
+                <ui-view class="title">余杭区（室外）</ui-view>
+                <ui-text class="title2">15:00 发布</ui-text>
+                <ui-row>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view class="dashboard1">
+                      <ui-view>
+                        <ui-dashboard
+                        radius="85"
+                        line-width="5"
+                        center-top= "150"
+                        center-left= "150"
+                        width="300"
+                        height="300"
+                        angle= "270"
+                        min= "0"
+                        max= "300"
+                        circular-animation= "true"
+                        have-pointer= "false"
+                        shadow-color="#FF9732"
+                        value= "{{ 60 }}"
+                        color= "#FF9732"
+                        show-pointer= "false"
+                        bg-color= "rgb(255, 151, 51, 0.5)"
+                        have-outside-pointer= "false"
+                        ></ui-dashboard>
+                      </ui-view>
+                      <ui-view class="dashboard7_text">
+                        <ui-view class="text1">PM2.5</ui-view>
+                        <ui-view class="text2 text4">{{dashboard3TextValue}}</ui-view>
+                        <ui-view class="text3 text4">轻度污染</ui-view>
+                      </ui-view>
+                      <ui-view class="huan-wrap huan-wrap2"></ui-view>
+                    </ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-view class="title">温馨提示：室外雾霾严重、老人、小孩、孕妇不宜外出</ui-view>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row class="data-bottom">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view style="width:100%;">
+                <ui-row height="40" space-bottom="30" class="title">
+                  <ui-col width="180"></ui-col>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view>PM2.5空气质量标准</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="center" width="180">
+                    <ui-view><ui-text>中标</ui-text>／美标</ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-row height="40" class="data-list">
+                  <ui-col vertical-align="middle" align="left" width="20">
+                    <ui-view class="circle color1"></ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left" space-left="10">
+                    <ui-view>0-50</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left">
+                    <ui-view>优质</ui-view>
+                  </ui-col>
+                  <ui-col width="120"></ui-col>
+                  <ui-col vertical-align="middle" align="left" width="20">
+                    <ui-view class="circle color2"></ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left" space-left="10">
+                    <ui-view>151-200</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left">
+                    <ui-view>中度污染</ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-row height="40" class="data-list">
+                  <ui-col vertical-align="middle" align="left" width="20">
+                    <ui-view class="circle color3"></ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left" space-left="10">
+                    <ui-view>50-100</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left">
+                    <ui-view>良好</ui-view>
+                  </ui-col>
+                  <ui-col width="120"></ui-col>
+                  <ui-col vertical-align="middle" align="left" width="20">
+                    <ui-view class="circle color4"></ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left" space-left="10">
+                    <ui-view>201-300</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left">
+                    <ui-view>重度污染</ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-row height="40" class="data-list">
+                  <ui-col vertical-align="middle" align="left" width="20">
+                    <ui-view class="circle color3"></ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left" space-left="10">
+                    <ui-view>101-150</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left">
+                    <ui-view>轻度污染</ui-view>
+                  </ui-col>
+                  <ui-col width="120"></ui-col>
+                  <ui-col vertical-align="middle" align="left" width="20">
+                    <ui-view class="circle color4"></ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left" space-left="10">
+                    <ui-view>>300</ui-view>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="left">
+                    <ui-view>严重污染</ui-view>
+                  </ui-col>
+                </ui-row>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="center">
+              <ui-view style="width:100%;">
+                <ui-row height="40" space-bottom="30" class="title">
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view>监测数据</ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-row height="40" class="data-list">
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view style="width:100%;">
+                      <ui-row height="20">
+                        <ui-col vertical-align="middle" align="left">
+                          <ui-view>PM1030</ui-view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right">
+                          <ui-view>30</ui-view>
+                        </ui-col>
+                      </ui-row>
+                      <ui-progress percent="30" border-radius="5" active active-color="#4FDB55" background-color="#343B49"></ui-progress>
+                    </ui-view>
+                  </ui-col>
+                  <ui-col width="120"></ui-col>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view style="width:100%;">
+                      <ui-row height="20">
+                        <ui-col vertical-align="middle" align="left">
+                          <ui-view>SO2</ui-view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right">
+                          <ui-view>40</ui-view>
+                        </ui-col>
+                      </ui-row>
+                      <ui-progress percent="40" border-radius="5" active active-color="#EFE062" background-color="#343B49"></ui-progress>
+                    </ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-row height="40" class="data-list">
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view style="width:100%;">
+                      <ui-row height="20">
+                        <ui-col vertical-align="middle" align="left">
+                          <ui-view>AQI</ui-view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right">
+                          <ui-view>50</ui-view>
+                        </ui-col>
+                      </ui-row>
+                      <ui-progress percent="50" border-radius="5" active active-color="#FD9C2E" background-color="#343B49"></ui-progress>
+                    </ui-view>
+                  </ui-col>
+                  <ui-col width="120"></ui-col>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view style="width:100%;">
+                      <ui-row height="20">
+                        <ui-col vertical-align="middle" align="left">
+                          <ui-view>O3</ui-view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right">
+                          <ui-view>60</ui-view>
+                        </ui-col>
+                      </ui-row>
+                      <ui-progress percent="60" border-radius="5" active active-color="#FE6057" background-color="#343B49"></ui-progress>
+                    </ui-view>
+                  </ui-col>
+                </ui-row>
+                <ui-row height="40" class="data-list">
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view style="width:100%;">
+                      <ui-row height="20">
+                        <ui-col vertical-align="middle" align="left">
+                          <ui-view>NO2</ui-view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right">
+                          <ui-view>70</ui-view>
+                        </ui-col>
+                      </ui-row>
+                      <ui-progress percent="70" border-radius="5" active active-color="#BF2F70" background-color="#343B49"></ui-progress>
+                    </ui-view>
+                  </ui-col>
+                  <ui-col width="120"></ui-col>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-view style="width:100%;">
+                      <ui-row height="20">
+                        <ui-col vertical-align="middle" align="left">
+                          <ui-view>CO</ui-view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right">
+                          <ui-view>80</ui-view>
+                        </ui-col>
+                      </ui-row>
+                      <ui-progress percent="80" border-radius="5" active active-color="#992B43" background-color="#343B49"></ui-progress>
+                    </ui-view>
+                  </ui-col>
+                </ui-row>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+        </ui-view>
+        
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</template>
+<script>
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      shebeiList:12,
+      dashboard1TextValue: 620,
+      dashboard2TextValue: 80,
+      dashboard3TextValue: 136,
+
+      AqiData:[
+        {
+          city:'杭州',
+          chinaNum:145,
+          americaNum:145,
+          color:'#F57C13'
+        },{
+          city:'山西',
+          chinaNum:145,
+          americaNum:145,
+          color:'#F57C13'
+        },{
+          city:'太原',
+          chinaNum:145,
+          americaNum:145,
+          color:'#83001E'
+        },{
+          city:'石家庄',
+          chinaNum:145,
+          americaNum:145,
+          color:'#F57C13'
+        },{
+          city:'西安',
+          chinaNum:145,
+          americaNum:145,
+          color:'#83001E'
+        },{
+          city:'郑州',
+          chinaNum:145,
+          americaNum:145,
+          color:'#D50031'
+        },{
+          city:'银川',
+          chinaNum:145,
+          americaNum:145,
+          color:'#D50031'
+        },{
+          city:'衡水',
+          chinaNum:145,
+          americaNum:145,
+          color:'#F57C13'
+        },{
+          city:'成都',
+          chinaNum:145,
+          americaNum:145,
+          color:'#F57C13'
+        },{
+          city:'邢台',
+          chinaNum:145,
+          americaNum:145,
+          color:'#7F2982'
+        },{
+          city:'沧州',
+          chinaNum:145,
+          americaNum:145,
+          color:'#7F2982'
+        },{
+          city:'乌鲁木齐',
+          chinaNum:145,
+          americaNum:145,
+          color:'#F57C13'
+        }
+      ]
+    }
+  },
+  methods: {
+    
+  },
+  mounted () {
+    
+  }
+}
+</script>
+<style lang="less">
+.content-wrap{
+  width:100%;
+  // height:100%;
+  // overflow: hidden;
+  background: #00003C url('~images/v-002/map.png') no-repeat center center;
+  background-size: 100% 100%;
+  .content-win{
+    // padding:10px;
+    // height: 100%;
+  }
+  .left-content{
+    height: 100%;
+    background: rgba(0,0,0,.2);
+    .title{
+      border-bottom: 1px solid #2A3763;
+      width: 100%;
+      padding: 20px 0;
+      .ui-view{
+        font-size: 20px;
+	      line-height: 45px;
+        color:#fff;
+      }
+      .ui-text{
+        font-size:14px;
+        color:#fff;
+        line-height: 20px;
+      }
+    }
+    .data-head,
+    .data-content{
+      border-bottom: 1px solid #2A3763;
+      .ui-view{
+        font-size:14px;
+        color:#fff;
+      }
+    }
+    .data-content{
+      .ui-view.active{
+        border-radius: 10px;
+        background: #F57C13;
+        text-align: center;
+        width: 50px;
+        height: 25px;
+        margin: auto;
+        line-height: 25px;
+      }
+    }
+  }
+}
+.dashboard_wrap{
+  width: 100%;
+  .title{
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+  }
+  .title2{
+    display: block;
+    font-size: 14px;
+    color: #8E9BBE;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 60px;
+  }
+}
+.dashboard1{
+  // background: #182552;
+  // border: 1px solid red;
+  position: relative;
+  .dashboard7_text{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left:0;
+    transform: translate(0%,-50%);
+    color: #fff;
+    font-size: 14px;
+    // margin-bottom: 10px;
+    text-align: center;
+    z-index: 2;
+    .text1{
+      color: #8E9EC0;
+    }
+    .text2{
+      color: #50D15C;
+      font-size: 32px;
+    }
+    .text3{
+      color: #50D15C;
+      font-size: 16px;
+    }
+    .text4{
+      color: #FF9732;
+    }
+  }
+  .ui-button{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,0%);
+  }
+}
+.huan-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  left:50%;
+  background: url('~images/v-002/Annular.png') no-repeat center 5px;
+  background-size: 185px;
+  width: 180px;
+  height: 180px;
+  &.huan-wrap2{
+    background: url('~images/v-002/Annular2.png') no-repeat center 5px;
+    background-size: 185px;
+  }
+}
+.data-bottom{
+  padding-top: 200rpx;
+  padding-bottom:30px;
+  .ui-row{
+    width:500px;
+    margin: 0 auto;
+  }
+  .title{
+    .ui-view{
+      color: #fff;
+      font-size:14px;
+      .ui-text{
+        color: #216798;
+      }
+    }
+  }
+  .data-list{
+    .ui-row{
+      width:100%;
+    }
+    .ui-view{
+      color: #fff;
+      font-size: 14px;
+      &.circle{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        &.color1{
+          background: #4FDB55;
+        }
+        &.color2{
+          background: #EFE062;
+        }
+        &.color3{
+          background: #FD9C2E;
+        }
+        &.color4{
+          background: #FE6057;
+        }
+        &.color5{
+          background: #BF2F70;
+        }
+        &.color6{
+          background: #992B43;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) and (min-width: 900px){
+  .dashboard_wrap{
+    .title{
+      font-size:12px!important;
+    }
+  }
+  .data-bottom{
+    >.ui-col{
+      flex:100%!important;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px){
+  .content-wrap{
+    width:1200px!important;
+    overflow: hidden;
+  }
+}
+</style>

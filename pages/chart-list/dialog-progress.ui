@@ -1,0 +1,74 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>进度条（基本使用）</ui-text>
+      <ui-progress percent="50" stroke-width="10"></ui-progress>
+      <ui-progress percent="60" stroke-width="10" active-color="#ff4949" border-radius="10"></ui-progress>
+    </ui-view>
+
+    <ui-view>
+      <ui-text block>进度条（进度条粗细）</ui-text>
+      <ui-progress text-color="white" percent="50" show-info stroke-width="1"></ui-progress>
+      <ui-progress text-color="white" percent="60" show-info stroke-width="2" active-color="#20a0ff"></ui-progress>
+      <ui-progress text-color="white" percent="70" show-info stroke-width="3" active-color="#ff4949"></ui-progress>
+    </ui-view>
+
+    <ui-view>
+      <ui-text block>进度条（渐变色）</ui-text>
+      <ui-progress percent="70" stroke-width="10" active-color="#9266FB,#F55691" border-radius="10"></ui-progress>
+      <ui-progress percent="80" stroke-width="10" active-color="#FC8609, #f40" background-color="#FCD9C1" border-radius="10"></ui-progress>
+    </ui-view>
+
+    <ui-view>
+      <ui-text block>进度条（添加文本）</ui-text>
+      <ui-progress text-color="white" percent="50" show-info stroke-width="10" border-radius="10"></ui-progress>
+      <ui-progress text-color="white" percent="60" show-info stroke-width="10" active-color="#ff4949" border-radius="10"></ui-progress>
+    </ui-view>
+
+    <ui-view>
+      <ui-text block>进度条（初始动画效果）</ui-text>
+      <ui-progress text-color="white" percent="60" show-info stroke-width="10" active active-color="#20a0ff" border-radius="10"></ui-progress>
+    </ui-view>
+
+
+
+
+
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 30px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+</style>

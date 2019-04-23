@@ -1,0 +1,53 @@
+<template>
+  <ui-view class="ui-404" style="height:{{winHeight}}px">
+    <ui-view class="ui-404-inner">
+      <ui-image src="{{ img }}" width="150" height="97"></ui-image>
+      <ui-view class="tip">什么也没找到</ui-view>
+      <ui-button bindclick="handleBack">返回</ui-button>
+    </ui-view>
+  </ui-view>
+</template>
+
+<script>
+export default {
+  config: {
+    "navigationBarTitleText": "404",
+    "delay":false
+  },
+  data () {
+    return {
+      img: require('../../images/404.png'),
+      winHeight: ui.DEFAULT_CONTENT_HEIGHT-200
+    }
+  },
+  methods: {
+    handleBack () {
+      ui.navigateBack()
+    }
+  }
+}
+</script>
+
+<style lang="less">
+.ui-404 {
+  font-size: 14px;
+
+  .ui-404-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .tip {
+      margin: 20px 0;
+      color: #666;
+    }
+
+    .ui-button {
+      width: 80px;
+    }
+  }
+}
+</style>

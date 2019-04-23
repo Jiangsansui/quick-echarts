@@ -1,0 +1,79 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>趋势图(基本使用)</ui-text>
+      <ui-sparkline
+        value="{{data}}"
+        height="400"
+        is-animated="{{true}}"
+        duration="1000"
+        area-gradient="{{ gradient }}"
+      ></ui-sparkline>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      data: [
+        {
+          value: 13,
+          date: '2011-01-06T00:00:00Z'
+        },
+        {
+          value: 22,
+          date: '2011-01-07T00:00:00Z'
+        }, {
+          value: 34,
+          date: '2011-01-08T00:00:00Z'
+        }, {
+          value: 69,
+          date: '2011-01-09T00:00:00Z'
+        }, {
+          value: 52,
+          date: '2011-01-10T00:00:00Z'
+        }, {
+          value: 49,
+          date: '2011-01-11T00:00:00Z'
+        }, {
+          value: 73,
+          date: '2011-01-12T00:00:00Z'
+        }, {
+          value: 82,
+          date: '2011-01-13T00:00:00Z'
+        }
+      ],
+      gradient: ['#2FB682', 'rgba(67,163,85,0.1)']
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+</style>

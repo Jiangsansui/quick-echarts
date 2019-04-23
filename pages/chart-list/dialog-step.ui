@@ -1,0 +1,120 @@
+<template>
+  <ui-view style="overflow: hidden;">
+    <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>直方图</ui-text>
+      <ui-step
+        value="{{data}}"
+        height="400"
+        color-schema="{{colorSchema}}"
+        tooltip="{{true}}"
+        body-fill-color="rgba(0,0,0,.7)"
+        value-text-fill-color="#fff"
+        name-text-fill-color="#fff"
+        axis-color="#fff"
+      ></ui-step>
+    </ui-view>
+    <ui-view>
+      <ui-text block>点击事件</ui-text>
+      <ui-view style="text-align:center">
+        <ui-step
+          value="{{data}}"
+          height="400"
+          color-schema="{{colorSchema}}"
+          bindcustomclick="customclick"
+          axis-color="#fff"
+        ></ui-step>
+        <ui-text block style="margin:5px auto">{{clickText}}</ui-text>
+      </ui-view>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      clickText: '',
+      data: [
+        {
+          value: 1,
+          key: '1月'
+        },
+        {
+          value: 2,
+          key: '2月'
+        },
+        {
+          value: 3,
+          key: '3月'
+        },
+        {
+          value: 6,
+          key: '4月'
+        },
+        {
+          value: 8,
+          key: '5月'
+        },
+        {
+          value: 11,
+          key: '6月'
+        },
+        {
+          value: 7,
+          key: '7月'
+        },
+        {
+          value: 6,
+          key: '8月'
+        },
+        {
+          value: 5,
+          key: '9月'
+        },
+        {
+          value: 2,
+          key: '10月'
+        },
+        {
+          value: 2,
+          key: '11月'
+        },
+        {
+          value: 1,
+          key: '12月'
+        }
+      ],
+      colorSchema: ['#70f0c7', '#41c4c9', '#fed009', '#fda71e', '#f65bb9','#70f0c7', '#41c4c9', '#fed009', '#fda71e', '#f65bb9', '#fda71e', '#f65bb9']
+    }
+  },
+  methods: {
+    customclick (e) {
+      this.clickText = `点击的是${e.key},值为：${e.value}`
+    }
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+</style>

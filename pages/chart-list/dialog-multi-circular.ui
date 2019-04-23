@@ -1,0 +1,119 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>仿Apple Watch</ui-text>
+      <ui-view class="circular1">
+        <ui-multi-circular
+          height="200"
+          top="100"
+          value="{{ value13 }}"
+          gap="1"
+          color-array="{{ colorArray13 }}"
+          line-width="20"
+          background-color="darken"
+          labels="{{ labels13 }}"
+          bindclickedindex="getCircular"
+          hover-style="darken"
+        ></ui-multi-circular>
+        <ui-view class="count">{{ index13 }}</ui-view>
+      </ui-view>
+    </ui-view>
+    <ui-view>
+      <ui-text block>纯色背景</ui-text>
+      <ui-view class="circular1">
+        <ui-multi-circular
+          height="200"
+          top="100"
+          value="{{ value13_2 }}"
+          gap="3"
+          color-array="{{ colorArray13_2 }}"
+          background-color="{{ backgroundColor13 }}"
+        ></ui-multi-circular>
+        <ui-view class="count">数据占比</ui-view>
+      </ui-view>
+    </ui-view>
+    <ui-view>
+      <ui-text block>无背景带文字</ui-text>
+      <ui-view class="circular1">
+        <ui-multi-circular
+          height="290"
+          value="{{ value13_3 }}"
+          gap="10"
+          line-width="5"
+          color-array="{{ colorArray13_3 }}"
+          labels="{{ labels13_3 }}"
+          have-background="false"
+          line-cap="butt"
+        ></ui-multi-circular>
+      </ui-view>
+    </ui-view>
+
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      value13: [40, 80, 70],
+      colorArray13: ['#F40064', '#A9FF09', '#3EFDC5'],
+      labels13: ['站立', '锻炼', '活动'],
+      index13: '',
+
+      value13_2: [60, 70, 80, 90],
+      colorArray13_2: ['#FF9E6F', '#2284F0', '#1160E3', '#1345DF'],
+      backgroundColor13: 'rgba(26,39,72,0.5)',
+
+      value13_3: [70, 60, 50, 40, 30],
+      colorArray13_3: ['#3EFEC4', '#33D9DF', '#30CEE5', '#28B3E9', '#2196E2'],
+      labels13_3: ['成本输出', '数量', '价格', '盈利', '盈利']
+    }
+  },
+  methods: {
+    getCircular (val) {
+       // 得到点击的环的index
+      this.index13 = this.value13[val]
+    }
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 30px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+  .circular1{
+    width: 100%;
+    /* height: 200px; */
+    display:inline-block;
+    position: relative;
+    .count{
+      color:#fff;
+      font-size:16px;
+      text-align:center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      line-height: 30px;
+    }
+  }
+</style>

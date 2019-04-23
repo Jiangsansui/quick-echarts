@@ -1,0 +1,485 @@
+<template>
+  <ui-view class="content-wrap">
+    <ui-row class="content-win">
+      <ui-col vertical-align="top" align="center" width="350" class="left-content">
+        <ui-view style="width:100%;">
+          <ui-row class="title" height="85">
+            <ui-col vertical-align="middle" align="left">
+              <ui-image
+                src="{{ require('#/images/v-002/logo.png') }}"
+              ></ui-image>
+            </ui-col>
+            <ui-col vertical-align="middle" align="right">
+              <ui-view>数据可视化展示</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row class="title" height="40">
+            <ui-col vertical-align="middle" align="left">
+              <ui-view class="list_title">设备列表</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="right">
+              <ui-view class="list_time">13:00更新</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row class="list_content" ui:for="{{ shebeiList }}" height="80">
+            <ui-col vertical-align="middle" align="left" width="70">
+              <ui-view class="img_wrap">
+                <ui-image src="{{ require('#/images/v-002/sbei.png') }}"></ui-image>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="left">
+              <ui-view>一年级一班</ui-view>
+              <ui-text>自动模式</ui-text>
+            </ui-col>
+          <ui-row>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="center">
+        <ui-row class="dashboard_wrap">
+          <ui-col vertical-align="middle" align="center">
+            <ui-view style="width:100%;">
+              <ui-view class="title">一年级一班（室内）</ui-view>
+              <ui-text class="title2">15:00 发布</ui-text>
+              <ui-row style="width:600px;margin:0 auto;" class="fresh_wrap">
+                <ui-col vertical-align="middle" align="center">
+                  <ui-view class="dashboard1">
+                    <ui-view>
+                      <ui-dashboard
+                      radius="85"
+                      line-width="5"
+                      center-top= "150"
+                      center-left= "150"
+                      width="300"
+                      height="300"
+                      angle= "270"
+                      min= "0"
+                      max= "3000"
+                      circular-animation= "true"
+                      have-pointer= "false"
+                      shadow-color="#50D15C"
+                      value= "{{ 20 }}"
+                      color= "#50D15C"
+                      show-pointer= "false"
+                      bg-color= "rgba(80, 209, 92, 0.5)"
+                      have-outside-pointer= "false"
+                      ></ui-dashboard>
+                    </ui-view>
+                    <ui-view class="dashboard7_text">
+                      <ui-view class="text1">CO2</ui-view>
+                      <ui-view class="text2">{{dashboard1TextValue}}</ui-view>
+                      <ui-view class="text3">新鲜</ui-view>
+                    </ui-view>
+                    <ui-view class="huan-wrap"></ui-view>
+                  </ui-view>
+                </ui-col>
+                <ui-col vertical-align="middle" align="center" class="fresh">
+                  <ui-view class="dashboard1">
+                    <ui-view>
+                      <ui-dashboard
+                      radius="85"
+                      line-width="5"
+                      center-top= "150"
+                      center-left= "150"
+                      width="300"
+                      height="300"
+                      angle= "270"
+                      min= "0"
+                      max= "300"
+                      circular-animation= "true"
+                      have-pointer= "false"
+                      shadow-color="#50D15C"
+                      value= "{{ 40 }}"
+                      color= "#50D15C"
+                      show-pointer= "false"
+                      bg-color= "rgba(80, 209, 92, 0.5)"
+                      have-outside-pointer= "false"
+                      ></ui-dashboard>
+                    </ui-view>
+                    <ui-view class="dashboard7_text">
+                      <ui-view class="text1">PM2.5</ui-view>
+                      <ui-view class="text2">{{dashboard2TextValue}}</ui-view>
+                      <ui-view class="text3">新鲜</ui-view>
+                    </ui-view>
+                    <ui-view class="huan-wrap huan-wrap2"></ui-view>
+                  </ui-view>
+                </ui-col>
+              </ui-row>
+              <ui-view class="title">空气很棒，可以尽情外出，享受大自然</ui-view>
+            </ui-view>
+          </ui-col>
+          <ui-col vertical-align="middle" align="center" width="500">
+            <ui-view style="width:100%;">
+              <ui-view class="title">余杭区（室外）</ui-view>
+              <ui-text class="title2">15:00 发布</ui-text>
+              <ui-row>
+                <ui-col vertical-align="middle" align="center">
+                  <ui-view class="dashboard1">
+                    <ui-view>
+                      <ui-dashboard
+                      radius="85"
+                      line-width="5"
+                      center-top= "150"
+                      center-left= "150"
+                      width="300"
+                      height="300"
+                      angle= "270"
+                      min= "0"
+                      max= "300"
+                      circular-animation= "true"
+                      have-pointer= "false"
+                      shadow-color="#FF9732"
+                      value= "{{ 60 }}"
+                      color= "#FF9732"
+                      show-pointer= "false"
+                      bg-color= "rgb(255, 151, 51, 0.5)"
+                      have-outside-pointer= "false"
+                      ></ui-dashboard>
+                    </ui-view>
+                    <ui-view class="dashboard7_text">
+                      <ui-view class="text1">PM2.5</ui-view>
+                      <ui-view class="text2 text4">{{dashboard3TextValue}}</ui-view>
+                      <ui-view class="text3 text4">轻度污染</ui-view>
+                    </ui-view>
+                    <ui-view class="huan-wrap huan-wrap2"></ui-view>
+                  </ui-view>
+                </ui-col>
+              </ui-row>
+              <ui-view class="title">减少户外活动，外出时应加强防护</ui-view>
+            </ui-view>
+          </ui-col>
+        </ui-row>
+        <ui-view class="line_wrap">
+          <ui-line
+            value="{{data2}}"
+            height="400"
+            line-width = "1"
+            is-animated= "{{ false }}"
+            tooltip="true"
+            body-fill-color="rgba(0,0,0,.1)"
+            tooltip-width="150"
+            title-fill-color="#fff"
+            border-stroke-color="#fff"
+            fix-axis="{{isFixAxis}}"
+            axis-color="#fff"
+          ></ui-line>
+          <ui-legend
+            value="{{legendData.legend}}"
+            height="50"
+            is-horizontal="true"
+            color-schema="{{legendData.colorSchema}}"
+            text-color="#fff"
+          ></ui-legend>
+        </ui-view>
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</template>
+<script>
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      shebeiList:12,
+      dashboard1TextValue: 620,
+      dashboard2TextValue: 80,
+      dashboard3TextValue: 136,
+
+      winWidth: ui.WIN_WIDTH,
+      data2:{
+        dataByTopic: [
+          {
+            topicName: '室内',
+            topic: 123,
+            color:'#50D063',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 20
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 132
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 101
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 180
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 150
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 100
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 210
+              }
+            ]
+          }, {
+            topicName: '室外',
+            topic: 345,
+            color:'#13ACE2',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 80
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 232
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 201
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 280
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 250
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 200
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 310
+              }
+            ]
+          }, {
+            topicName: '室外2',
+            topic: 567,
+            color:'#FF9732',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 160
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 332
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 301
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 380
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 350
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 300
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 410
+              }
+            ]
+          }
+        ]
+      },
+      isFixAxis: ui.IS_IOS,
+      legendData: {
+        legend: [
+          {
+            id: 1,
+            quantity: 3243,
+            name: '室内'
+          },
+          {
+            id: 2,
+            quantity: 3,
+            name: '室外'
+          },
+          {
+            id: 3,
+            quantity: 4,
+            name: '室外2'
+          }
+
+        ],
+        colorSchema: ['#50D063', '#13ACE2', '#FF9732']
+      }
+    }
+  },
+  methods: {
+    
+  },
+  mounted () {
+    
+  }
+}
+</script>
+<style lang="less">
+.content-wrap{
+  width:100%;
+  // height:100%;
+  // overflow: hidden;
+  background: #00003C url('~images/v-002/map.png') no-repeat center center;
+  background-size: 100% 100%;
+  .content-win{
+    padding:10px;
+    // height: 100%;
+    // background: #00003C;
+  }
+  .left-content{
+    .title{
+      border-bottom: 1px solid #2A3763;
+      width: 100%;
+      .ui-view{
+        font-size: 20px;
+        line-height: 45px;
+        color:#fff;
+        &.list_title{
+          color: #fff;
+          line-height: 20;
+          font-size: 14px;
+        }
+        &.list_time{
+          line-height: 20px;
+          font-size: 12px;
+          color: #4D557A;
+        }
+      }
+    }
+    .list_content{
+      border-bottom: 1px solid #2A3763;
+      width: 100%;
+      .img_wrap{
+        border-radius: 50%;
+        width:50px;
+        height:50px;
+        border: 1px solid #14749E;
+        .ui-image{
+          width:30px;
+          height:30px;
+          margin:10px 0 0 10px;
+        }
+      }
+      
+      .ui-view{
+        color: #fff;
+        line-height: 30px;
+        font-size: 14px;
+      }
+      .ui-text{
+        color: #4D557A;
+        line-height: 30px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+.dashboard_wrap{
+  width: 100%;
+  .title{
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+  }
+  .title2{
+    display: block;
+    font-size: 14px;
+    color: #8E9BBE;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 60px;
+  }
+}
+.dashboard1{
+  // background: #182552;
+  // border: 1px solid red;
+  position: relative;
+  .dashboard7_text{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left:0;
+    transform: translate(0%,-50%);
+    color: #fff;
+    font-size: 14px;
+    // margin-bottom: 10px;
+    text-align: center;
+    z-index: 2;
+    .text1{
+      color: #8E9EC0;
+    }
+    .text2{
+      color: #50D15C;
+      font-size: 32px;
+    }
+    .text3{
+      color: #50D15C;
+      font-size: 16px;
+    }
+    .text4{
+      color: #FF9732;
+    }
+  }
+  .ui-button{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,0%);
+  }
+}
+.huan-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  left:50%;
+  background: url('~images/v-002/Annular.png') no-repeat center 5px;
+  background-size: 185px;
+  width: 180px;
+  height: 180px;
+  &.huan-wrap2{
+    background: url('~images/v-002/Annular2.png') no-repeat center 5px;
+    background-size: 185px;
+  }
+}
+.line_wrap{
+  width:90%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1280px) and (min-width: 900px){
+  .dashboard_wrap{
+    >.ui-col{
+      flex:1!important;
+    }
+  }
+  .fresh_wrap{
+    width:400px!important;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 900px){
+  .content-wrap{
+    width:1200px!important;
+    overflow: hidden;
+  }
+  .dashboard_wrap{
+    .fresh_wrap{
+      width:100%!important;
+      .fresh{
+        display:none!important;
+      }
+    }
+  }
+}
+</style>

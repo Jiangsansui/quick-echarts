@@ -1,0 +1,1103 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': winHeight + 'px' }}}">
+    <ui-view class="head_title">
+      <ui-view>Quick V 数据可视化展示</ui-view>
+    </ui-view>
+    <ui-row class="data_terrace">
+      <ui-col vertical-align="top" align="center" width="400">
+        <ui-view class="left_title">
+          数  据  平  台
+          <ui-text block>DATA PLATFORM</ui-text>
+        </ui-view>
+        <ui-view class="left_content">
+          <ui-view class="data_list">
+            <ui-view></ui-view>
+            <ui-text block>数据概况</ui-text>
+          </ui-view>
+          <ui-view class="data_list">
+            <ui-view></ui-view>
+            <ui-text block>数据申请</ui-text>
+          </ui-view>
+          <ui-view class="data_list">
+            <ui-view></ui-view>
+            <ui-text block>数据权利</ui-text>
+          </ui-view>
+          <ui-view class="data_list active">
+            <ui-view></ui-view>
+            <ui-text block>我的数据</ui-text>
+          </ui-view>
+
+          <ui-view class="data_generalization">
+            <ui-stacked-area
+              class="stackedarea1"
+              value="{{ areaChartData.data }}"
+              height="180"
+              is-animated="true"
+              color-schema="{{ areaChartData.colorSchema }}"
+              body-fill-color="rgba(0,0,0,.7)"
+              tooltip-width="150"
+              title-fill-color="#fff"
+              text-fill-color="#fff"
+              tooltip-text-color="#fff"
+              border-stroke-color="#fff"
+              area-opacity="1"
+              fix-axis="{{ isFixAxis }}"
+              curve="true"
+              x-axis-format="custom"
+              x-axis-custom-format="%H:%M"
+              margin="{{ areaChartData.margin }}"
+              >
+            </ui-stacked-area>
+          </ui-view>
+          <ui-view class="data_generalization2">
+            <ui-view>今日用户数量</ui-view>
+            <ui-text>5632.2362.25MB</ui-text>
+          </ui-view>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="center">
+
+        <ui-view class="circular1">
+          <ui-multi-circular
+            value="{{ [90, 80, 70, 60] }}"
+            line-width="20"
+            gap="20"
+            radius="260"
+            top="300"
+            left="300"
+            width="600"
+            height="600"
+            color-array="{{ ['#FF9E6F', '#1345DF', '#1160E3','#2284F0'] }}"
+            background-color="rgba(26,39,72,0.5)"
+          ></ui-multi-circular>
+          <ui-view class="name">
+            数据占比
+            <ui-text block>（实时统计）</ui-text>
+          </ui-view>
+        </ui-view>
+        <ui-view class="data_ratio">
+          <ui-view class="ratio_content">
+            <ui-view class="top">
+              <ui-view></ui-view>
+            </ui-view>
+          </ui-view>
+          <ui-view class="text"></ui-view>
+          <ui-view class="ratio_content2">
+            <ui-view class="bottom">
+              <ui-view></ui-view>
+            </ui-view>
+          </ui-view>
+        </ui-view>
+
+        <ui-view class="tip_win">
+          <ui-view class="tip_1">
+            <ui-view class="name">2017.8.4 DATA NUBNER</ui-view>
+            <ui-view class="number"><ui-text>23</ui-text>%</ui-view>
+            <ui-view class="tip_content">
+              <ui-view></ui-view>
+            </ui-view>
+          </ui-view>
+          <ui-view class="tip_2">
+            <ui-view class="name">2017.8.4 DATA NUBNER</ui-view>
+            <ui-view class="number"><ui-text>50</ui-text>%</ui-view>
+            <ui-view class="tip_content">
+              <ui-view></ui-view>
+            </ui-view>
+          </ui-view>
+        </ui-view>
+        <ui-view class="tip_win2">
+          <ui-view class="tip_1">
+            <ui-view class="name">2017.8.4 DATA NUBNER</ui-view>
+            <ui-view class="number"><ui-text>85</ui-text>%</ui-view>
+            <ui-view class="tip_content">
+              <ui-view></ui-view>
+            </ui-view>
+          </ui-view>
+          <ui-view class="tip_2">
+            <ui-view class="name">2017.8.4 DATA NUBNER</ui-view>
+            <ui-view class="number"><ui-text>75</ui-text>%</ui-view>
+            <ui-view class="tip_content">
+              <ui-view></ui-view>
+            </ui-view>
+          </ui-view>
+        </ui-view>
+
+        <ui-view class="bottom_title">
+          <ui-view>数据情况</ui-view>
+          <ui-text block>DATA situation</ui-text>
+        </ui-view>
+
+      </ui-col>
+      <ui-col vertical-align="top" align="center" width="500" class="right_win">
+        <ui-view style="height:40px;"></ui-view>
+        <ui-view class="right_content">
+          <ui-view class="title_win">
+            <em class="corner tl"></em>
+            <em class="corner tr"></em>
+            <em class="corner br"></em>
+            <em class="corner bl"></em>
+            <ui-view class="right_title">
+              <ui-view>内  容  标  题</ui-view>
+              <ui-text>CONTENT TITLE</ui-text>
+            </ui-view>
+            <ui-view class="right_title2">
+              <ui-text>201.03.23 DATE</ui-text>
+              <ui-view><ui-text>50</ui-text>%</ui-view>
+            </ui-view>
+            <ui-view class="text">北京引领视觉科技有限公司旗下品牌UI Leader，一直致力于为企业提供优质的前端解决方案产品。</ui-view>
+            <ui-view class="text">我们的目标是让企业使用我们产品可以做出非常精美流畅、体验良好的项目成果，而且可以用在PC端、移动端、Web端、微信端、物联网领域、大数据领域等等众多平台。并且，还可以花费远低于项目成本的价格购买到我们的产品。</ui-view>
+            <ui-view class="text">我们是UI Leader，我们要做前端解决方案领导者！</ui-view>
+          </ui-view>
+          <ui-view class="right_title3">
+            <ui-text>DATA THROUGHPUT</ui-text>数据吞吐量
+          </ui-view>
+          <ui-view class="data_throughput">
+            <ui-line
+              value="{{data2}}"
+              height="190"
+              line-width = "1"
+              is-animated= false
+              tooltip="true"
+              body-fill-color="rgba(0,0,0,.1)"
+              tooltip-width="150"
+              title-fill-color="#fff"
+              border-stroke-color="#fff"
+              fix-axis="{{isFixAxis}}"
+              line-curve="basis"
+              axis-color="#fff"
+            ></ui-line>
+          </ui-view>
+        </ui-view>
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      isFixAxis: ui.IS_IOS,
+      areaChartData: {
+        data: [
+          {
+            date: '2011-10-20T00:00:00',
+            name: '票房',
+            value: 89
+          },
+          {
+            date: '2011-10-20T03:00:00',
+            name: '票房',
+            value: 82
+          },
+          {
+            date: '2011-10-20T06:00:00',
+            name: '票房',
+            value: 75
+          },
+          {
+            date: '2011-10-20T09:00:00',
+            name: '票房',
+            value: 85
+          },
+          {
+            date: '2011-10-20T12:00:00',
+            name: '票房',
+            value: 90
+          },
+          {
+            date: '2011-10-20T15:00:00',
+            name: '票房',
+            value: 75
+          },
+          {
+            date: '2011-10-20T18:00:00',
+            name: '票房',
+            value: 70
+          },
+          {
+            date: '2011-10-20T21:00:00',
+            name: '票房',
+            value: 80
+          },
+          {
+            date: '2011-10-21T00:00:00',
+            name: '票房',
+            value: 70
+          },
+          {
+            date: '2011-10-21T03:00:00',
+            name: '票房',
+            value: 75
+          },
+          {
+            date: '2011-10-21T06:00:00',
+            name: '票房',
+            value: 70
+          },
+          {
+            date: '2011-10-21T09:00:00',
+            name: '票房',
+            value: 65
+          }
+        ],
+        colorSchema: ['rgba(2,165,230, 0.5)'],
+        margin:{
+          left: 50,
+          right: 20,
+          top: 20,
+          bottom: 35
+        }
+      },
+      data2:{
+        dataByTopic: [
+          {
+            topicName: '室内',
+            topic: 123,
+            color:'#50D063',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 20
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 132
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 101
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 180
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 150
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 100
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 210
+              }
+            ]
+          }, {
+            topicName: '室外',
+            topic: 345,
+            color:'#13ACE2',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 80
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 232
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 201
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 280
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 250
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 200
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 310
+              }
+            ]
+          }, {
+            topicName: '室外2',
+            topic: 567,
+            color:'#FF9732',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 160
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 332
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 301
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 380
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 350
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 300
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 410
+              }
+            ]
+          }
+        ]
+      },
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+.chart_wrap{
+  background: #071226 url('~images/v-015/bg.png') no-repeat center center;
+  overflow: hidden;
+  .head_title{
+    // position: fixed;
+    // top: 0px;
+    // left: 1%;
+    width: 98%;
+    margin: auto;
+    overflow: hidden;
+    height: 90px;
+    background: url('~images/v-015/top_bg.png') no-repeat center 100%;
+    /*border: 1px solid red;*/
+    background-size: 100% 100%;
+    .ui-view{
+      font-size: 35px;
+      color: #1D85FD;
+      line-height: 90px;
+      text-align: center;
+      letter-spacing: 3px;
+      font-weight: bold;
+      background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 234, 252, 1)), to(rgba(108, 140, 181, 1)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  .data_terrace{
+    .ui-col{
+      position: relative;
+      .left_title{
+        width:100%;
+        font-size: 18px;
+        color: #5D7899;
+        text-align: center;
+        line-height: 20px;
+        padding: 50px 0;
+        .ui-text{
+          letter-spacing: 0px;
+          font-size: 12px;
+        }
+      }
+      .left_content{
+        width:100%;
+        height: 855px;
+        background: url('~images/v-015/left_bg.png') no-repeat 0 0;
+        padding-left: 70px;
+        padding-top: 70px;
+        margin-top: -40px;
+        .data_list{
+          width:200px;
+          background: #191F43;
+          -webkit-box-shadow: 0 0 20px #3099af inset;
+          -moz-box-shadow: 0 0 20px #3099af inset;
+          box-shadow: 0 0 20px #3099af inset;
+          border-radius: 3px;
+          position: relative;
+          margin-bottom: 45px;
+          .ui-view{
+            height: 0;
+            width: 100px;
+            border-top: 5px solid #EDF6F7;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -50px;
+            webkit-box-shadow: 0 0 20px #3099af;
+            -moz-box-shadow: 0 0 20px #3099af;
+            box-shadow: 0 0 20px #3099af;
+          }
+          .ui-text{
+            color: #fff;
+            font-size: 16px;
+            line-height: 60px;
+            text-align: center;
+          }
+          &.active{
+            background: #4B220E;
+            -webkit-box-shadow: 0 0 20px #833916 inset;/*91F4FB*/
+            -moz-box-shadow: 0 0 20px #833916 inset;
+            box-shadow: 0 0 20px #833916 inset;
+          }
+        }
+        .data_generalization{
+          width: 430px;
+          height: 180px;
+          background: url('~images/v-015/left_icon03.png') no-repeat 0 0;
+          margin-left: -4px;
+          margin-bottom: 40px;
+        }
+        .data_generalization2{
+          width: 435px;
+          height: 125px;
+          background: url('~images/v-015/left_icon04.png') no-repeat 0 0;
+          margin-left: -4px;
+          .ui-view{
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 20px 15px 20px 15px;
+            text-align:left;
+          }
+          .ui-text{
+            font-size: 45px;
+            color: #90F7FF;
+            line-height: 50px;
+            text-shadow: 0 0 50px rgba(141,241,255,.6);
+            display: block;
+            padding: 0px 0 0 15px;
+            text-align:left;
+          }
+        }
+      }
+      .right_content{
+        width:100%;
+        padding-top: 60px;
+        height: 855px;
+        background: url('~images/v-015/right_bg.png') no-repeat 100% 0%;
+        padding-right: 50px;
+        .title_win{
+          width: 360px;
+          height: 500px;
+          margin-left: 100px;
+          position: relative;
+          /* border: 1px solid red; */
+          background: url('~images/v-015/content_title_win.png') no-repeat center center;
+          padding-top: 40px;
+          .corner{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background: url('~images/v-015/content_title01.png') no-repeat center center;
+            background-size: 100%;
+            &.tl{
+              top: -10px;
+              left: -10px;
+            }
+            &.tr{
+              top: -10px;
+              right: -10px;
+              transform: rotate(90deg);
+              -ms-transform: rotate(90deg);
+              -moz-transform: rotate(90deg);
+              -webkit-transform: rotate(90deg);
+              -o-transform: rotate(90deg);
+            }
+            &.bl{
+              bottom: -10px;
+              left: -10px;
+              transform: rotate(270deg);
+              -ms-transform: rotate(270deg);
+              -moz-transform: rotate(270deg);
+              -webkit-transform: rotate(270deg);
+              -o-transform: rotate(270deg);
+            }
+            &.br{
+              bottom: -10px;
+              right: -10px;
+              transform: rotate(180deg);
+              -ms-transform: rotate(180deg);
+              -moz-transform: rotate(180deg);
+              -webkit-transform: rotate(180deg);
+              -o-transform: rotate(180deg);
+            }
+
+          }
+          .right_title{
+            border: 1px solid #3F87CC;
+            padding: 10px 0;
+            width: 150px;
+            margin: auto;
+            -webkit-box-shadow: 0 0 10px #3C8FD2 inset;
+            -moz-box-shadow: 0 0 10px #3C8FD2 inset;
+            box-shadow: 0 0 10px #3C8FD2 inset;
+            background: rgba(22,51,89,.4);
+            .ui-view{
+              color: #fff;
+              font-size: 16px;
+              text-align: center;
+            }
+            .ui-text{
+              text-align: center;
+              color: #19B4E0;
+              font-size: 12px;
+            }
+          }
+          .right_title2{
+            width: 70%;
+            margin: auto;
+            border-bottom: 1px solid #2B5180;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            > .ui-text{
+              font-size: 12px;
+              color: #19B4E0;
+            }
+            .ui-view{
+              font-size: 12px;
+              color: #19B4E0;
+              .ui-text{
+                font-size: 30px;
+                font-weight: bold;
+                background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 234, 252, 1)), to(rgba(108, 140, 181, 1)));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          }
+          .text{
+            font-size: 12px;
+            color: #fff;
+            width: 70%;
+            margin: auto;
+            padding: 10px 0;
+            text-align:left;
+          }
+        }
+        .right_title3{
+          color: #fff;
+          font-size: 12px;
+          padding: 20px 20px 20px 0px;
+          text-align: right;
+          .ui-text{
+            color: #fff;
+            font-size: 18px;
+            margin-right: 10px;
+          }
+        }
+        .data_throughput{
+          width: 100%;
+          height: 190px;
+          background: url('~images/v-015/data_throughput.png') no-repeat center center;
+          background-size: 100%;
+          margin-right: -10px;
+        }
+      }
+
+      .left_title{
+        width:100%;
+        font-size: 18px;
+        color: #5D7899;
+        text-align: center;
+        line-height: 20px;
+        padding: 50px 0;
+        .ui-text{
+          letter-spacing: 0px;
+          font-size: 12px;
+        }
+      }
+      .left_content{
+        width:100%;
+        height: 855px;
+        background: url('~images/v-015/left_bg.png') no-repeat 0 0;
+        padding-left: 70px;
+        padding-top: 70px;
+        margin-top: -40px;
+        .data_list{
+          width:200px;
+          background: #191F43;
+          -webkit-box-shadow: 0 0 20px #3099af inset;
+          -moz-box-shadow: 0 0 20px #3099af inset;
+          box-shadow: 0 0 20px #3099af inset;
+          border-radius: 3px;
+          position: relative;
+          margin-bottom: 45px;
+          .ui-view{
+            height: 0;
+            width: 100px;
+            border-top: 5px solid #EDF6F7;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -50px;
+            webkit-box-shadow: 0 0 20px #3099af;
+            -moz-box-shadow: 0 0 20px #3099af;
+            box-shadow: 0 0 20px #3099af;
+          }
+          .ui-text{
+            color: #fff;
+            font-size: 16px;
+            line-height: 60px;
+            text-align: center;
+          }
+          &.active{
+            background: #4B220E;
+            -webkit-box-shadow: 0 0 20px #833916 inset;/*91F4FB*/
+            -moz-box-shadow: 0 0 20px #833916 inset;
+            box-shadow: 0 0 20px #833916 inset;
+          }
+        }
+        .data_generalization{
+          width: 430px;
+          height: 180px;
+          background: url('~images/v-015/left_icon03.png') no-repeat 0 0;
+          margin-left: -4px;
+          margin-bottom: 40px;
+        }
+        .data_generalization2{
+          width: 435px;
+          height: 125px;
+          background: url('~images/v-015/left_icon04.png') no-repeat 0 0;
+          margin-left: -4px;
+          .ui-view{
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 20px 15px 20px 15px;
+            text-align:left;
+          }
+          .ui-text{
+            font-size: 45px;
+            color: #90F7FF;
+            line-height: 50px;
+            text-shadow: 0 0 50px rgba(141,241,255,.6);
+            display: block;
+            padding: 0px 0 0 15px;
+            text-align:left;
+          }
+        }
+      }
+      .right_content{
+        width:100%;
+        padding-top: 60px;
+        height: 855px;
+        background: url('~images/v-015/right_bg.png') no-repeat 100% 0%;
+        padding-right: 50px;
+        .title_win{
+          width: 360px;
+          height: 500px;
+          margin-left: 100px;
+          position: relative;
+          /* border: 1px solid red; */
+          background: url('~images/v-015/content_title_win.png') no-repeat center center;
+          padding-top: 40px;
+          .corner{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background: url('~images/v-015/content_title01.png') no-repeat center center;
+            background-size: 100%;
+            &.tl{
+              top: -10px;
+              left: -10px;
+            }
+            &.tr{
+              top: -10px;
+              right: -10px;
+              transform: rotate(90deg);
+              -ms-transform: rotate(90deg);
+              -moz-transform: rotate(90deg);
+              -webkit-transform: rotate(90deg);
+              -o-transform: rotate(90deg);
+            }
+            &.bl{
+              bottom: -10px;
+              left: -10px;
+              transform: rotate(270deg);
+              -ms-transform: rotate(270deg);
+              -moz-transform: rotate(270deg);
+              -webkit-transform: rotate(270deg);
+              -o-transform: rotate(270deg);
+            }
+            &.br{
+              bottom: -10px;
+              right: -10px;
+              transform: rotate(180deg);
+              -ms-transform: rotate(180deg);
+              -moz-transform: rotate(180deg);
+              -webkit-transform: rotate(180deg);
+              -o-transform: rotate(180deg);
+            }
+
+          }
+          .right_title{
+            border: 1px solid #3F87CC;
+            padding: 10px 0;
+            width: 150px;
+            margin: auto;
+            -webkit-box-shadow: 0 0 10px #3C8FD2 inset;
+            -moz-box-shadow: 0 0 10px #3C8FD2 inset;
+            box-shadow: 0 0 10px #3C8FD2 inset;
+            background: rgba(22,51,89,.4);
+            .ui-view{
+              color: #fff;
+              font-size: 16px;
+              text-align: center;
+            }
+            .ui-text{
+              text-align: center;
+              color: #19B4E0;
+              font-size: 12px;
+            }
+          }
+          .right_title2{
+            width: 70%;
+            margin: auto;
+            border-bottom: 1px solid #2B5180;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            > .ui-text{
+              font-size: 12px;
+              color: #19B4E0;
+            }
+            .ui-view{
+              font-size: 12px;
+              color: #19B4E0;
+              .ui-text{
+                font-size: 30px;
+                font-weight: bold;
+                background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 234, 252, 1)), to(rgba(108, 140, 181, 1)));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          }
+          .text{
+            font-size: 12px;
+            color: #fff;
+            width: 70%;
+            margin: auto;
+            padding: 10px 0;
+            text-align:left;
+          }
+        }
+        .right_title3{
+          color: #fff;
+          font-size: 12px;
+          padding: 20px 20px 20px 0px;
+          text-align: right;
+          .ui-text{
+            color: #fff;
+            font-size: 18px;
+            margin-right: 10px;
+          }
+        }
+        .data_throughput{
+          width: 100%;
+          height: 190px;
+          background: url('~images/v-015/data_throughput.png') no-repeat center center;
+          background-size: 100%;
+          margin-right: -10px;
+        }
+      }
+      .circular1{
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        /* background: #12213a; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -300px 0 0 -300px;
+        z-index: 99;
+        // border: 1px solid red;
+        .name{
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          margin-top: -25px;
+          font-size: 24px;
+          color: #68D3FD;
+          text-align: center;
+          letter-spacing: 5px;
+          .ui-text{
+            color: #155A9B;
+            font-size: 14px;
+            text-align: center;
+            line-height: 25px;
+          }
+        }
+      }
+      .data_ratio{
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: #12213a;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -300px 0 0 -300px;
+        .ratio_content{
+          margin-top: -150px;
+        }
+        .ratio_content,
+        .ratio_content2{
+          width: 600px;
+          height: 300px;
+          position: relative;
+          overflow: hidden;
+          .top{
+            height: 300px;
+            width: 600px;
+            position: absolute;
+
+            top: 150px;
+            -webkit-box-shadow: 0 0 50px rgba(73,199,217,.9);
+            -moz-box-shadow: 0 0 50px rgba(73,199,217,.9);
+            box-shadow: 0 0 50px rgba(73,199,217,.9);
+            border: 1px solid #49C7D9;
+            -moz-border-radius: 300px 300px 0 0;
+            -webkit-border-radius: 300px 50px 0 0;
+            border-radius: 300px 300px 0 0;
+            .ui-view{
+              height: 300px;
+              width: 600px;
+              position: absolute;
+              -webkit-box-shadow: 0 0 50px #49C7D9 inset;
+              -moz-box-shadow: 0 0 50px #49C7D9 inset;
+              box-shadow: 0 0 50px #49C7D9 inset;
+              -moz-border-radius: 300px 300px 0 0;
+              -webkit-border-radius: 300px 50px 0 0;
+              border-radius: 300px 300px 0 0;
+            }
+          }
+          .bottom{
+            height: 300px;
+            width: 600px;
+            position: absolute;
+            top: 150px;
+            -webkit-box-shadow: 0 0 50px rgba(73,199,217,.9);
+            -moz-box-shadow: 0 0 50px rgba(73,199,217,.9);
+            box-shadow: 0 0 50px rgba(73,199,217,.9);
+            -moz-border-radius:0 0 300px 300px;
+            -webkit-border-radius:0 0 300px 300px;
+            border-radius:0 0 300px 300px;
+            .ui-view{
+              height: 300px;
+              width: 600px;
+              position: absolute;
+              -webkit-box-shadow: 0 0 50px #49C7D9 inset;
+              -moz-box-shadow: 0 0 50px #49C7D9 inset;
+              box-shadow: 0 0 50px #49C7D9 inset;
+
+              -moz-border-radius:0 0 300px 300px;
+              -webkit-border-radius:0 0 300px 300px;
+              border-radius:0 0 300px 300px;
+            }
+          }
+
+        }
+        .text{
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          margin: auto;
+          text-align: center;
+          padding-top: 122.5px;
+        }
+        .ratio_content2{
+          margin-top: 0px;
+          // bottom: 19%;
+          .bottom{
+            top:-150px;
+          }
+        }
+      }
+      .tip_win,
+      .tip_win2{
+        width: 600px;
+        height: 300px;
+        /* border-radius: 50%; */
+        position: absolute;
+        left: 50%;
+        margin-left: -300px;
+        /* border: 1px solid red; */
+        z-index: 999;
+      }
+      .tip_win{
+        top: 10%;
+      }
+      .tip_win2{
+        bottom: 19%;
+      }
+      .tip_win .tip_1,
+      .tip_win2 .tip_1,
+      .tip_win .tip_2,
+      .tip_win2 .tip_2{
+        width: 150px;
+        height: 100px;
+        border-top: 2px solid #00586E;
+        position: relative;
+        float: left;
+        margin-top: 20px;
+      }
+      .tip_win .tip_1 .name,
+      .tip_win2 .tip_1 .name,
+      .tip_win .tip_2 .name,
+      .tip_win2 .tip_2 .name{
+        font-size: 12px;
+        color: #19B4E0;
+      }
+      .tip_win .tip_1 .number,
+      .tip_win2 .tip_1 .number,
+      .tip_win .tip_2 .number,
+      .tip_win2 .tip_2 .number{
+        font-size: 12px;
+        color: #19B4E0;
+      }
+      .tip_win .tip_1 .number .ui-text,
+      .tip_win2 .tip_1 .number .ui-text,
+      .tip_win .tip_2 .number .ui-text,
+      .tip_win2 .tip_2 .number .ui-text{
+          font-size: 50px;
+          font-weight: bold;
+          background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 234, 252, 1)), to(rgba(108, 140, 181, 1)));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      .tip_win .tip_1 .tip_content,
+      .tip_win2 .tip_1 .tip_content,
+      .tip_win .tip_2 .tip_content,
+      .tip_win2 .tip_2 .tip_content{
+        width: 150px;
+        height: 100px;
+      }
+      .tip_win .tip_1 .tip_content{
+        width: 185px;
+        margin-left: 70px;
+        margin-top: -35px;
+        border-top: 2px solid #00586E;
+        transform: rotate(55deg);
+        -ms-transform: rotate(55deg);
+        -moz-transform: rotate(55deg);
+        -webkit-transform: rotate(55deg);
+        -o-transform: rotate(55deg);
+      }
+      .tip_win .tip_1 .tip_content .ui-view,
+      .tip_win2 .tip_1 .tip_content .ui-view,
+      .tip_win .tip_2 .tip_content .ui-view,
+      .tip_win2 .tip_2 .tip_content .ui-view{
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #F2B484;
+        float: right;
+        margin: -5px -5px 0 0;
+      }
+      .tip_win .tip_2,
+      .tip_win2 .tip_2{
+        float: right;
+      }
+      .tip_win .tip_2 .tip_content{
+        border-bottom: 2px solid #00586E;
+        transform: rotate(115deg);
+        -ms-transform: rotate(115deg);
+        -moz-transform: rotate(115deg);
+        -webkit-transform: rotate(115deg);
+        -o-transform: rotate(115deg);
+        margin-left: -111px;
+        margin-top: -12px;
+        width: 220px;
+      }
+      .tip_win .tip_2 .tip_content .ui-view{
+        margin: 95px -5px 0 0;
+      }
+      .tip_win2 .tip_1,
+      .tip_win2 .tip_2{
+        margin-top: 280px;
+      }
+      .tip_win2 .tip_1 .tip_content{
+        width: 68%;
+        margin-left: 87px;
+        margin-top: -208px;
+        border-bottom: 2px solid #00586E;
+        transform: rotate(305deg);
+        -ms-transform: rotate(305deg);
+        -moz-transform: rotate(305deg);
+        -webkit-transform: rotate(305deg);
+        -o-transform: rotate(305deg);
+      }
+      .tip_win2 .tip_1 .tip_content .ui-view{
+        margin: 95px -5px 0 0;
+      }
+      .tip_win2 .tip_2 .tip_content{
+        border-top: 2px solid #00586E;
+        transform: rotate(125deg);
+        -ms-transform: rotate(125deg);
+        -moz-transform: rotate(125deg);
+        -webkit-transform: rotate(235deg);
+        -o-transform: rotate(125deg);
+        margin-left: -67px;
+        margin-top: -217px;
+        width: 140px;
+      }
+      .bottom_title{
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        margin-left: -500px;
+        height: 90px;
+        background: url('~images/v-015/bottom_bg.png') no-repeat center center;
+        width: 1000px;
+        .ui-view{
+          display: block;
+          font-size: 18px;
+          font-weight: bold;
+          text-align: center;
+          background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 234, 252, 1)), to(rgba(108, 140, 181, 1)));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          padding-top: 20px;
+          letter-spacing: 5px;
+        }
+        .ui-text{
+          color: #19B4E0;
+          font-size: 12px;
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1600px) and (min-width: 900px){
+  .data_terrace{
+    .right_win{
+      display:none!important;
+    }
+  }
+}
+</style>

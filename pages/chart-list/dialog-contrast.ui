@@ -1,0 +1,243 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>对比图（有间隙）</ui-text>
+      <ui-row height="30" class="text" mobile-flex>
+        <ui-col vertical-align="middle" align="left">
+            <ui-view class="left">
+                54.3%<ui-text>男</ui-text>
+            </ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="right">
+            <ui-view class="right">
+                <ui-text>女</ui-text>45.7%
+            </ui-view>
+        </ui-col>
+      </ui-row>
+      <ui-contrast
+        value="{{ contrastValue }}"
+        color="{{ colorArry }}"
+        gap="true"
+      ></ui-contrast>
+    </ui-view>
+    <ui-view>
+      <ui-text block>对比图（无间隙有圆角）</ui-text>
+      <ui-row height="30" class="text" mobile-flex>
+        <ui-col vertical-align="middle" align="left">
+            <ui-view class="left">
+                68.8%<ui-text>本科及以上</ui-text>
+            </ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="right">
+            <ui-view class="right">
+                <ui-text>本科及以下</ui-text>31.2%
+            </ui-view>
+        </ui-col>
+      </ui-row>
+      <ui-contrast
+        value="{{ contrastValue2 }}"
+        color="{{ colorArry2 }}"
+        round-corner="true"
+      ></ui-contrast>
+    </ui-view>
+    <ui-view>
+      <ui-text block>点赞</ui-text>
+      <ui-row height="80" class="praise" mobile-flex>
+        <ui-col vertical-align="middle" align="center" width="60" bindclick="praise">
+          <ui-view class="praise_wrap">
+            <ui-icon type="praise" size="24" color="#F1961C"></ui-icon>
+          </ui-view>
+          <ui-view>赞({{ upCount }})</ui-view>
+        </ui-col>
+        <ui-col style="padding-top:22px;" align="center" space="20">
+          <ui-contrast
+            value="{{ contrastValue5 }}"
+            color="{{ colorArry5 }}"
+            round-corner="true"
+            mode="full"
+            height="15"
+          ></ui-contrast>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center"  width="60" bindclick="tread">
+          <ui-view class="tread_wrap">
+            <ui-icon type="tread" size="24" color="#3C7ADA"></ui-icon>
+          </ui-view>
+          <ui-view>呵呵({{ downCount }})</ui-view>
+        </ui-col>
+      </ui-row>
+    </ui-view>
+    <ui-view>
+      <ui-text block>男女比例对比图</ui-text>
+      <ui-row class="contrast" mobile-flex>
+        <ui-col vertical-align="middle" align="center" width="60">
+          <ui-view ui:for="{{ ageArry }}" ui:for-item="item">{{ item.age }}</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-contrast
+            height="10"
+            value="{{ item.value }}"
+            color="{{ colorArry6 }}"
+            mode="maximum"
+            ui:for="{{ contrast }}"
+            ui:for-item="item"
+          ></ui-contrast>
+        </ui-col>
+      </ui-row>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      contrastValue: [54.3, 45.7],
+      colorArry: ['#65A2ED', '#F6564A'],
+
+      contrastValue2: [68.8, 31.2],
+      colorArry2: ['#4ECEA6', '#A8DB3D'],
+
+
+      colorArry6: ['#406DE0', '#F6C538'],
+      ageArry: [
+        {
+          age: [17, 22]
+        }, {
+          age: [27, 32]
+        }, {
+          age: [37, 42]
+        }, {
+          age: [47, 52]
+        }, {
+          age: [57, 62]
+        }, {
+          age: [67, 72]
+        }, {
+          age: [77, 82]
+        }, {
+          age: [87, 92]
+        }
+      ],
+      contrast: [
+        {
+          value: [50, 50]
+        }, {
+          value: [60, 75]
+        }, {
+          value: [48, 80]
+        }, {
+          value: [45, 85]
+        }, {
+          value: [40, 82]
+        }, {
+          value: [38, 78]
+        }, {
+          value: [35, 68]
+        }, {
+          value: [30, 55]
+        }, {
+          value: [28, 45]
+        }, {
+          value: [25, 35]
+        }, {
+          value: [20, 30]
+        }, {
+          value: [18, 25]
+        }, {
+          value: [15, 15]
+        }, {
+          value: [10, 10]
+        }, {
+          value: [5, 5]
+        }
+      ],
+
+
+      contrastValue5: [1, 1],
+      colorArry5: ['#F1961C', '#3C7ADA'],
+      upCount: 0,
+      downCount: 0
+    }
+  },
+  methods: {
+    praise () {
+      this.contrastValue5 = [this.upCount += 1, this.downCount]
+    },
+    tread () {
+      this.contrastValue5 = [this.upCount, this.downCount += 1]
+    }
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+  .text{
+    .ui-view{
+      color:#65A2ED;
+      font-size:20px;
+      padding:0;
+      .ui-text{
+        color:#65A2ED;
+        font-size:14px;
+      }
+      &.right{
+        color:#F6564A;
+        .ui-text{
+          color:#F6564A;
+        }
+      }
+    }
+  }
+
+  .contrast{
+    font-size: 12px;
+    color: #fff;
+    .ui-view{
+      padding:0;
+      line-height:35px;
+    }
+  }
+  .ui-contrast-bar{
+    margin-bottom: 10px;
+  }
+  .praise{
+    color:#fff;
+    .ui-view{
+      padding:0;
+    }
+  }
+  .praise_wrap,
+  .tread_wrap{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #F1961C;
+    padding:0;
+  }
+  .tread_wrap{
+    border: 1px solid #3C7ADA;
+  }
+</style>

@@ -1,0 +1,381 @@
+<template>
+  <ui-view>
+    <ui-view class="chart_wrap" style="{{{ 'min-height': winHeight + 'px' }}}">
+      <ui-view class="chart_list">
+        <ui-view class="chart-item" ui:for="{{ chartList }}" ui:for-index="index">
+          <ui-view class="chart-item-container" bindclick="showDialog(index)">
+            <ui-image style="background:#2B2D32" src="{{ item.img }}" width="100%"></ui-image>
+          </ui-view>
+          <ui-text block style="text-align: center">{{ item.text }}</ui-text>
+        </ui-view>
+        <ui-view class="clear"></ui-view>
+      </ui-view>
+    </ui-view>
+  </ui-view>
+  </template>
+  <script>
+  export default {
+    config: {
+  
+    },
+    data () {
+      return {  
+        winHeight: ui.WIN_HEIGHT,
+        winWidth: ui.WIN_WIDTH,
+        chartList:[
+          {
+            img:require('#/images/chart-list/bar.jpg'),
+            text:'柱状图'
+          },{
+            img:require('#/images/chart-list/grouped-bar.jpg'),
+            text:'分组柱状图'
+          },{
+            img:require('#/images/chart-list/stacked-bar.jpg'),
+            text:'堆叠柱状图'
+          },{
+            img:require('#/images/chart-list/line.jpg'),
+            text:'折线图'
+          },{
+            img:require('#/images/chart-list/area.jpg'),
+            text:'面积图'
+          },{
+            img:require('#/images/chart-list/stacked-area.jpg'),
+            text:'堆叠面积图'
+          },{
+            img:require('#/images/chart-list/donut.jpg'),
+            text:'环形图'
+          },{
+            img:require('#/images/chart-list/funnel.jpg'),
+            text:'漏斗图'
+          },{
+            img:require('#/images/chart-list/step.jpg'),
+            text:'直方图'
+          },{
+            img:require('#/images/chart-list/sparkline.jpg'),
+            text:'趋势图'
+          },{
+            img:require('#/images/chart-list/contrast.jpg'),
+            text:'对比图'
+          },{
+            img:require('#/images/chart-list/dashboard.jpg'),
+            text:'仪表盘'
+          },{
+            img:require('#/images/chart-list/progress.jpg'),
+            text:'进度条'
+          },{
+            img:require('#/images/chart-list/circular.jpg'),
+            text:'环形进度条'
+          },{
+            img:require('#/images/chart-list/multi-circular.jpg'),
+            text:'多层进度环'
+          }
+        ],
+        dialogWidth:1000,
+        dialogHeight:1000
+      }
+    },
+    methods: {
+      showDialog(index){
+        this['showDialog'+index]()
+      },
+      showDialog0(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-bar.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog1(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-grouped-bar.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog2(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-stacked-bar.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog3(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-line.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog4(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-area.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog5(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-stacked-area.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog6(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-donut.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog7(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-funnel.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog8(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-step.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog9(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-sparkline.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog10(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-contrast.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog11(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-dashboard.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog12(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-progress.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog13(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-circular.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      },
+      showDialog14(){
+        ui.showDialog({
+            // 窗体标题
+            title: '图表详情',
+            content: import(`#/pages/chart-list/dialog-multi-circular.ui`),
+            width: this.dialogWidth,
+            height: this.dialogHeight,
+            // 向dialog1.ui传入数据
+            data: {
+              index: ''
+            },
+            // 接收ui.hideDialog回传的数据
+            onHide: (data) => {
+              //console.log(data)
+            }
+        })
+      }
+    },
+    mounted () {
+      this.dialogWidth = document.documentElement.clientWidth * 0.8
+      this.dialogHeight = document.documentElement.clientHeight * 0.8
+      this.resizeListener = () => {
+        this.dialogWidth = document.documentElement.clientWidth * 0.8
+        this.dialogHeight = document.documentElement.clientHeight * 0.8
+      }
+      ui.addWindowResizeListener(this.resizeListener)
+    },
+    beforeDestroy () {
+      ui.removeWindowResizeListener(this.resizeListener)
+    }
+  }
+  </script>
+  <style lang="less">
+    .chart_wrap {
+      background-color: #2B2D32;
+      /* height:100%; */
+      .chart_list {
+        padding: 10px 0px;
+        .chart-item {
+          background-color: #2B2D32;
+          cursor: pointer;
+          // padding: 10px;
+          width: 25%;
+          float: left;
+        }
+        .chart-item-container{
+          padding:10px;
+        }
+        .clear {
+        clear: both;
+        }
+        /* .ui-view{
+          width:100%;
+        } */
+        .ui-text{
+          color:#fff;
+          font-size:18px;
+          padding:10px 0 20px 0;
+        }
+      }
+    }
+  </style>
+  

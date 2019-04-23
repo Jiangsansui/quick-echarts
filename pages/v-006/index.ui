@@ -1,0 +1,453 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': winHeight + 'px' }}}">
+    <ui-view class="head_title">Quick V 数据可视化展示</ui-view>
+    <ui-row class="data_show">
+      <ui-col vertical-align="middle" align="center" space="10">
+        <ui-row height="40">
+        <ui-col vertical-align="middle" align="center" width="30">
+          <ui-image src="{{ require('#/images/v-006/data_show01.png') }}"></ui-image>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>全国报关单数</ui-view>
+        </ui-col>
+        </ui-row>
+        <ui-view class="data">
+        3,683,873
+        <ui-text>个</ui-text>
+      </ui-view>
+      </ui-col>
+      <ui-col width="10" class="line"></ui-col>
+      <ui-col vertical-align="middle" align="center" space="10">
+        <ui-row height="40">
+        <ui-col vertical-align="middle" align="center" width="30">
+          <ui-image src="{{ require('#/images/v-006/data_show02.png') }}"></ui-image>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>全国统计美元值</ui-view>
+        </ui-col>
+        </ui-row>
+        <ui-view class="data">
+        3,683,873
+        <ui-text>个</ui-text>
+      </ui-view>
+      </ui-col>
+      <ui-col width="10" class="line"></ui-col>
+      <ui-col vertical-align="middle" align="center" space="10">
+        <ui-row height="40">
+        <ui-col vertical-align="middle" align="center" width="30">
+          <ui-image src="{{ require('#/images/v-006/data_show03.png') }}"></ui-image>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>全国实征关税</ui-view>
+        </ui-col>
+        </ui-row>
+        <ui-view class="data">
+        3,683,873
+        <ui-text>个</ui-text>
+      </ui-view>
+      </ui-col>
+      <ui-col width="10" class="line"></ui-col>
+      <ui-col vertical-align="middle" align="center" space="10">
+        <ui-row height="40">
+        <ui-col vertical-align="middle" align="center" width="30">
+          <ui-image src="{{ require('#/images/v-006/data_show04.png') }}"></ui-image>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>全国实征增值税</ui-view>
+        </ui-col>
+        </ui-row>
+        <ui-view class="data">
+        3,683,873
+        <ui-text>个</ui-text>
+      </ui-view>
+      </ui-col>
+    </ui-row>
+    <ui-row class="bottom_content">
+      <ui-col vertical-align="middle" align="center">
+        <ui-view id="main" class="main"></ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="left">
+        <ui-view class="declare_wrap">
+          <ui-view class="title">全国企业报关单申报关区分布TOP5</ui-view>
+          <ui-view class="progress_wrap">
+            <ui-row height="40">
+              <ui-col vertical-align="middle" align="left" width="30">
+                <ui-view class="line" style="background: #F8223B;">1</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="80">
+                <ui-view>深圳海关</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="300">
+                <ui-progress percent="80" border-radius="5" stroke-width="10" active active-color="#51D253" background-color="#034E9D"></ui-progress>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" space-left="20">
+                <ui-view class="data">
+                  615959
+                  <ui-text>个</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+            <ui-row height="40">
+              <ui-col vertical-align="middle" align="left" width="30">
+                <ui-view class="line" style="background: #EFB11D;">1</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="80">
+                <ui-view>黄埔关区</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="300">
+                <ui-progress percent="70" border-radius="5" stroke-width="10" active active-color="#E8D34C" background-color="#034E9D"></ui-progress>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" space-left="20">
+                <ui-view class="data">
+                  615959
+                  <ui-text>个</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+            <ui-row height="40">
+              <ui-col vertical-align="middle" align="left" width="30">
+                <ui-view class="line" style="background: #4BE435;">1</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="80">
+                <ui-view>广州海关</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="300">
+                <ui-progress percent="60" border-radius="5" stroke-width="10" active active-color="#C1814F" background-color="#034E9D"></ui-progress>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" space-left="20">
+                <ui-view class="data">
+                  615959
+                  <ui-text>个</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+            <ui-row height="40">
+              <ui-col vertical-align="middle" align="left" width="30">
+                <ui-view class="line" style="background: #037AD6;">1</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="80">
+                <ui-view>汕头海关</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="300">
+                <ui-progress percent="50" border-radius="5" stroke-width="10" active active-color="#4FB461" background-color="#034E9D"></ui-progress>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" space-left="20">
+                <ui-view class="data">
+                  615959
+                  <ui-text>个</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+            <ui-row height="40">
+              <ui-col vertical-align="middle" align="left" width="30">
+                <ui-view class="line" style="background: #037AD6;">1</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="80">
+                <ui-view>拱北海关</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" width="300">
+                <ui-progress percent="40" border-radius="5" stroke-width="10" active active-color="#F3E881" background-color="#034E9D"></ui-progress>
+              </ui-col>
+              <ui-col vertical-align="middle" align="left" space-left="20">
+                <ui-view class="data">
+                  615959
+                  <ui-text>个</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+          </ui-view>
+          <ui-view class="title">全国企业业务数据占全国业务量比例</ui-view>
+          <ui-view class="ratio_wrap">
+            <ui-row>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view>报关单数</ui-view>
+                <ui-view class="circular_wrap">
+                  <ui-circular
+                    radius="70"
+                    top="70"
+                    left="70"
+                    color="#19AFF8"
+                    value="92"
+                    line-width="8"
+                    line-cap="butt"
+                    background-color="#083A8B"
+                  ></ui-circular>
+                  <ui-view class="text" style="color:#19AFF8;">92%</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view>报关单数</ui-view>
+                <ui-view class="circular_wrap">
+                  <ui-circular
+                    radius="70"
+                    top="70"
+                    left="70"
+                    color="#46CD42"
+                    value="68"
+                    line-width="8"
+                    line-cap="butt"
+                    background-color="#083A8B"
+                  ></ui-circular>
+                  <ui-view class="text" style="color:#46CD42;">68%</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view>报关单数</ui-view>
+                <ui-view class="circular_wrap">
+                  <ui-circular
+                    radius="70"
+                    top="70"
+                    left="70"
+                    color="#E6D44C"
+                    value="50"
+                    line-width="8"
+                    line-cap="butt"
+                    background-color="#083A8B"
+                  ></ui-circular>
+                  <ui-view class="text" style="color:#E6D44C;">50%</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view>报关单数</ui-view>
+                <ui-view class="circular_wrap">
+                  <ui-circular
+                    radius="70"
+                    top="70"
+                    left="70"
+                    color="#C1814F"
+                    value="40"
+                    line-width="8"
+                    line-cap="butt"
+                    background-color="#083A8B"
+                  ></ui-circular>
+                  <ui-view class="text" style="color:#C1814F;">40%</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+          </ui-view>
+
+        </ui-view>
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+import * as echarts from '#/static/utils/echarts.min.js'
+import registerMap from '#/static/utils/china'
+registerMap(echarts)
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      resizeListener: null
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+    var dom = document.getElementById('main')
+    var myChart = echarts.init(dom)
+    var app = {}
+    var option = null
+    option = {
+      tooltip: {
+        show: false
+      },
+      geo: {
+        map: 'china',
+        label: {
+          show:false,
+          color:'#fff',
+          emphasis: {
+            show: false
+          }
+        },
+        roam: false,
+        symbol: ['none', 'circle'],
+        smooth:true,
+        symbolSize : 1,
+        itemStyle: {
+          normal: {
+            areaColor: 'transparent',
+            borderColor: '#1DA1D2',
+            borderWidth:1,
+          },
+          emphasis: {
+            areaColor: 'transparent'
+          }
+        }
+      },
+      series: [{
+        type: 'map',
+        mapType: 'china',
+        label: {
+          show:true,
+          color:'#fff'
+        },
+        itemStyle: {
+          normal: {
+            areaColor: 'transparent',
+            borderColor: 'rgba(100,149,237,1)',
+            borderWidth: 0.5
+          },
+          emphasis: {
+            borderWidth: 0.5,
+            borderColor: '#43D945',
+            areaColor: 'rgba(3,78,157,.8)',
+            label: {
+              show:true,
+              color:'#fff'
+            },
+          }
+        },
+        data: [
+          {
+            name: '青海',
+            value: '200',
+            selected:true
+          }
+        ]
+      }]
+    };
+    if(option && typeof option === "object") {
+      myChart.setOption(option, true);
+    }
+    this.resizeListener = () => {
+      myChart.resize()
+    }
+    ui.addWindowResizeListener(this.resizeListener)
+  },
+  beforeDestroy () {
+    ui.removeWindowResizeListener(this.resizeListener)
+  }
+}
+</script>
+<style lang="less">
+.chart_wrap{
+  background-color: #063591;
+  background: #063591 url('~images/v-006/bg.jpg') center center;
+  overflow: hidden;
+  .head_title{
+    width: 800px;
+    margin:0 auto;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid #1da1d2;
+    padding-top: 20px;
+    color: #46C6FE;
+  }
+  .data_show{
+    width:90%;
+    margin: 0 auto;
+    padding: 30px 0;
+    > .ui-col{
+      padding: 10px 20px;
+      background-image: -webkit-linear-gradient(top, rgba(7, 124, 203, .3) 0%, rgba(7, 124, 203, 0) 95%);
+      &.line{
+        padding: 0;
+        background: none;
+      }
+    }
+    .ui-row{
+      width: 200px;
+      .ui-view{
+        color: #49C7D9;
+        text-align: center;
+        font-size: 18px;
+        line-height: 40px;
+      }
+    }
+    .data{
+      color: #43E243;
+      font-size: 30px;
+      line-height: 40px;
+      .ui-text{
+        color: #26B9F3;
+        font-size: 14px;
+      }
+    }
+  }
+  .main{
+    width: 100%;
+    height: 600px;
+  }
+  .declare_wrap{
+    width: 100%;
+    .title{
+      text-indent:1em;
+      color: #46C6FE;
+      font-size: 18px;
+      padding: 5px 0;
+      margin:30px 0;
+      background-image: -webkit-linear-gradient(left, rgba(7, 124, 203, .3) 0%, rgba(7, 124, 203, 0) 95%);
+    }
+    .progress_wrap{
+      .ui-row{
+        padding-left:30px;
+        .ui-col{
+          .ui-view{
+            color: #46C6FE;
+            font-size: 14px;
+            &.line{
+              width: 20px;
+              height: 20px;
+              border-radius: 3px;
+              color: #fff;
+              font-size: 12px;
+              text-align: center;
+              line-height: 20px;
+            }
+            &.data{
+              font-size:18px;
+              .ui-text{
+                font-size:14px;
+              }
+            }
+          }
+          .ui-progress{
+            width:100%;
+          }
+        }
+      }
+    }
+    .ratio_wrap{
+      .ui-view{
+        font-size: 18px;
+        line-height: 80px;
+        color: #46C6FE;
+        &.circular_wrap{
+          position: relative;
+          .text{
+            width:100%;
+            font-size:24px;
+            position: absolute;
+            top: 50%;
+            line-height:40px;
+            margin-top:-20px;
+            text-align:center;
+          }
+        }
+      }
+    }
+  }
+  .bottom_content{
+    padding-bottom:30px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px){
+  .chart_wrap{
+    width:1200px!important;
+    overflow: hidden;
+  }
+}
+</style>

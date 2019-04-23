@@ -1,0 +1,244 @@
+<template>
+  <ui-view>
+    <ui-view class="chart_wrap" style="{{{ 'min-height': winHeight + 'px' }}}">
+      <ui-view class="chart_list">
+        <ui-view class="chart-item" ui:for="{{ chartList }}" ui:for-index="index">
+          <ui-view class="chart-item-container" bindclick="showTemplete(index)">     
+            <ui-image style="background:#2B2D32" src="{{ item.img }}" width="100%"></ui-image>
+          </ui-view>
+          <ui-text block style="text-align: center">{{ item.text }}</ui-text>
+        </ui-view>
+        <ui-view class="clear"></ui-view>
+      </ui-view>
+    </ui-view>
+  </ui-view>
+  </template>
+  <script>
+  export default {
+    config: {
+  
+    },
+    data () {
+      return {  
+        winHeight: ui.WIN_HEIGHT,
+        winWidth: ui.WIN_WIDTH,
+        chartList:[
+          {
+            img:require('#/images/v-view/V-001.jpg'),
+            text:'V-001'
+          },{
+            img:require('#/images/v-view/V-002.jpg'),
+            text:'V-002'
+          },{
+            img:require('#/images/v-view/V-003.jpg'),
+            text:'V-003'
+          },{
+            img:require('#/images/v-view/V-004.jpg'),
+            text:'V-004'
+          },{
+            img:require('#/images/v-view/V-005.jpg'),
+            text:'V-005'
+          },{
+            img:require('#/images/v-view/V-006.jpg'),
+            text:'V-006'
+          },{
+            img:require('#/images/v-view/V-007.jpg'),
+            text:'V-007'
+          },{
+            img:require('#/images/v-view/V-008.jpg'),
+            text:'V-008'
+          },{
+            img:require('#/images/v-view/V-008.jpg'),
+            text:'V-008-2'
+          },{
+            img:require('#/images/v-view/V-009.jpg'),
+            text:'V-009'
+          },{
+            img:require('#/images/v-view/V-010.jpg'),
+            text:'V-010'
+          },{
+            img:require('#/images/v-view/V-011.jpg'),
+            text:'V-011'
+          },{
+            img:require('#/images/v-view/V-011.jpg'),
+            text:'V-011-2'
+          },{
+            img:require('#/images/v-view/V-012.jpg'),
+            text:'V-012'
+          },{
+            img:require('#/images/v-view/V-013.jpg'),
+            text:'V-013'
+          },{
+            img:require('#/images/v-view/V-014.jpg'),
+            text:'V-014'
+          },{
+            img:require('#/images/v-view/V-015.jpg'),
+            text:'V-015'
+          },{
+            img:require('#/images/v-view/V-015.jpg'),
+            text:'V-015-2'
+          },{
+            img:require('#/images/v-view/V-016.jpg'),
+            text:'V-016'
+          },{
+            img:require('#/images/v-view/V-016.jpg'),
+            text:'V-016-2'
+          },{
+            img:require('#/images/v-view/V-017.jpg'),
+            text:'V-017'
+          },{
+            img:require('#/images/v-view/V-018.jpg'),
+            text:'V-018'
+          },{
+            img:require('#/images/v-view/V-019.jpg'),
+            text:'V-019'
+          },{
+            img:require('#/images/v-view/V-020.jpg'),
+            text:'V-020'
+          },{
+            img:require('#/images/v-view/V-021.jpg'),
+            text:'V-021'
+          },{
+            img:require('#/images/v-view/V-022.jpg'),
+            text:'V-022'
+          },{
+            img:require('#/images/v-view/V-023.jpg'),
+            text:'V-023'
+          },{
+            img:require('#/images/v-view/V-024.jpg'),
+            text:'V-024'
+          },
+        ]
+      }
+    },
+    methods: {
+      showTemplete(index){
+        var url
+        if(index==0){
+          url="/pages/v-001/index"
+        }
+        else if(index==1){
+          url="/pages/v-002/index"
+        }
+        else if(index==2){
+          url="/pages/v-003/index"
+        }
+        else if(index==3){
+          url="/pages/v-004/index"
+        }
+        else if(index==4){
+          url="/pages/v-005/index"
+        }
+        else if(index==5){
+          url="/pages/v-006/index"
+        }
+        else if(index==6){
+          url="/pages/v-007/index"
+        }
+        else if(index==7){
+          url="/pages/v-008/index"
+        }
+        else if(index==8){
+          url="/pages/v-008/index2"
+        }
+        else if(index==9){
+          url="/pages/v-009/index"
+        }
+        else if(index==10){
+          url="/pages/v-010/index"
+        }
+        else if(index==11){
+          url="/pages/v-011/index"
+        }
+        else if(index==12){
+          url="/pages/v-011/index2"
+        }
+        else if(index==13){
+          url="/pages/v-012/index"
+        }
+        else if(index==14){
+          url="/pages/v-013/index"
+        }
+        else if(index==15){
+          url="/pages/v-014/index"
+        }else if(index==16){
+          url="/pages/v-015/index"
+        }
+        else if(index==17){
+          url="/pages/v-015/index2"
+        }
+        else if(index==18){
+          url="/pages/v-016/index"
+        }
+        else if(index==19){
+          url="/pages/v-016/index2"
+        }
+        else if(index==20){
+          url="/pages/v-017/index"
+        }
+        else if(index==21){
+          url="/pages/v-018/index"
+        }
+        else if(index==22){
+          url="/pages/v-019/index"
+        }
+        else if(index==23){
+          url="/pages/v-020/index"
+        }
+        else if(index==24){
+          url="/pages/v-021/index"
+        }
+        else if(index==25){
+          url="/pages/v-022/index"
+        }
+        else if(index==26){
+          url="/pages/v-023/index"
+        }else if(index==27){
+          url="/pages/v-024/index"
+        }
+       
+        ui.navigateTo({
+          url: url
+        })
+      }
+     
+    },
+    mounted () {
+      
+    },
+    beforeDestroy () {
+     
+    }
+  }
+  </script>
+  <style lang="less">
+    .chart_wrap {
+      background-color: #fff;
+      /* height:100%; */
+      .chart_list {
+        padding: 20px 0px;
+        .chart-item {
+          background-color: #fff;
+          cursor: pointer;
+          // padding: 10px;
+          width: 20%;
+          float: left;
+        }
+        .chart-item-container{
+          padding:10px;
+        }
+        .clear {
+        clear: both;
+        }
+        /* .ui-view{
+          width:100%;
+        } */
+        .ui-text{
+          color:#000;
+          font-size:18px;
+          padding:10px 0 20px 0;
+        }
+      }
+    }
+  </style>
+  

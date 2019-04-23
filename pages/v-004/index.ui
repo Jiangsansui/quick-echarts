@@ -1,0 +1,1201 @@
+<template>
+  <ui-view class="wrap" style="{{{ 'min-height' : winHeight + 'px' }}}">
+    <ui-row>
+      <ui-col vertical-align="top" align="center" width="450" class="left_content">
+        <ui-view class="show_content">
+          <ui-view class="corner t_r"></ui-view>
+          <ui-view class="corner l_b"></ui-view>
+          <ui-view class="corner t_l"></ui-view>
+          <ui-view class="corner r_b"></ui-view>
+          <ui-view class="title"></ui-view>
+          <ui-view class="title">地区收入进度</ui-view>
+          <ui-row height="40" class="ranking_title">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>增幅前五名</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>增幅后五名</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" class="data_list" space-bottom="15">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>地区</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>亿元</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>增幅%</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>地区</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>亿元</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>增幅%</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" ui:for="{{ 5 }}" class="data_list" space-bottom="15">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>北京</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>2300</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view style="color: #BD222A;">+12.2</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>北京</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>2300</ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view style="color: #49A33E;">-12.2</ui-view>
+            </ui-col>
+          </ui-row>
+
+        </ui-view>
+        <ui-view class="show_content" style="margin:0;">
+          <ui-view class="corner t_r"></ui-view>
+          <ui-view class="corner l_b"></ui-view>
+          <ui-view class="corner t_l"></ui-view>
+          <ui-view class="corner r_b"></ui-view>
+          <ui-view class="title"></ui-view>
+          <ui-view class="title">行业收入进度</ui-view>
+          <ui-row height="40" class="ranking_title">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>行业增长前十</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-bar
+            value="{{bar.data}}"
+            height="250"
+            is-animated="true"
+            between-bars-padding = 0.5
+            color-schema="{{bar.colorSchema}}"
+            value-text-fill-color="#fff"
+            axis-color="#fff"
+            tooltip="true"
+            body-fill-color="rgba(0,0,0,.7)"
+            name-text-fill-color="#fff"
+            >
+          </ui-bar>
+          <ui-row height="40" class="ranking_title">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>增幅占比</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-donut
+            value="{{donut.data}}"
+            height="250"
+            external-radius="100"
+            internal-radius="50"
+            is-animated="true"
+            color-schema="{{donut.colorSchema}}"
+            text-color="#fff"
+            >
+          </ui-donut>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="center" class="center_content">
+        <ui-view class="title">Quick V 数据可视化展示</ui-view>
+        <div id="main" class="main"></div>
+        <ui-line
+          value="{{data3}}"
+          height="400"
+          line-width = "1"
+          is-animated= false
+          tooltip="true"
+          body-fill-color="rgba(0,0,0,.1)"
+          tooltip-width="150"
+          title-fill-color="#fff"
+          border-stroke-color="#fff"
+          fix-axis="{{isFixAxis}}"
+          line-curve="basis"
+          axis-color="#fff"
+        ></ui-line>
+      </ui-col>
+      <ui-col vertical-align="top" align="center" width="450" class="right_content">
+        <ui-view class="show_content">
+          <ui-view class="corner t_r"></ui-view>
+          <ui-view class="corner l_b"></ui-view>
+          <ui-view class="corner t_l"></ui-view>
+          <ui-view class="corner r_b"></ui-view>
+          <ui-view class="title"></ui-view>
+          <ui-view class="title">逐月收入趋势</ui-view>
+          <ui-row height="40" class="ranking_title">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>逐月时序分析</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-legend
+            value="{{legendData.legend}}"
+            width="{{450}}"
+            height="50"
+            is-animated="true"
+            is-horizontal="true"
+            color-schema="{{legendData.colorSchema}}"
+            text-color="#fff"
+          ></ui-legend>
+          <ui-line
+            value="{{data2}}"
+            height="270"
+            line-width = "2"
+            is-animated= false
+            tooltip="true"
+            body-fill-color="rgba(0,0,0,.1)"
+            tooltip-width="150"
+            title-fill-color="#fff"
+            border-stroke-color="#fff"
+            fix-axis="{{isFixAxis}}"
+            line-curve="basis"
+            axis-color="#fff"
+          ></ui-line>
+        </ui-view>
+        <ui-view class="show_content" style="margin:0;">
+          <ui-view class="corner t_r"></ui-view>
+          <ui-view class="corner l_b"></ui-view>
+          <ui-view class="corner t_l"></ui-view>
+          <ui-view class="corner r_b"></ui-view>
+          <ui-view class="title"></ui-view>
+          <ui-view class="title">税种收入情况</ui-view>
+          <ui-row height="40" class="ranking_title">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>税种收入指数</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-bar
+            value="{{bar3.data}}"
+            height="250"
+            width="430"
+            is-animated="true"
+            is-horizontal = "true"
+            percentage-axis-to-max-ratio=2
+            between-bars-padding = 0.5
+            color-schema="{{bar3.colorSchema}}"
+            has-percentage="true"
+            axis-color="#fff"
+            tooltip="true"
+            body-fill-color="rgba(0,0,0,.7)"
+            value-text-fill-color="#fff"
+            name-text-fill-color="#fff"
+            >
+          </ui-bar>
+          <ui-row height="40" class="ranking_title">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view>税种收入占比</ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-donut
+            value="{{donut2.data}}"
+            width="450"
+            height="250"
+            external-radius="100"
+            internal-radius="0"
+            is-animated="true"
+            color-schema="{{donut2.colorSchema}}"
+            highlight-slice-by-id="{{5}}"
+            text-color="#fff"
+            >
+          </ui-donut>
+        </ui-view>
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</template>
+<script>
+import * as echarts from '#/static/utils/echarts.min.js'
+import registerMap from '#/static/utils/china'
+registerMap(echarts)
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      bar: {
+        colorSchema: ['#4299B7', '#4B9FC1', '#32B188', '#37B98C', '#00A69C', '#00B2A6', '#4B9FC1', '#619123', '#989B0E', '#C7B201'],
+        data: [
+          {
+            value: 2500,
+            name: '地产'
+          }, {
+            value: 2300,
+            name: '采矿'
+          }, {
+            value: 2000,
+            name: '能源'
+          }, {
+            value: 1800,
+            name: '餐饮'
+          }, {
+            value: 1500,
+            name: '服务'
+          }, {
+            value: 1300,
+            name: '教育'
+          }, {
+            value: 1200,
+            name: '零售'
+          }, {
+            value: 1100,
+            name: '林业'
+          }, {
+            value: 1000,
+            name: '渔业'
+          }, {
+            value: 800,
+            name: '制造'
+          }
+        ]
+      },
+      donut: {
+        data: [
+          {
+            quantity: 2500,
+            percentaged:10,
+            name: '地产',
+            id: 1
+          }, {
+            quantity: 2300,
+            percentaged:10,
+            name: '采矿',
+            id: 2
+          }, {
+            quantity: 2000,
+            percentaged:10,
+            name: '能源',
+            id: 3
+          }, {
+            quantity: 1800,
+            percentaged:10,
+            name: '餐饮',
+            id: 4
+          }, {
+            quantity: 1500,
+            percentaged:10,
+            name: '服务',
+            id: 5
+          }, {
+            quantity: 1300,
+            percentaged:10,
+            name: '教育',
+            id: 6
+          }, {
+            quantity: 1200,
+            percentaged:10,
+            name: '零售',
+            id: 7
+          }, {
+            quantity: 1100,
+            percentaged:10,
+            name: '林业',
+            id: 8
+          }, {
+            quantity: 1000,
+            percentaged:10,
+            name: '渔业',
+            id: 9
+          }, {
+            quantity: 800,
+            percentaged:10,
+            name: '制造',
+            id: 10
+          }
+        ],
+        colorSchema: ['#4299B7', '#4B9FC1', '#32B188', '#37B98C', '#00A69C', '#00B2A6', '#4B9FC1', '#619123', '#989B0E', '#C7B201']
+      },
+      donut2: {
+        data: [
+          {
+            quantity: 1000,
+            percentaged:10,
+            name: '个人所得税',
+            id: 1
+          }, {
+            quantity: 5000,
+            percentaged:10,
+            name: '增值税',
+            id: 2
+          }, {
+            quantity: 1800,
+            percentaged:10,
+            name: '企业所得税',
+            id: 3
+          }, {
+            quantity: 2500,
+            percentaged:10,
+            name: '消费税',
+            id: 4
+          }, {
+            quantity: 800,
+            percentaged:10,
+            name: '其他',
+            id: 5
+          }
+        ],
+        colorSchema: ['#0075AB', '#23966F', '#00A392', '#C87058', '#D6C40A', '#006FA7', '#4B9FC1', '#619123', '#989B0E', '#C7B201']
+      },
+      isFixAxis: ui.IS_IOS,
+      legendData: {
+        legend: [
+          {
+            id: 1,
+            quantity: 3243,
+            name: '实际指数'
+          },
+          {
+            id: 2,
+            quantity: 3,
+            name: '预计上涨'
+          },
+          {
+            id: 3,
+            quantity: 4,
+            name: '平均数'
+          },
+          {
+            id: 4,
+            quantity: 5,
+            name: '预计下跌'
+          }
+        ],
+        colorSchema: ['#B22225', '#243543', '#518F97', '#C46B52']
+      },
+      data2:{
+        dataByTopic: [
+          {
+            topicName: '实际指数',
+            topic: 123,
+            color:'#B22225',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 280
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 300
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 250
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 290
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 350
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 420
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 400
+              },
+              {
+                date: '2017-01-23T00:00:00',
+                value: 380
+              },
+              {
+                date: '2017-01-24T00:00:00',
+                value: 350
+              }
+            ]
+          }, {
+            topicName: '预计上涨',
+            topic: 345,
+            color:'#243543',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 280
+              },{
+                date: '2017-01-17T00:00:00',
+                value: 300
+              },{
+                date: '2017-01-18T00:00:00',
+                value: 250
+              },{
+                date: '2017-01-19T00:00:00',
+                value: 290
+              },{
+                date: '2017-01-20T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-21T00:00:00',
+                value: 420
+              },{
+                date: '2017-01-22T00:00:00',
+                value: 400
+              },{
+                date: '2017-01-23T00:00:00',
+                value: 380
+              },{
+                date: '2017-01-24T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-25T00:00:00',
+                value: 360
+              },{
+                date: '2017-01-26T00:00:00',
+                value: 430
+              },{
+                date: '2017-01-27T00:00:00',
+                value: 450
+              },{
+                date: '2017-01-28T00:00:00',
+                value: 480
+              }
+            ]
+          }, {
+            topicName: '平均数',
+            topic: 567,
+            color:'#518F97',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 280
+              },{
+                date: '2017-01-17T00:00:00',
+                value: 300
+              },{
+                date: '2017-01-18T00:00:00',
+                value: 250
+              },{
+                date: '2017-01-19T00:00:00',
+                value: 290
+              },{
+                date: '2017-01-20T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-21T00:00:00',
+                value: 420
+              },{
+                date: '2017-01-22T00:00:00',
+                value: 400
+              },{
+                date: '2017-01-23T00:00:00',
+                value: 380
+              },{
+                date: '2017-01-24T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-25T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-26T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-27T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-28T00:00:00',
+                value: 350
+              }
+            ]
+          }, {
+            topicName: '预计下跌',
+            topic: 789,
+            color:'#C46B52',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 280
+              },{
+                date: '2017-01-17T00:00:00',
+                value: 300
+              },{
+                date: '2017-01-18T00:00:00',
+                value: 250
+              },{
+                date: '2017-01-19T00:00:00',
+                value: 290
+              },{
+                date: '2017-01-20T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-21T00:00:00',
+                value: 420
+              },{
+                date: '2017-01-22T00:00:00',
+                value: 400
+              },{
+                date: '2017-01-23T00:00:00',
+                value: 380
+              },{
+                date: '2017-01-24T00:00:00',
+                value: 350
+              },{
+                date: '2017-01-25T00:00:00',
+                value: 340
+              },{
+                date: '2017-01-26T00:00:00',
+                value: 270
+              },{
+                date: '2017-01-27T00:00:00',
+                value: 250
+              },{
+                date: '2017-01-28T00:00:00',
+                value: 220
+              }
+            ]
+          }
+        ]
+      },
+      bar3: {
+        data: [
+          {
+            value: 1000,
+            name: '其他'
+          }, {
+            value: 2000,
+            name: '个人税'
+          }, {
+            value: 2000,
+            name: '消费税'
+          }, {
+            value: 20000,
+            name: '企业税'
+          }, {
+            value: 10000,
+            name: '增值税'
+          }
+        ],
+        margin: {
+          left: 60,
+          right: 20,
+          top: 10,
+          bottom: 20
+        },
+        colorSchema: ['#AF604F', '#BDAE0B', '#029384', '#197858', '#035A90']
+      },
+      data3:{
+        dataByTopic: [
+          {
+            topicName: '室内',
+            topic: 123,
+            color:'#50D063',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 120
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 132
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 101
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 134
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 90
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 230
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 210
+              }
+            ]
+          }, {
+            topicName: '室外',
+            topic: 345,
+            color:'#13ACE2',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 220
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 182
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 191
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 234
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 290
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 330
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 310
+              }
+            ]
+          }
+        ]
+      },
+      resizeListener: null
+
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+    var dom = document.getElementById('main')
+    var myChart = echarts.init(dom)
+    var option = null
+    var geoCoordMap ={
+      '阿拉山口': [82.5757, 45.1706],
+      '包头': [109.8403, 40.6574],
+      '北京': [116.4075, 39.9040],
+      '成都': [104.0665, 30.5723],
+      '大连': [121.6147, 38.9140],
+      '大同': [113.3001, 40.0768],
+      '德州': [116.3575, 37.4341],
+      '福州': [119.2965, 26.0745],
+      '广州': [113.2644, 23.1292],
+      '贵阳': [106.6302, 26.6477],
+      '哈尔滨': [126.5363, 45.8023],
+      '邯郸': [114.5391, 36.6256],
+      '杭州': [120.1551, 30.2741],
+      '合肥': [117.2272, 31.8206],
+      '侯马': [111.3720, 35.6191],
+      '怀化': [109.9985, 27.5550],
+      '淮安': [119.0153, 33.6104],
+      '黄骅': [117.3300, 38.3714],
+      '济南': [117.1205, 36.6510],
+      '焦作': [113.2418, 35.2159],
+      '九江': [116.0019, 29.7051],
+      '九龙红磡': [114.1870, 22.3076],
+      '昆明': [102.8329, 24.8801],
+      '拉萨': [91.1409, 29.6456],
+      '兰州': [103.8343, 36.0611],
+      '黎塘': [109.1363, 23.2066],
+      '连云港': [119.2216, 34.5967],
+      '临汾': [111.5190, 36.0880],
+      '柳州': [109.4160, 24.3255],
+      '龙口': [120.4778, 37.6461],
+      '洛阳': [112.4540, 34.6197],
+      '满洲里': [117.3787, 49.5978],
+      '南昌': [115.8581, 28.6832],
+      '南京': [118.7969, 32.0603],
+      '南宁': [108.3661, 22.8172],
+      '南阳': [112.5283, 32.9908],
+      '宁波': [121.5440, 29.8683],
+      '启东': [121.6574, 31.8082],
+      '秦皇岛': [119.6005, 39.9354],
+      '青岛': [120.3826, 36.0671],
+      '日照': [119.5269, 35.4164],
+      '厦门': [118.0894, 24.4798],
+      '上海': [121.4737, 31.2304],
+      '深圳': [114.0579, 22.5431],
+      '神木': [110.4871, 38.8610],
+      '沈阳': [123.4315, 41.8057],
+      '台前': [115.8717, 35.9701],
+      '太原': [112.5489, 37.8706],
+      '汤阴': [114.3572, 35.9218],
+      '天津': [117.2010, 39.0842],
+      '铜陵': [117.8121, 30.9454],
+      '瓦塘': [109.7600, 23.3161],
+      '温州': [120.6994, 27.9943],
+      '乌鲁木齐': [87.6168, 43.8256],
+      '武汉': [114.3054, 30.5931],
+      '西安': [108.9402, 34.3416],
+      '新乡': [113.9268, 35.3030],
+      '信阳': [114.0913, 32.1470],
+      '烟台': [121.4479, 37.4638],
+      '兖州': [116.7838, 35.5531],
+      '月山': [113.0550, 35.2104],
+      '湛江': [110.3594, 21.2707],
+      '长治': [113.1163, 36.1954],
+      '郑州': [113.6254, 34.7466],
+      '重庆': [106.5516, 29.5630]
+    }
+    var BJData = [
+      [{ name: '北京' }, { name: '兰州' }],
+      [{ name: '兰州' }, { name: '拉萨'}],
+      [{name: '大同'}, { name: '秦皇岛'}],
+      [{name: '神木'}, { name: '黄骅' }],
+      [{ name: '太原'}, { name: '德州' }],
+      [{ name: '德州'}, { name: '龙口'}],
+      [{name: '龙口'}, {  name: '烟台'}],
+      [{name: '太原' }, {  name: '德州' }],
+      [{ name: '德州' }, {  name: '济南' }],
+      [{name: '济南' }, { name: '青岛' }],
+      [{name: '长治' }, { name: '邯郸' }],
+      [{name: '邯郸' }, { name: '济南' }],
+      [{name: '瓦塘' }, { name: '临汾' }],
+      [{name: '临汾' }, { name: '长治' }],
+      [{name: '长治' }, { name: '汤阴' }],
+      [{name: '汤阴' }, { name: '台前' }],
+      [{name: '台前' }, { name: '兖州' }],
+      [{name: '兖州' }, { name: '日照' }],
+      [{name: '侯马' }, { name: '月山' }],
+      [{name: '月山' }, { name: '新乡' }],
+      [{name: '新乡' }, { name: '日照' }],
+      [{name: '兖州' }, { name: '兖州' }],
+      [{name: '兖州' }, { name: '日照' }],
+      [{name: '连云港' }, { name: '郑州' }],
+      [{name: '郑州' }, { name: '兰州' }],
+      [{name: '兰州' }, { name: '乌鲁木齐' }],
+      [{name: '乌鲁木齐' }, { name: '阿拉山口' }],
+      [{name: '西安' }, { name: '南阳' }],
+      [{name: '南阳' }, { name: '信阳' }],
+      [{name: '信阳' }, { name: '合肥' }],
+      [{name: '合肥' }, { name: '南京' }],
+      [{name: '南京' }, { name: '启东' }],
+      [{name: '重庆' }, { name: '武汉' }],
+      [{name: '武汉' }, { name: '九江' }],
+      [{name: '九江' }, { name: '铜陵' }],
+      [{name: '铜陵' }, { name: '南京' }],
+      [{name: '南京' }, { name: '上海' }],
+      [{name: '上海' }, { name: '怀化' }],
+      [{name: '怀化' }, { name: '重庆' }],
+      [{name: '重庆' }, { name: '成都' }],
+      [{name: '成都' }, { name: '贵阳' }],
+      [{name: '贵阳' }, { name: '昆明' }],
+      [{name: '昆明' }, { name: '南宁' }],
+      [{name: '南宁' }, { name: '黎塘' }],
+      [{name: '黎塘' }, { name: '湛江' }],
+      [{
+								name: '北京'
+							}, {
+								name: '哈尔滨'
+							}],
+							[{
+								name: '哈尔滨'
+							}, {
+								name: '满洲里'
+							}],
+
+							[{
+								name: '沈阳'
+							}, {
+								name: '大连'
+							}],
+							[{
+								name: '大连'
+							}, {
+								name: '烟台'
+							}],
+							[{
+								name: '烟台'
+							}, {
+								name: '青岛'
+							}],
+							[{
+								name: '青岛'
+							}, {
+								name: '淮安'
+							}],
+							[{
+								name: '淮安'
+							}, {
+								name: '上海'
+							}],
+							[{
+								name: '上海'
+							}, {
+								name: '杭州'
+							}],
+							[{
+								name: '杭州'
+							}, {
+								name: '宁波'
+							}],
+							[{
+								name: '宁波'
+							}, {
+								name: '温州'
+							}],
+							[{
+								name: '温州'
+							}, {
+								name: '福州'
+							}],
+							[{
+								name: '福州'
+							}, {
+								name: '厦门'
+							}],
+							[{
+								name: '厦门'
+							}, {
+								name: '广州'
+							}],
+							[{
+								name: '广州'
+							}, {
+								name: '湛江'
+							}],
+
+							[{
+								name: '北京'
+							}, {
+								name: '天津'
+							}],
+							[{
+								name: '天津'
+							}, {
+								name: '济南'
+							}],
+							[{
+								name: '济南'
+							}, {
+								name: '南京'
+							}],
+							[{
+								name: '南京'
+							}, {
+								name: '上海'
+							}],
+
+							[{
+								name: '北京'
+							}, {
+								name: '南昌'
+							}],
+							[{
+								name: '南昌'
+							}, {
+								name: '深圳'
+							}],
+							[{
+								name: '深圳'
+							}, {
+								name: '九龙红磡'
+							}],
+
+							[{
+								name: '北京'
+							}, {
+								name: '郑州'
+							}],
+							[{
+								name: '郑州'
+							}, {
+								name: '武汉'
+							}],
+							[{
+								name: '武汉'
+							}, {
+								name: '广州'
+							}],
+
+							[{
+								name: '大同'
+							}, {
+								name: '太原'
+							}],
+							[{
+								name: '太原'
+							}, {
+								name: '焦作'
+							}],
+							[{
+								name: '焦作'
+							}, {
+								name: '洛阳'
+							}],
+							[{
+								name: '洛阳'
+							}, {
+								name: '柳州'
+							}],
+							[{
+								name: '柳州'
+							}, {
+								name: '湛江'
+							}],
+
+							[{
+								name: '包头'
+							}, {
+								name: '西安'
+							}],
+							[{
+								name: '西安'
+							}, {
+								name: '重庆'
+							}],
+							[{
+								name: '重庆'
+							}, {
+								name: '贵阳'
+							}],
+							[{
+								name: '贵阳'
+							}, {
+								name: '柳州'
+							}],
+							[{
+								name: '柳州'
+							}, {
+								name: '南宁'
+							}],
+
+							[{
+								name: '兰州'
+							}, {
+								name: '成都'
+							}],
+							[{
+								name: '成都'
+							}, {
+								name: '昆明'
+							}]
+    ]
+    var convertData = function (data) {
+      var res = []
+      for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i]
+        var fromCoord = geoCoordMap[dataItem[0].name]
+        var toCoord = geoCoordMap[dataItem[1].name]
+        if (fromCoord && toCoord) {
+          res.push({
+            fromName: dataItem[0].name,
+            toName: dataItem[1].name,
+            coords: [fromCoord, toCoord]
+          })
+        }
+      }
+      return res
+    }
+    var color = ['#a6c84c', '#ffa022', '#46bee9']
+    var series = [];
+    [['北京', BJData]].forEach(function (
+      item,
+      i
+    ) {
+      series.push(
+        {
+          name: item[0] + ' Top10',
+          type: 'lines',
+          zlevel: 1,
+          effect: {
+            show: true,
+            period: 6,
+            trailLength: 0.3,
+            color: 'rgba(10,255,168,1)',
+            symbolSize: 3,
+            shadowBlur: 3
+          },
+          lineStyle: {
+            normal: {
+              color: 'rgba(10,255,168,1)',
+              width: 1,
+              curveness: 0.2
+            }
+          },
+          data: convertData(item[1])
+        },
+        {
+          name: item[0] + ' Top10',
+          type: 'lines',
+          zlevel: 2,
+          symbol: ['circle', 'circle'],
+          symbolSize: 1,
+          effect: {
+            show: true,
+            period: 6,
+            trailLength: 0,
+            symbol: 'emptyCircle',
+            symbolSize: 1
+          },
+          lineStyle: {
+            normal: {
+              color: 'rgba(7,124,203,1)',
+              width: 1,
+              curveness: 0.2
+            }
+          },
+          data: convertData(item[1])
+        }
+      )
+    })
+    var option = {
+      backgroundColor: '#12223B',
+      color: ['rgba(30,144,255,1)', 'lime'],
+      title: {
+				show:false
+			},
+      tooltip: {
+				trigger: 'item',
+				formatter: '{b}'
+			},
+      toolbox: {
+        show: false
+      },
+      legend: {
+        show:false
+      },
+      dataRange: {
+        show: false,
+        min: 0,
+        max: 100,
+        x: 'right',
+        calculable: true,
+        color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      geo: {
+        map: 'china',
+        label: {
+          emphasis: {
+            show: false
+          }
+        },
+        roam: false,
+        symbol: ['circle', 'circle'],
+        smooth:true,
+        symbolSize : 1,
+        itemStyle: {
+          normal: {
+            borderColor: 'rgba(100,149,237,1)',
+            borderWidth: 0.5,
+            areaColor: 'transparent',
+            lineStyle:{
+              type: 'solid'
+            }
+          },
+          emphasis: {
+            areaColor: 'transparent'
+          }
+        }
+      },
+      series: series
+    }
+    if (option && typeof option === 'object') {
+      myChart.setOption(option, true)
+    }
+
+    this.resizeListener = () => {
+      myChart.resize()
+    }
+    ui.addWindowResizeListener(this.resizeListener)
+  },
+  beforeDestroy () {
+    ui.removeWindowResizeListener(this.resizeListener)
+  }
+}
+</script>
+<style lang="less">
+.wrap{
+  background-color: #12223B;
+  // height: 100%;
+}
+.show_content{
+  width:100%;
+  position: relative;
+	margin-bottom: 20px;
+	border: 1px solid #077CCB;
+	-webkit-box-shadow:0 0 60px #1E5A88 inset;
+  -moz-box-shadow:0 0 60px #1E5A88 inset;
+  box-shadow:0 0 60px #1E5A88 inset;
+  overflow: hidden;
+  .title{
+    color: #C6E6FB;
+    text-indent: 1em;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: left;
+  }
+  .corner{
+    width: 10px;
+    height: 10px;
+    border: 2px solid #49C7D9;
+    position: absolute;
+    &.t_r{
+      border-bottom: 0;
+      border-left: 0;
+      top: 0;
+      right: 0;
+    }
+    &.l_b{
+      border-top: 0;
+      border-right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    &.r_b{
+      border-top: 0;
+      border-left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    &.t_l{
+      border-bottom: 0;
+      border-right: 0;
+      top: 0;
+      left: 0;
+    }
+  }
+  .ranking_title{
+    width:100%;
+    .ui-view{
+      color: #047CCF;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 40px;
+    }
+  }
+  .data_list{
+    background: #223C57;
+    color: #BAD5F0;
+    font-size: 14px;
+    line-height: 30px;
+  }
+}
+.center_content{
+  .title{
+    width: 100%;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px 0;
+    border-bottom: 1px solid #22283E;
+  }
+  .main{
+    width:100%;
+    height:600px;
+  }
+}
+
+
+@media screen and (max-width: 1500px) and (min-width: 900px){
+  .left_content,
+  .right_content{
+    flex: 0 0 330px!important;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 900px){
+  .wrap{
+    width:1200px!important;
+    overflow: hidden;
+  }
+}
+</style>

@@ -1,0 +1,698 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': winHeight + 'px' }}}">
+    <ui-view style="padding: 15px 0;"></ui-view>
+    <ui-view class="header_title">
+      <ui-text>Quick V 数据可视化展示</ui-text>
+    </ui-view>
+    <ui-row class="content_wrap">
+      <ui-col vertical-align="top" align="center" width="380" class="left_content">
+        <ui-view class="show_content">
+          <ui-view class="title">设备运行状态</ui-view>
+          <ui-view class="content_wrap">
+            <ui-view style="width:270px;margin:0 auto;">
+              <ui-level-donut
+                radius= "35"
+                animate= "true"
+                width="270"
+                height="250"
+                value-array="{{ valueArray }}"
+                color-array="{{ colorArray }}"
+                line-width-array="{{ lineWidthArray }}"
+                center-left="135"
+                center-top= "125"
+              ></ui-level-donut>
+            </ui-view>
+          </ui-view>
+        </ui-view>
+        <ui-view class="show_content">
+          <ui-view class="title">人员效绩</ui-view>
+          <ui-view class="content_wrap">
+            <ui-legend
+            value="{{legendData.legend}}"
+            height="50"
+            is-horizontal="true"
+            is-animated="true"
+            color-schema="{{legendData.colorSchema}}"
+            text-color="#fff"
+            ></ui-legend>
+            <ui-grouped-bar
+              value="{{groupData.data}}"
+              height="250"
+              is-animated="true"
+              name-label="date"
+              color-schema="{{groupData.colorSchema}}"
+              is-horizontal="true"
+              is-darker="true"
+              tooltip="true"
+              body-fill-color="rgba(0,0,0,.7)"
+              tooltip-width="150"
+              title-fill-color="#fff"
+              tooltip-text-color="#fff"
+              border-stroke-color="#fff"
+              margin="{{ groupData.margin }}"
+              axis-color="#fff"
+              format-date-option="no-format"
+            ></ui-grouped-bar>
+          </ui-view>
+        </ui-view>
+        <ui-view class="show_content">
+          <ui-view class="title">报警信息</ui-view>
+          <ui-view class="content_wrap">
+            <ui-row height="44" class="message" ui:for="{{ 6 }}">
+              <ui-col vertical-align="middle" align="left">
+                <ui-view>[这是一条报警信息]</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center" width="100">
+                <ui-view>2017-08-14</ui-view>
+              </ui-col>
+            </ui-row>
+          </ui-view>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="center" space="40">
+        <ui-view style="padding: 40px 0;"></ui-view>
+        <ui-view class="show_content">
+          <ui-view class="content_wrap">
+            <ui-row height="270">
+              <ui-col vertical-align="middle" align="left" width="250">
+                <ui-view class="yield">当日产量</ui-view>
+                <ui-view class="yield_num">
+                  <ui-row height="50">
+                    <ui-col vertical-align="middle" align="center">2</ui-col>
+                    <ui-col width="10" class="line"></ui-col>
+                    <ui-col vertical-align="middle" align="center">3</ui-col>
+                    <ui-col width="10" class="line"></ui-col>
+                    <ui-col vertical-align="middle" align="center">3</ui-col>
+                    <ui-col width="10" class="line"></ui-col>
+                    <ui-col vertical-align="middle" align="center">4</ui-col>
+                    <ui-col width="10" class="line"></ui-col>
+                    <ui-col vertical-align="middle" align="center">2</ui-col>
+                    <ui-col width="10" class="line"></ui-col>
+                    <ui-col vertical-align="middle" align="center">5</ui-col>
+                  </ui-row>
+                </ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center" width="150" class="is_hide">
+                <ui-view class="text1">计划产量</ui-view>
+                <ui-view class="yield">196020</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center" width="150" class="is_hide">
+                <ui-view class="text1">已完成</ui-view>
+                <ui-view class="yield">75%</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center" width="150" class="is_hide">
+                <ui-view class="text1">A产品良品率</ui-view>
+                <ui-view class="yield" style="color:#fff;">75%</ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="text1">B产品良品率</ui-view>
+                <ui-view class="circular1">
+                  <ui-circular
+                    radius="60"
+                    top="60"
+                    left="60"
+                    color="#1A6DFB"
+                    value="98"
+                    line-width="8"
+                    line-cap="butt"
+                    background-color="#0C284C"
+                    ></ui-circular>
+                    <ui-view>98%</ui-view>
+                </ui-view>
+              </ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="text1">C产品良品率</ui-view>
+                <ui-view class="circular1">
+                  <ui-circular
+                    radius="60"
+                    top="60"
+                    left="60"
+                    color="#1A6DFB"
+                    value="90"
+                    line-width="8"
+                    line-cap="butt"
+                    background-color="#0C284C"
+                    ></ui-circular>
+                    <ui-view>90%</ui-view>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+          </ui-view>
+        </ui-view>
+        <ui-view class="show_content">
+          <ui-view class="title">生产量/良品率统计</ui-view>
+          <ui-view class="content_wrap">
+            <ui-stacked-area
+              class="stackedarea1"
+              value="{{ areaChartData.data }}"
+              height="250"
+              is-animated="true"
+              color-schema="{{ areaChartData.colorSchema }}"
+              body-fill-color="rgba(0,0,0,.7)"
+              tooltip-width="150"
+              title-fill-color="#fff"
+              text-fill-color="#fff"
+              tooltip-text-color="#fff"
+              border-stroke-color="#fff"
+              area-opacity="1"
+              fix-axis="{{ isFixAxis }}"
+              curve="true"
+              x-axis-format="custom"
+              x-axis-custom-format="%H:%M"
+              margin="{{ areaChartData.margin }}"
+              >
+            </ui-stacked-area>
+          </ui-view>
+        </ui-view>
+        <ui-view class="show_content">
+          <ui-view class="title">机器产量统计</ui-view>
+          <ui-view class="content_wrap">
+            <ui-bar
+              value="{{ bar1.data }}"
+              height="250"
+              is-animated="true"
+              is-darker="true"
+              between-bars-padding = 0.5
+              color-schema="{{ bar1.colorSchema }}"
+              tooltip="true"
+              body-fill-color="rgba(0,0,0,.7)"
+              value-text-fill-color="#fff"
+              name-text-fill-color="#fff"
+              axis-color="#fff"
+            ></ui-bar>
+          </ui-view>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="top" align="center" width="380" class="right_content">
+        <ui-view class="show_content">
+          <ui-view class="title">报警信息</ui-view>
+          <ui-view class="content_wrap" style="height:300px;">
+            <ui-view style="width:280px;margin:0 auto;">
+              <ui-multi-circular
+                width="280"
+                height="290"
+                left="170"
+                top="160"
+                value="{{ [70, 60, 50, 40, 30] }}"
+                gap="10"
+                line-width="5"
+                color-array="{{ ['#3EFEC4', '#33D9DF', '#30CEE5', '#28B3E9', '#2196E2'] }}"
+                labels="{{ ['成本输出', '数量', '价格', '盈利', '盈利'] }}"
+                have-background="false"
+                line-cap="butt"
+              ></ui-multi-circular>
+            </ui-view>
+          </ui-view>
+        </ui-view>
+        <ui-view class="show_content">
+          <ui-view class="title">质量控制</ui-view>
+          <ui-view class="content_wrap">
+            <ui-legend
+            value="{{legendData.legend}}"
+            height="50"
+            is-horizontal="true"
+            is-animated="true"
+            color-schema="{{legendData.colorSchema}}"
+            text-color="#fff"
+            ></ui-legend>
+            <ui-grouped-bar
+              value="{{groupData2.data}}"
+              height="570"
+              is-animated="true"
+              name-label="date"
+              color-schema="{{groupData2.colorSchema}}"
+              is-horizontal="true"
+              is-darker="true"
+              tooltip="true"
+              body-fill-color="rgba(0,0,0,.7)"
+              tooltip-width="150"
+              title-fill-color="#fff"
+              tooltip-text-color="#fff"
+              border-stroke-color="#fff"
+              format-date-option="no-format"
+              margin="{{ groupData2.margin }}"
+              axis-color="#fff"
+            ></ui-grouped-bar>
+          </ui-view>
+        </ui-view>
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      valueArray: [25, 40, 15, 20],
+      colorArray: ['#2EA9F9', '#E14432', '#F8A52C', '#12B188'],
+      lineWidthArray: [8, 8, 8, 8, 8],
+
+      groupData: {
+        data: [
+          {
+            group: '北京',
+            value: 300,
+            date: '引领1',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 1000,
+            date: '引领2',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 600,
+            date: '引领2',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 700,
+            date: '引领2',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 800,
+            date: '引领3',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 450,
+            date: '引领3',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 450,
+            date: '引领4',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 900,
+            date: '引领4',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 700,
+            date: '引领5',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 600,
+            date: '引领5',
+            color: "#E34354"
+          }
+        ],
+        colorSchema: ['#25D4F4', '#E34354', '#fdd210'],
+        margin: {
+          top: 0,
+          right: 20,
+          bottom: 20,
+          left: 50
+        }
+      },
+      groupData2: {
+        data: [
+          {
+            group: '北京',
+            value: 300,
+            date: '引领1',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 1000,
+            date: '引领1',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 600,
+            date: '引领2',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 700,
+            date: '引领2',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 800,
+            date: '引领3',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 450,
+            date: '引领3',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 450,
+            date: '引领4',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 900,
+            date: '引领4',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 700,
+            date: '引领5',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 600,
+            date: '引领5',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 800,
+            date: '引领6',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 500,
+            date: '引领6',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 900,
+            date: '引领7',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 600,
+            date: '引领7',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 500,
+            date: '引领8',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 600,
+            date: '引领8',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 700,
+            date: '引领9',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 400,
+            date: '引领9',
+            color: "#E34354"
+          },
+
+          {
+            group: '北京',
+            value: 800,
+            date: '引领10',
+            color: "#25D4F4"
+          },
+          {
+            group: '上海',
+            value: 300,
+            date: '引领10',
+            color: "#E34354"
+          }
+        ],
+        colorSchema: ['#25D4F4', '#E34354', '#fdd210'],
+        margin: {
+          top: 0,
+          right: 20,
+          bottom: 20,
+          left: 50
+        }
+      },
+      legendData: {
+        legend: [
+          {
+            id: 1,
+            quantity: 134,
+            name: '北京'
+          },
+          {
+            id: 2,
+            quantity: 100,
+            name: '上海'
+          }
+        ],
+        colorSchema: ['#25D4F4', '#E34354', '#fdd210']
+      },
+
+      isFixAxis: ui.IS_IOS,
+      areaChartData: {
+        data: [
+          {
+            date: '2011-10-20T00:00:00',
+            name: '票房',
+            value: 1900
+          },
+          {
+            date: '2011-10-20T03:00:00',
+            name: '票房',
+            value: 1720
+          },
+          {
+            date: '2011-10-20T06:00:00',
+            name: '票房',
+            value: 2500
+          },
+          {
+            date: '2011-10-20T09:00:00',
+            name: '票房',
+            value: 2100
+          },
+          {
+            date: '2011-10-20T12:00:00',
+            name: '票房',
+            value: 2900
+          },
+          {
+            date: '2011-10-20T15:00:00',
+            name: '票房',
+            value: 2000
+          },
+          {
+            date: '2011-10-20T18:00:00',
+            name: '票房',
+            value: 1800
+          }
+        ],
+        colorSchema: ['rgba(1, 227, 209, 1)'],
+        margin: {
+          top: 0,
+          right: 10,
+          bottom: 30,
+          left: 40
+        }
+      },
+      bar1: {
+        margin: {
+          left: 60,
+          right: 20,
+          top: 0,
+          bottom: 20
+        },
+        colorSchema: ['rgba(16,108,189, 0.8)'],
+        data: [
+          {
+            value: 80,
+            name: '机器1'
+          }, {
+            value: 70,
+            name: '机器2'
+          }, {
+            value: 45,
+            name: '机器3'
+          }, {
+            value: 38,
+            name: '机器4'
+          }, {
+            value: 60,
+            name: '机器5'
+          }, {
+            value: 80,
+            name: '机器6'
+          }, {
+            value: 70,
+            name: '机器7'
+          }, {
+            value: 45,
+            name: '机器8'
+          }, {
+            value: 38,
+            name: '机器9'
+          }, {
+            value: 60,
+            name: '机器10'
+          }
+        ]
+      }
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+.chart_wrap{
+  background: #071226 url('~images/v-010/bg.png') no-repeat center center;
+  overflow: hidden;
+  padding: 10px;
+  .header_title{
+    position: absolute;
+    top: 0px;
+    left: 1%;
+    width: 98%;
+    margin: auto;
+    overflow: hidden;
+    height: 90px;
+    background: url('~images/v-010/top_bg.png') no-repeat center 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    .ui-text{
+      display: block;
+      font-size: 35px;
+      color: #1D85FD;
+      line-height: 90px;
+      letter-spacing: 3px;
+      font-weight: bold;
+      background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 234, 252, 1)), to(rgba(108, 140, 181, 1)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  .show_content{
+    padding-bottom: 10px;
+    width:100%;
+    .title{
+      color: #2171CE;
+      font-size: 14px;
+      padding: 10px 0;
+      text-align:left;
+    }
+    .content_wrap{
+      padding: 10px;
+      margin-bottom: 10px;
+      background: rgba(15,76,128,.3);
+      box-shadow: 0 0 10px 3px rgba(32,132,255,.3);
+      overflow: hidden;
+      .message{
+        .ui-view{
+          color: #fff;
+          font-size:14px;
+          line-height:20px;
+        }
+      }
+      .yield{
+        font-size: 16px;
+        color: #2171CE;
+        line-height: 50px;
+        font-weight: bold;
+      }
+      .text1{
+        color: #9D95A2;
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .yield_num{
+        width:100%;
+        .ui-row{
+          .ui-col{
+            font-size: 30px;
+            color: #fff;
+            line-height: 50px;
+            // width: 30px;
+            background: #2C3467;
+            &.line{
+              background: none;
+            }
+          }
+        }
+      }
+      .circular1{
+        width: 120px;
+        height:120px;
+        position: relative;
+        .ui-view{
+          position: absolute;
+          width: 100%;
+          line-height: 30px;
+          top: 50%;
+          margin-top:-15px;
+          color: #fff;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1780px) and (min-width: 900px){
+  .content_wrap{
+    .left_content,
+    .right_content{
+      flex: 0 0 300px!important;
+    }
+  }
+}
+@media screen and (max-width: 1620px) and (min-width: 900px){
+  .is_hide{
+    display:none!important;
+  }
+}
+
+</style>

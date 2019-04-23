@@ -1,0 +1,225 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>环图（选中一项）</ui-text>
+      <ui-donut
+        value="{{donut.data}}"
+        height="300"
+        external-radius="100"
+        internal-radius="50"
+        is-animated="true"
+        color-schema="{{donut.colorSchema}}"
+        highlight-slice-by-id="{{2}}"
+        text-color="#fff">
+      </ui-donut>
+    </ui-view>
+    <ui-view>
+      <ui-text block>默认不选中</ui-text>
+      <ui-donut
+        value="{{donut.data}}"
+        height="300"
+        external-radius="100"
+        internal-radius="50"
+        is-animated="true"
+        color-schema="{{donut.colorSchema}}"
+        text-color="#fff">
+      </ui-donut>
+    </ui-view>
+
+    <ui-view>
+      <ui-text block>轮播环形图（slide-donut）</ui-text>
+      <ui-view class="circular2">
+        <ui-slide-donut
+          value-array="{{valueArray}}"
+          color-array="{{colorArray}}"
+          image-src-array="{{imageSrcArray}}"
+          line-width= "35"
+          center-top= "150"
+          radius= "80"
+          img-width="32"
+          img-height= "32"
+          height="300"
+          bindchange="changeHandler"
+        ></ui-slide-donut>
+        <ui-view class="center_content">
+          <ui-text>{{ text }}</ui-text>
+          <ui-view>{{ money }}</ui-view>
+          <ui-icon type="switchover" size="28" color="#F64F08"></ui-icon>
+        </ui-view>
+      </ui-view>
+    </ui-view>
+    <ui-view>
+      <ui-text block>层级环形图（level-donut）</ui-text>
+      <ui-view class="circular3">
+        <ui-level-donut
+        radius= "40"
+        animate= "true"
+        height="300"
+        value-array="{{ valueArray2 }}"
+        color-array="{{ colorArray2 }}"
+        line-width-array="{{ lineWidthArray }}"
+        center-top= "150"
+        ></ui-level-donut>
+      </ui-view>
+      <ui-view class="tags_wrap">
+        <ui-tags
+          data="{{list5}}"
+          icon-size="10"
+          icon-class="icon-class"></ui-tags>
+      </ui-view>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      donut: {
+        data: [
+          {
+            quantity: 40,
+            percentaged:10,
+            name: '特急',
+            id: 1
+          }, {
+            quantity: 30,
+            percentaged:10,
+            name: '紧急',
+            id: 2
+          }, {
+            quantity: 30,
+            name: '一般',
+            id: 3
+          }
+        ],
+        colorSchema: ['#C65900', '#287ED9', '#60C400']
+      },
+
+      imageSrcArray: [],
+      valueArray: [50, 15, 25, 10],
+      colorArray: ['#F8882C', '#FBB936', '#FCCD1F', '#E23724'],
+      text: '购物',
+      money: '5000',
+      textArray: ['购物', '出行', '交友', '理财'],
+      moneyArray: ['5000', '1500', '2500', '1000'],
+
+
+
+      valueArray2: [50, 15, 25, 10],
+      colorArray2: ['#E23724', '#FCCD1F', '#FBB936', '#F8882C'],
+      lineWidthArray: [20, 15, 10, 5],
+      list5: [
+        {
+          text: '购物',
+          tagClass: 'tag-before-5',
+          icon: 'circle',
+          iconColor: '#F8882C'
+        }, {
+          text: '出行',
+          tagClass: 'tag-before-5',
+          icon: 'circle',
+          iconColor: '#FBB936'
+        }, {
+          text: '交友',
+          tagClass: 'tag-before-5',
+          icon: 'circle',
+          iconColor: '#FCCD1F'
+        }, {
+          text: '理财',
+          tagClass: 'tag-before-5',
+          icon: 'circle',
+          iconColor: '#E23724'
+        }
+      ]
+    }
+  },
+  methods: {
+    changeHandler (e) {
+      this.text = this.textArray[e]
+      this.money = this.moneyArray[e]
+    },
+    singleTap1 (opt) {
+      this.list5.forEach((item, index) => {
+        item.checked = (index === opt)
+      })
+    }
+  },
+  created () {
+    for (var i = 0; i < 4; i++) {
+      this.imageSrcArray[i] = require(`#/images/slideDonut/${i + 1}.png`)
+    }
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+  .circular2{
+    position: relative;
+    padding:0!important;
+    .mix-flex-center();
+    .center_content{
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      line-height: 30px;
+      .ui-text{
+        font-size: 12px;
+        color: #fff;
+      }
+      .ui-view{
+        font-size: 18px;
+        color: #fff;
+      }
+    }
+  }
+
+  .circular3{
+    .mix-flex-center();
+  }
+  .tag-before-5{
+    // background: #f7f7f7;
+    color: #fff;
+    padding: 0 30px;
+    text-align: center;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 20px;
+    border-radius: 30px;
+  }
+  .icon-class {
+    width: 20px;
+    height: 20px;
+  }
+  .tags_wrap{
+    padding-top: 10px 0;
+    .mix-flex-center();
+  }
+</style>

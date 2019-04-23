@@ -1,0 +1,295 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap">
+    <ui-view>
+      <ui-text block>仪表盘</ui-text>
+      <ui-dashboard
+        radius="150"
+        value-array="{{ valueArray10 }}"
+        color-array="{{ colorArray10 }}"
+        line-width="20"
+        part="true"
+        color= "#ccc"
+        angle= "180"
+        value= "50"
+        center-top= "225"
+        pointer-size= "120"
+        pointer-color="#39f"
+        graident= "true"
+        height="300"
+        line-cap= 'round'
+        detail-marker= "true"
+        text-color="#fff"
+        min= "0"
+        max= "100"
+        marker-width= "0"
+        marker-type= 'in'
+        marker-length= "0"
+      ></ui-dashboard>
+    </ui-view>
+    <ui-view>
+      <ui-text block>仪表盘2</ui-text>
+      <ui-dashboard
+        radius="150"
+        line-width="10"
+        part="true"
+        angle= "270"
+        value= "50"
+        center-top= "225"
+        graident= "false"
+        height="400"
+        min= "0"
+        max= "160"
+        detail-marker="true"
+        marker-width= "1"
+        line-cap= 'round'
+        marker-type= 'in'
+        pointer-size= "120"
+        pointer-color="#39f"
+        marker-length= "6"
+        marker-color="#fff"
+        text-color="#fff"
+        value-array="{{ valueArray10 }}"
+        color-array="{{ colorArray10 }}"
+      ></ui-dashboard>
+    </ui-view>
+    <ui-view>
+      <ui-text block>仪表盘3</ui-text>
+      <ui-dashboard
+        radius="150"
+        value-array="{{ valueArray10 }}"
+        color-array="{{ colorArray10 }}"
+        line-width="20"
+        center-top= "225"
+        height="400"
+        angle= "270"
+        marker-width="1"
+        detail-marker= "true"
+        marker-type="out"
+        marker-length= "6"
+        circular-animation= "true"
+        pointer-size= "120"
+        pointer-color="#00B8EE"
+        value= "{{dashboardValue4}}"
+        color= "#00B8EE"
+        bg-color= "#ccc"
+        text-color= "#fff"
+      ></ui-dashboard>
+    </ui-view>
+    <ui-view>
+      <ui-text block>仪表盘4</ui-text>
+      <ui-dashboard
+        radius="150"
+        line-width="5"
+        center-top= "225"
+        height="400"
+        min= "0"
+        max= "100"
+        angle= "270"
+        marker-width="1"
+        marker-type= "in"
+        detail-marker="true"
+        marker-length= "6"
+        circular-animation= "true"
+        value= "{{dashboard6Value}}"
+        color= "#fff"
+        text-color="#fff"
+        marker-color="#fff"
+        padding= "10"
+        bg-color= "rgba(255, 255, 255, 0.5)"
+        have-outside-pointer= "true"
+        have-pointer= "false"
+      ></ui-dashboard>
+      <ui-view class="dashboard6_text">
+        <ui-view class="text1">{{ dashboard6Value }}</ui-view>
+        <ui-view class="text2">下载速度</ui-view>
+        <ui-view class="wifi">Wi-Fi</ui-view>
+      </ui-view>
+    </ui-view>
+    <ui-view>
+      <ui-text block>仪表盘5</ui-text>
+      <ui-view style="padding:0;">
+        <ui-dashboard
+          radius="150"
+          line-width="5"
+          center-top= "225"
+          height="400"
+          angle= "270"
+          circular-animation= "true"
+          have-pointer= "false"
+          shadow-color="#50D15C"
+          value= "{{dashboard7Value}}"
+          color= "#50D15C"
+          show-pointer= "false"
+          bg-color= "rgba(80, 209, 92, 0.5)"
+          have-outside-pointer= "false"
+        ></ui-dashboard>
+        <ui-view class="dashboard7_text">
+          <ui-view class="text1">CO2</ui-view>
+          <ui-view class="text2">{{dashboard7TextValue}}</ui-view>
+          <ui-view class="text3">新鲜</ui-view>
+        </ui-view>
+
+        <ui-view class="huan-wrap">
+          <ui-view class="huan">
+            <ui-view class="num num0">500</ui-view>
+            <ui-view class="num num1">1000</ui-view>
+            <ui-view class="num num2">1500</ui-view>
+            <ui-view class="num num3">2000</ui-view>
+            <ui-view class="num num4">2500</ui-view>
+          </ui-view>
+          <ui-view class="shade"></ui-view>
+        </ui-view>
+      </ui-view>
+
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      valueArray10: [1, 1, 1],
+      colorArray10: ['#FF6A30', '#FFF72D', '#86EC38'],
+
+      valueArray10: [1, 2, 1],
+      colorArray10: ['#FF514B', '#FFDE4F', '#3FB178'],
+
+      dashboardValue4: 50,
+
+      dashboard6Value: 40,
+
+      dashboard7Value: 50,
+      dashboard7TextValue: 1500
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      position: relative;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+    .dashboard6_text{
+      width:100%;
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(0%,-50%);
+      text-align: center;
+      padding:0;
+      margin-top:58px;
+      .ui-view{
+        color:#fff;
+        padding:0;
+        line-height:30px;
+      }
+    }
+    .dashboard7_text{
+      padding:0;
+      position: absolute;
+      width: 100%;
+      top: 60%;
+      left: 0;
+      -webkit-transform: translate(0%, -50%);
+      transform: translate(0%, -50%);
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      z-index: 2;
+      .text1{
+        color: #8E9EC0;
+      }
+      .text2{
+        color: #50D15C;
+        font-size: 32px;
+      }
+      .text3{
+        color: #50D15C;
+        font-size: 16px;
+      }
+    }
+    .huan-wrap{
+      margin-top: 25px;
+      margin-left: 1px;
+      padding:0;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      .huan{
+        padding:0;
+        border-radius: 50%;
+        width: 290px;
+        height: 290px;
+        border: 16px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        .num{
+          color: #657991;
+          position: absolute;
+          &.num0{
+            top: 50%;
+            left: -3%;
+            -webkit-transform: rotate(-96deg);
+            transform: rotate(-96deg);
+          }
+          &.num1{
+            top: 12%;
+            left: 5%;
+            -webkit-transform: rotate(-52deg);
+            transform: rotate(-52deg);
+          }
+          &.num2{
+            top: 1%;
+            left: 49%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+          }
+          &.num3{
+            top: 8%;
+            right: 7%;
+            -webkit-transform: rotate(49deg);
+            transform: rotate(49deg);
+          }
+          &.num4{
+            top: 50%;
+            right: -5%;
+            -webkit-transform: rotate(96deg);
+            transform: rotate(96deg);
+          }
+        }
+      }
+      .shade{
+        padding: 0;
+        width: 214px;
+        height: 60px;
+        background: #000f20;
+        position: absolute;
+        top: 80%;
+        left: 13%;
+        border-radius: 70px;
+      }
+    }
+  }
+</style>

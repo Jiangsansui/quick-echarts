@@ -1,0 +1,75 @@
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  config: {
+    "pages": [
+    "pages/index",
+    "pages/chart-list/index",
+    "pages/v-001/index",
+    "pages/v-002/index",
+    "pages/v-002/index2",
+    "pages/v-003/index",
+    "pages/v-004/index",
+    "pages/v-005/index",
+    "pages/v-006/index",
+    "pages/v-007/index",
+    "pages/v-008/index",
+    "pages/v-008/index2",
+    "pages/v-009/index",
+    "pages/v-010/index",
+    "pages/v-011/index",
+    "pages/v-011/index2",
+    "pages/v-012/index",
+    "pages/v-013/index",
+    "pages/v-014/index",
+    "pages/v-015/index",
+    "pages/v-015/index2",
+    "pages/v-016/index",
+    "pages/v-016/index2",
+    "pages/v-017/index",
+    "pages/v-018/index",
+    "pages/v-019/index",
+    "pages/v-020/index",
+    "pages/v-021/index",
+    "pages/v-022/index",
+    "pages/v-023/index",
+    "pages/v-024/index"
+    ],
+    "theme": {
+      "theme-color": "#3399ff"
+    },
+    "window": {
+      "title":"清大大数据展示平台"
+    },
+    "networkBaseUrl":"http://www.zjqingda.com"
+  },
+  data () {
+    return {
+      pageCache: false
+    }
+  },
+  methods: {
+    
+  },
+  mounted () {
+    
+  }
+}
+</script>
+
+<template>
+<ui-view id="ui-app">
+    <ui-main-view show-side-bar="{{false}}" show-header="{{false}}">
+      <keep-alive slot="page">
+        <router-view ui:if="{{ pageCache }}"></router-view>
+      </keep-alive>
+      <router-view ui:if="{{ !pageCache }}" slot="page"></router-view>
+    </ui-main-view>
+  </ui-view>
+</template>
+
+<style lang="less">
+  @import './static/font/iconfont.css';
+  @import './static/css/nprogress.less';
+</style>

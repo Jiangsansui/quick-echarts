@@ -1,0 +1,178 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>水平方向</ui-text>
+      <ui-grouped-bar
+        value="{{groupData.data}}"
+        height="400"
+        is-animated="true"
+        name-label="name"
+        color-schema="{{groupData.colorSchema}}"
+        tooltip="true"
+        body-fill-color="rgba(0,0,0,.7)"
+        tooltip-width="150"
+        title-fill-color="#fff"
+        text-fill-color="#fff"
+        tooltip-text-color="#fff"
+        border-stroke-color="none"
+        axis-color="#fff"
+        margin="{{ groupData.margin }}"
+        is-horizontal="true"
+        format-date-option="no-format"
+      ></ui-grouped-bar>
+    </ui-view>
+    <ui-view>
+      <ui-text block>垂直方向</ui-text>
+      <ui-grouped-bar
+        value="{{groupData.data}}"
+        height="400"
+        is-animated="true"
+        name-label="name"
+        color-schema="{{groupData.colorSchema}}"
+        tooltip="true"
+        body-fill-color="rgba(0,0,0,.7)"
+        tooltip-width="150"
+        title-fill-color="#fff"
+        text-fill-color="#fff"
+        tooltip-text-color="#fff"
+        border-stroke-color="none"
+        axis-color="#fff"
+        margin="{{ groupData.margin }}"
+        format-date-option="no-format"
+      ></ui-grouped-bar>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      isFixAxis: ui.IS_IOS,
+      groupData: {
+        data: [
+          {
+            group: '代码审计系统',
+            value: 25,
+            date: '2011-10-20',
+            color: "#0B477D",
+            name:'系统1'
+          },
+          {
+            group: '业务安全系统',
+            value: 22,
+            date: '2011-10-20',
+            color: "#186646",
+            name:'系统1'
+          },
+          {
+            group: '工单审批系统',
+            value: 11,
+            date: '2011-10-20',
+            color: "#118371",
+            name:'系统1'
+          },
+
+          {
+            group: '代码审计系统',
+            value: 13,
+            date: '2011-10-20',
+            color: "#0B477D",
+            name:'系统2'
+          },
+          {
+            group: '业务安全系统',
+            value: 24,
+            date: '2011-10-20',
+            color: "#186646",
+            name:'系统2'
+          },
+          {
+            group: '工单审批系统',
+            value: 33,
+            date: '2011-10-20',
+            color: "#118371",
+            name:'系统2'
+          },
+
+          {
+            group: '代码审计系统',
+            value: 20,
+            date: '提交',
+            color: "#0B477D",
+            name:'系统3'
+          },
+          {
+            group: '业务安全系统',
+            value: 24,
+            date: '2011-10-20',
+            color: "#186646",
+            name:'系统3'
+          },
+          {
+            group: '工单审批系统',
+            value: 3,
+            date: '2011-10-20',
+            color: "#118371",
+            name:'系统3'
+          },
+
+          {
+            group: '代码审计系统',
+            value: 13,
+            date: '2011-10-20',
+            color: "#0B477D",
+            name:'系统4'
+          },
+          {
+            group: '业务安全系统',
+            value: 18,
+            date: '2011-10-20',
+            color: "#186646",
+            name:'系统4'
+          },
+          {
+            group: '工单审批系统',
+            value: 25,
+            date: '2011-10-20',
+            color: "#118371",
+            name:'系统4'
+          }
+        ],
+        margin: {
+          top: 30,
+          right: 20,
+          bottom: 20,
+          left: 60
+        }
+      },
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+</style>

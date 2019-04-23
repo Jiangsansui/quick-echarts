@@ -1,0 +1,856 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': winHeight + 'px' }}}">
+    <ui-view style="padding: 15px 0;"></ui-view>
+    <ui-view class="header_title">Quick V 数据可视化展示</ui-view>
+    <ui-row class="content_wrap">
+      <ui-col vertical-align="middle" align="left" width="180">
+        <ui-view class="show_win">
+          <ui-view class="title">今日事件</ui-view>
+          <ui-text class="number">5</ui-text>
+          <ui-text class="number">9</ui-text>
+          <ui-text class="number">1</ui-text>
+          <ui-text class="number">0</ui-text>
+        </ui-view>
+        <ui-view class="show_win">
+          <ui-view class="title">攻击目标 TOP5</ui-view>
+        </ui-view>
+        <ui-view class="show_win" ui:for="{{ targetList }}">
+          <ui-row class="left_list">
+            <ui-col vertical-align="middle" align="center" width="15">
+              <ui-view class="round"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center" space-left="5">
+              <ui-view class="text">15,446Mbps</ui-view>
+              <ui-view class="text">61.12.83*（拉萨）</ui-view>
+            </ui-col>
+          </ui-row>
+        </ui-view>
+        <ui-view class="show_win">
+          <ui-view class="title">攻击来源 TOP5</ui-view>
+        </ui-view>
+        <ui-view class="show_win" ui:for="{{ targetList }}">
+          <ui-row class="left_list">
+            <ui-col vertical-align="middle" align="center" width="15">
+              <ui-view class="round"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center" space-left="5">
+              <ui-view class="text">15,446Mbps</ui-view>
+              <ui-view class="text">61.12.83*（拉萨）</ui-view>
+            </ui-col>
+          </ui-row>
+        </ui-view>
+      </ui-col>
+      <ui-col vertical-align="middle" align="center" space-left="20">
+        <ui-view  style="width:100%;">
+          <ui-row>
+            <ui-col vertical-align="top" align="center">
+              <ui-view id="container" style="width:100%;height:620px;"></ui-view>
+            </ui-col>
+            <ui-col vertical-align="top" align="center" width="500" class="right_content">
+              <ui-view class="show_win no-padding">
+                <ui-view class="show_win">
+                  <ui-row>
+                    <ui-col vertical-align="middle" align="center">
+                      <ui-view class="title">攻击类型</ui-view>
+                    </ui-col>
+                    <ui-col vertical-align="middle" align="center">
+                      <ui-view class="title">流向分布</ui-view>
+                    </ui-col>
+                  </ui-row>
+                </ui-view>
+                <ui-row>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-donut
+                      value="{{donut.data}}"
+                      width="250"
+                      height="170"
+                      external-radius="70"
+                      internal-radius="35"
+                      is-animated="true"
+                      color-schema="{{donut.colorSchema}}"
+                      text-color="#fff"
+                      >
+                    </ui-donut>
+                  </ui-col>
+                  <ui-col vertical-align="middle" align="center">
+                    <ui-donut
+                      value="{{donut.data}}"
+                      width="250"
+                      height="170"
+                      external-radius="70"
+                      internal-radius="35"
+                      is-animated="true"
+                      color-schema="{{donut.colorSchema}}"
+                      text-color="#fff"
+                      >
+                    </ui-donut>
+                  </ui-col>
+                </ui-row>
+              </ui-view>
+              <ui-view class="show_win no-padding" style="margin:10px 0;">
+                <ui-view class="show_win">
+                  <ui-view class="title">最近统计</ui-view>
+                </ui-view>
+                <ui-stacked-area
+                  class="stackedarea4"
+                  value="{{areaChartData4.data}}"
+                  height="300"
+                  is-animated="true"
+                  body-fill-color="rgba(0,0,0,.7)"
+                  tooltip-width="150"
+                  title-fill-color="#fff"
+                  text-fill-color="#fff"
+                  border-strokeColor="#fff"
+                  fix-axis="{{isFixAxis}}"
+                  axis-color="#fff"
+                ></ui-stacked-area>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" space-top="30">
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">告警级别</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">时间</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">攻击目标</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">流量（Mbps）</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">攻击类型</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">攻击状态</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">详情</ui-view></ui-view></ui-col>
+          </ui-row>
+          <ui-row height="40" class="right_bottom" space-bottom="20">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank">
+                  <ui-view></ui-view>正常
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">2017/07/07 12:00</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">61.12.83</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">15,446</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">SYN Flood</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">开始</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank rank2">
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" class="right_bottom">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank">
+                  <ui-view style="background:#F48241;"></ui-view>一般
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">2017/07/07 12:00</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">61.12.83</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">15,446</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">SYN Flood</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">开始</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank rank2">
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" class="right_bottom">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank">
+                  <ui-view style="background:#F48241;"></ui-view>一般
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">2017/07/07 12:00</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">61.12.83</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">15,446</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">SYN Flood</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">开始</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank rank2">
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+          <ui-row height="40" class="right_bottom">
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank">
+                  <ui-view style="background:#F64B52;"></ui-view>一般
+                </ui-view>
+              </ui-view>
+            </ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">2017/07/07 12:00</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">61.12.83</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">15,446</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">SYN Flood</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center"><ui-view class="show_win"><ui-view class="title">开始</ui-view></ui-view></ui-col>
+            <ui-col vertical-align="middle" align="center">
+              <ui-view class="show_win">
+                <ui-view class="rank rank2">
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                  <ui-view></ui-view>
+                </ui-view>
+              </ui-view>
+            </ui-col>
+          </ui-row>
+        </ui-view>
+      </ui-col>
+    </ui-row>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+import * as echarts from '#/static/utils/echarts.min.js'
+import registerMap from '#/static/utils/china'
+registerMap(echarts)
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      isFixAxis: ui.IS_IOS,
+      targetList:[1,1,1,1,1],
+      donut: {
+        data: [
+          {
+            quantity: 30,
+            percentaged:10,
+            name: 'SYN Flood',
+            id: 1
+          }, {
+            quantity: 18,
+            percentaged:10,
+            name: 'ICMP Flood',
+            id: 2
+          }, {
+            quantity: 23,
+            name: 'UDP Flood',
+            id: 3
+          }, {
+            quantity: 9,
+            name: 'HTTP Flood',
+            id: 4
+          }, {
+            quantity: 20,
+            name: '其他',
+            id: 5
+          }
+        ],
+        colorSchema: ['#24A4EB', '#19AF89', '#F3A42D', '#FF6364','#FB8F4F']
+      },
+      areaChartData4: {
+        'data': [
+          {
+            'name': '实体店',
+            'value': 120,
+            'date': '2011-01-05T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+          {
+            'name': '实体店',
+            'value': 132,
+            'date': '2011-01-06T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+          {
+            'name': '实体店',
+            'value': 101,
+            'date': '2011-01-07T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+          {
+            'name': '实体店',
+            'value': 134,
+            'date': '2011-01-08T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+          {
+            'name': '实体店',
+            'value': 190,
+            'date': '2011-01-09T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+          {
+            'name': '实体店',
+            'value': 230,
+            'date': '2011-01-10T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+          {
+            'name': '实体店',
+            'value': 100,
+            'date': '2011-01-11T00:00:00',
+            'color':'rgba(36,164,235, 1)'
+          },
+
+
+          {
+            'name': '网店',
+            'value': 170,
+            'date': '2011-01-05T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+          {
+            'name': '网店',
+            'value': 152,
+            'date': '2011-01-06T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+          {
+            'name': '网店',
+            'value': 230,
+            'date': '2011-01-07T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+          {
+            'name': '网店',
+            'value': 190,
+            'date': '2011-01-08T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+          {
+            'name': '网店',
+            'value': 270,
+            'date': '2011-01-09T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+          {
+            'name': '网店',
+            'value': 180,
+            'date': '2011-01-10T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+          {
+            'name': '网店',
+            'value': 160,
+            'date': '2011-01-11T00:00:00',
+            'color':'rgba(25,175,137, 1)'
+          },
+
+
+          {
+            'name': 'UDP Flood',
+            'value': 190,
+            'date': '2011-01-05T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+          {
+            'name': 'UDP Flood',
+            'value': 172,
+            'date': '2011-01-06T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+          {
+            'name': 'UDP Flood',
+            'value': 250,
+            'date': '2011-01-07T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+          {
+            'name': 'UDP Flood',
+            'value': 210,
+            'date': '2011-01-08T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+          {
+            'name': 'UDP Flood',
+            'value': 290,
+            'date': '2011-01-09T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+          {
+            'name': 'UDP Flood',
+            'value': 200,
+            'date': '2011-01-10T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+          {
+            'name': 'UDP Flood',
+            'value': 180,
+            'date': '2011-01-11T00:00:00',
+            'color':'rgba(243,164,45, 1)'
+          },
+
+
+          {
+            'name': 'HTTP Flood',
+            'value': 210,
+            'date': '2011-01-05T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          },
+          {
+            'name': 'HTTP Flood',
+            'value': 192,
+            'date': '2011-01-06T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          },
+          {
+            'name': 'HTTP Flood',
+            'value': 270,
+            'date': '2011-01-07T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          },
+          {
+            'name': 'HTTP Flood',
+            'value': 230,
+            'date': '2011-01-08T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          },
+          {
+            'name': 'HTTP Flood',
+            'value': 310,
+            'date': '2011-01-09T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          },
+          {
+            'name': 'HTTP Flood',
+            'value': 220,
+            'date': '2011-01-10T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          },
+          {
+            'name': 'HTTP Flood',
+            'value': 200,
+            'date': '2011-01-11T00:00:00',
+            'color':'rgba(255,99,100, 1)'
+          }
+        ]
+      },
+      resizeListener: null
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+    var dom = document.getElementById('container')
+    var myChart = echarts.init(dom)
+    var app = {}
+    option = null
+    var geoCoordMap = {
+      上海: [121.4648, 31.2891],
+      东莞: [113.8953, 22.901],
+      东营: [118.7073, 37.5513],
+      中山: [113.4229, 22.478],
+      临汾: [111.4783, 36.1615],
+      临沂: [118.3118, 35.2936],
+      丹东: [124.541, 40.4242],
+      丽水: [119.5642, 28.1854],
+      乌鲁木齐: [87.9236, 43.5883],
+      佛山: [112.8955, 23.1097],
+      保定: [115.0488, 39.0948],
+      兰州: [103.5901, 36.3043],
+      包头: [110.3467, 41.4899],
+      北京: [116.4551, 40.2539],
+      北海: [109.314, 21.6211],
+      南京: [118.8062, 31.9208],
+      南宁: [108.479, 23.1152],
+      南昌: [116.0046, 28.6633],
+      南通: [121.1023, 32.1625],
+      厦门: [118.1689, 24.6478],
+      台州: [121.1353, 28.6688],
+      合肥: [117.29, 32.0581],
+      呼和浩特: [111.4124, 40.4901],
+      咸阳: [108.4131, 34.8706],
+      哈尔滨: [127.9688, 45.368],
+      唐山: [118.4766, 39.6826],
+      嘉兴: [120.9155, 30.6354],
+      大同: [113.7854, 39.8035],
+      大连: [122.2229, 39.4409],
+      天津: [117.4219, 39.4189],
+      太原: [112.3352, 37.9413],
+      威海: [121.9482, 37.1393],
+      宁波: [121.5967, 29.6466],
+      宝鸡: [107.1826, 34.3433],
+      宿迁: [118.5535, 33.7775],
+      常州: [119.4543, 31.5582],
+      广州: [113.5107, 23.2196],
+      廊坊: [116.521, 39.0509],
+      延安: [109.1052, 36.4252],
+      张家口: [115.1477, 40.8527],
+      徐州: [117.5208, 34.3268],
+      德州: [116.6858, 37.2107],
+      惠州: [114.6204, 23.1647],
+      成都: [103.9526, 30.7617],
+      扬州: [119.4653, 32.8162],
+      承德: [117.5757, 41.4075],
+      拉萨: [91.1865, 30.1465],
+      无锡: [120.3442, 31.5527],
+      日照: [119.2786, 35.5023],
+      昆明: [102.9199, 25.4663],
+      杭州: [119.5313, 29.8773],
+      枣庄: [117.323, 34.8926],
+      柳州: [109.3799, 24.9774],
+      株洲: [113.5327, 27.0319],
+      武汉: [114.3896, 30.6628],
+      汕头: [117.1692, 23.3405],
+      江门: [112.6318, 22.1484],
+      沈阳: [123.1238, 42.1216],
+      沧州: [116.8286, 38.2104],
+      河源: [114.917, 23.9722],
+      泉州: [118.3228, 25.1147],
+      泰安: [117.0264, 36.0516],
+      泰州: [120.0586, 32.5525],
+      济南: [117.1582, 36.8701],
+      济宁: [116.8286, 35.3375],
+      海口: [110.3893, 19.8516],
+      淄博: [118.0371, 36.6064],
+      淮安: [118.927, 33.4039],
+      深圳: [114.5435, 22.5439],
+      清远: [112.9175, 24.3292],
+      温州: [120.498, 27.8119],
+      渭南: [109.7864, 35.0299],
+      湖州: [119.8608, 30.7782],
+      湘潭: [112.5439, 27.7075],
+      滨州: [117.8174, 37.4963],
+      潍坊: [119.0918, 36.524],
+      烟台: [120.7397, 37.5128],
+      玉溪: [101.9312, 23.8898],
+      珠海: [113.7305, 22.1155],
+      盐城: [120.2234, 33.5577],
+      盘锦: [121.9482, 41.0449],
+      石家庄: [114.4995, 38.1006],
+      福州: [119.4543, 25.9222],
+      秦皇岛: [119.2126, 40.0232],
+      绍兴: [120.564, 29.7565],
+      聊城: [115.9167, 36.4032],
+      肇庆: [112.1265, 23.5822],
+      舟山: [122.2559, 30.2234],
+      苏州: [120.6519, 31.3989],
+      莱芜: [117.6526, 36.2714],
+      菏泽: [115.6201, 35.2057],
+      营口: [122.4316, 40.4297],
+      葫芦岛: [120.1575, 40.578],
+      衡水: [115.8838, 37.7161],
+      衢州: [118.6853, 28.8666],
+      西宁: [101.4038, 36.8207],
+      西安: [109.1162, 34.2004],
+      贵阳: [106.6992, 26.7682],
+      连云港: [119.1248, 34.552],
+      邢台: [114.8071, 37.2821],
+      邯郸: [114.4775, 36.535],
+      郑州: [113.4668, 34.6234],
+      鄂尔多斯: [108.9734, 39.2487],
+      重庆: [107.7539, 30.1904],
+      金华: [120.0037, 29.1028],
+      铜川: [109.0393, 35.1947],
+      银川: [106.3586, 38.1775],
+      镇江: [119.4763, 31.9702],
+      长春: [125.8154, 44.2584],
+      长沙: [113.0823, 28.2568],
+      长治: [112.8625, 36.4746],
+      阳泉: [113.4778, 38.0951],
+      青岛: [120.4651, 36.3373],
+      韶关: [113.7964, 24.7028]
+    }
+
+    var BJData = [
+      [{ name: '北京' }, { name: '上海', value: 95 }],
+      [{ name: '北京' }, { name: '广州', value: 90 }],
+      [{ name: '北京' }, { name: '大连', value: 80 }],
+      [{ name: '北京' }, { name: '南宁', value: 70 }],
+      [{ name: '北京' }, { name: '南昌', value: 60 }],
+      [{ name: '北京' }, { name: '拉萨', value: 50 }],
+      [{ name: '北京' }, { name: '长春', value: 40 }],
+      [{ name: '北京' }, { name: '包头', value: 40 }],
+      [{ name: '北京' }, { name: '重庆', value: 40 }],
+      [{ name: '北京' }, { name: '常州', value: 40 }]
+    ]
+
+    var convertData = function (data) {
+      var res = []
+      for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i]
+        var fromCoord = geoCoordMap[dataItem[0].name]
+        var toCoord = geoCoordMap[dataItem[1].name]
+        if (fromCoord && toCoord) {
+          res.push({
+            fromName: dataItem[0].name,
+            toName: dataItem[1].name,
+            coords: [fromCoord, toCoord]
+          })
+        }
+      }
+      return res
+    }
+
+    var color = ['#a6c84c', '#ffa022', '#46bee9']
+    var series = [];
+    [['北京', BJData]].forEach(function (
+      item,
+      i
+    ) {
+      series.push(
+        {
+          name: item[0] + ' Top10',
+          type: 'lines',
+          zlevel: 1,
+          effect: {
+            show: true,
+            period: 6,
+            trailLength: 0.7,
+            color: '#fff',
+            symbolSize: 3
+          },
+          lineStyle: {
+            normal: {
+              color: color[i],
+              width: 0,
+              curveness: 0.2,
+              opacity: 0
+            }
+          },
+          data: convertData(item[1])
+        },
+        {
+          name: item[0] + ' Top10',
+          type: 'lines',
+          zlevel: 2,
+          symbol: ['none', 'arrow'],
+          symbolSize: 1,
+          effect: {
+            show: true,
+            period: 6,
+            trailLength: 0,
+            symbol: 'emptyCircle',
+            symbolSize: 1
+          },
+          lineStyle: {
+            normal: {
+              color: color[i],
+              width: 1,
+              opacity: 0.6,
+              curveness: 0.2
+            }
+          },
+          data: convertData(item[1])
+        },
+        {
+          name: item[0] + ' Top10',
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          effectType: 'ripple',
+          showEffectOn: 'render',
+          zlevel: 2,
+          rippleEffect: {
+            brushType: 'stroke',
+            scale: 40,
+            period: 4
+          },
+          label: {
+            normal: {
+              show: true,
+              position: 'right',
+              formatter: ''
+            }
+          },
+          symbolSize: function (val) {
+            return 2
+          },
+          markPoint: {
+            itemStyle: {
+              normal: {
+                label:{show:false}
+              }
+            }
+          },
+          data: item[1].map(function (dataItem) {
+            return {
+              name: dataItem[1].name,
+              value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+            }
+          })
+        }
+      )
+    })
+
+    var option = {
+      backgroundColor: 'transparent',
+      color: ['gold', 'aqua', 'lime'],
+      title: {
+        text: '',
+        subtext: '',
+        x: 'center',
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      toolbox: {
+        show: false
+      },
+      legend: {
+        orient: 'vertical',
+        x: 'left',
+        data: [],
+        textStyle: {
+          color: '#fff'
+        },
+        selectedMode: 'single',
+        selected: {
+          '上海 Top10': false,
+          '广州 Top10': false
+        },
+      },
+      dataRange: {
+        show: false,
+        min: 0,
+        max: 100,
+        x: 'right',
+        calculable: true,
+        color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      geo: {
+        map: 'china',
+        label: {
+          emphasis: {
+            show: false
+          }
+        },
+        roam: false,
+        symbol: ['none', 'circle'],
+        smooth:true,
+        symbolSize : 1,
+        itemStyle: {
+          normal: {
+            areaColor: 'transparent',
+            borderColor: 'rgba(30,144,255,0.5)',
+            borderWidth:1,
+          },
+          emphasis: {
+            areaColor: 'transparent'
+          }
+        }
+      },
+      series: series
+    }
+    if (option && typeof option === 'object') {
+      myChart.setOption(option, true)
+    }
+    this.resizeListener = () => {
+      myChart.resize()
+    }
+    ui.addWindowResizeListener(this.resizeListener)
+  },
+  beforeDestroy () {
+    ui.removeWindowResizeListener(this.resizeListener)
+  }
+}
+</script>
+<style lang="less">
+.chart_wrap{
+  background: #020308 url('~images/v-019/bg.jpg') no-repeat center center;
+  overflow: hidden;
+  padding:0 20px;
+  background-size:100% 100%;
+  .header_title{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    text-align:center;
+    font-size:18px;
+    line-height:40px;
+    color:#fff;
+  }
+  .content_wrap{
+    .show_win{
+      width:100%;
+      background: rgba(15,76,128,.3);
+      box-shadow: 0 0 10px 3px rgba(32,132,255,.3);
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      &.no-padding{
+        padding:0;
+      }
+      .title{
+        display:inline-block;
+        font-size: 16px;
+        color: #fff;
+        line-height:30px;
+      }
+      .number{
+        display:inline-block;
+        width: 15px;
+        line-height: 30px;
+        text-align: center;
+        background: #BDA36D;
+        color: #fff;
+        font-size: 12px;
+        margin-left: 2px;
+        border-radius: 3px;
+      }
+      .left_list{
+        .round{
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border: 1px solid #F55F60;
+          border-radius: 50%;
+        }
+        .text{
+          width:100%;
+          font-size: 14px;
+          color: #fff;
+          line-height: 30px;
+          text-align:left;
+        }
+      }
+    }
+    .right_bottom{
+      margin-top:30px;
+      .title{
+        font-size:14px;
+      }
+      .rank{
+        font-size:14px;
+        color:#fff;
+        .ui-view{
+          display:inline-block;
+          width: 8px;
+          height: 8px;
+          background: #FFBF07;
+          margin-right:10px;
+        }
+        &.rank2{
+          .ui-view{
+            background:#28B188;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 900px){
+  .right_content{
+    flex:0 0 400px!important;
+  }
+}
+
+</style>

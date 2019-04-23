@@ -1,0 +1,1012 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap">
+    <ui-view class="head_title">
+      <ui-view class="logo">
+        <ui-image src="{{ require('#/images/v-007/logo.png') }}" width="140" height="40"></ui-image>
+      </ui-view>
+      <ui-row height="50" class="title_content">
+        <ui-col vertical-align="middle" align="center">
+          <ui-view class="active">今日关注</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>业务资产透视</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>业务操作透视</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>业务违规告警</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>业务监测日志</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>业务监测报告</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>系统管理</ui-view>
+        </ui-col>
+      </ui-row>
+      <ui-row height="50" class="user_wrap">
+        <ui-col vertical-align="middle" align="center">
+          <ui-image src="{{ require('#/images/v-007/user.png') }}" width="15" height="15"></ui-image>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>登录</ui-view>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center">
+          <ui-view>注销</ui-view>
+        </ui-col>
+      </ui-row>
+    </ui-view>
+    <ui-view class="data_content">
+      <ui-row>
+        <ui-col vertical-align="top" align="center" width="450" class="left_win">
+          <ui-view class="time_win">
+            <ui-row height="30">
+              <ui-col vertical-align="middle" align="align" width="30">10</ui-col>
+              <ui-col vertical-align="middle" align="align" width="20" class="dot">:</ui-col>
+              <ui-col vertical-align="middle" align="align" width="30">55</ui-col>
+              <ui-col vertical-align="middle" align="align" width="20" class="dot">:</ui-col>
+              <ui-col vertical-align="middle" align="align" width="30">50</ui-col>
+            </ui-row>
+            <ui-view>2017 年 8 月 4 日</ui-view>
+          </ui-view>
+          <ui-view class="module_wrap">
+            <ui-view class="corner t_r"></ui-view>
+            <ui-view class="corner l_b"></ui-view>
+            <ui-view class="corner t_l"></ui-view>
+            <ui-view class="corner r_b"></ui-view>
+            <ui-view class="title">业务系统监测个数试图</ui-view>
+            <ui-level-donut
+              radius= "30"
+              animate= "true"
+              height="240"
+              value-array="{{ valueArray }}"
+              color-array="{{ colorArray }}"
+              line-width-array="{{ lineWidthArray }}"
+
+            ></ui-level-donut>
+          </ui-view>
+          <ui-view class="module_wrap">
+            <ui-view class="corner t_r"></ui-view>
+            <ui-view class="corner l_b"></ui-view>
+            <ui-view class="corner t_l"></ui-view>
+            <ui-view class="corner r_b"></ui-view>
+            <ui-view class="title">监测数据分析视图</ui-view>
+            <ui-row height="60" space-bottom="10" class="grid">
+              <ui-col vertical-align="middle" align="center">业务系统名称</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide">业务模块个数</ui-col>
+              <ui-col vertical-align="middle" align="center">日均数据交互</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide">持续监控</ui-col>
+              <ui-col vertical-align="middle" align="center">威胁告警</ui-col>
+              <ui-col vertical-align="middle" align="center">活跃用户</ui-col>
+            </ui-row>
+            <ui-row height="60" space-bottom="10" class="grid">
+              <ui-col vertical-align="middle" align="center">业务安全系统</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #3AFED2;">268</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">3002213</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;">245</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #FB1616;">15</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">215</ui-col>
+            </ui-row>
+            <ui-row height="60" space-bottom="10" class="grid">
+              <ui-col vertical-align="middle" align="center">代码审计系统</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #3AFED2;">157</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #FCB75E;">1990003</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #6FB1FD;">258</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #FB1616;">6</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">90</ui-col>
+            </ui-row>
+            <ui-row height="60" class="grid">
+              <ui-col vertical-align="middle" align="center">工单审批系统</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #3AFED2;">49</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">1000007</ui-col>
+              <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;">258</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #FB1616;">6</ui-col>
+              <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">140</ui-col>
+            </ui-row>
+          </ui-view>
+          <ui-view class="module_wrap">
+            <ui-view class="corner t_r"></ui-view>
+            <ui-view class="corner l_b"></ui-view>
+            <ui-view class="corner t_l"></ui-view>
+            <ui-view class="corner r_b"></ui-view>
+            <ui-view class="title">业务账号登录统计图</ui-view>
+
+            <ui-grouped-bar
+              value="{{groupData.data}}"
+              height="265"
+              is-animated="true"
+              name-label="date"
+              color-schema="{{groupData.colorSchema}}"
+              tooltip="true"
+              body-fill-color="rgba(0,0,0,.7)"
+              tooltip-width="150"
+              title-fill-color="#fff"
+              text-fill-color="#fff"
+              tooltip-text-color="#fff"
+              border-stroke-color="none"
+              axis-color="#fff"
+              ></ui-grouped-bar>
+          </ui-view>
+
+        </ui-col>
+        <ui-col vertical-align="top" align="center">
+          <ui-view style="width:100%;">
+            <ui-row class="left_head">
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="module_wrap">
+                  <ui-view class="corner t_r"></ui-view>
+                  <ui-view class="corner l_b"></ui-view>
+                  <ui-view class="corner t_l"></ui-view>
+                  <ui-view class="corner r_b"></ui-view>
+                  <ui-view>业务系统梳理</ui-view>
+                  <ui-text style="color: #3AFED2;">5992223</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col width="10"></ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="module_wrap">
+                  <ui-view class="corner t_r"></ui-view>
+                  <ui-view class="corner l_b"></ui-view>
+                  <ui-view class="corner t_l"></ui-view>
+                  <ui-view class="corner r_b"></ui-view>
+                  <ui-view>日均数据交互</ui-view>
+                  <ui-text style="color: #FCB75E;">27</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col width="10"></ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="module_wrap">
+                  <ui-view class="corner t_r"></ui-view>
+                  <ui-view class="corner l_b"></ui-view>
+                  <ui-view class="corner t_l"></ui-view>
+                  <ui-view class="corner r_b"></ui-view>
+                  <ui-view>持续监控</ui-view>
+                  <ui-text style="color: #6FB1FD;">258</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col width="10"></ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="module_wrap">
+                  <ui-view class="corner t_r"></ui-view>
+                  <ui-view class="corner l_b"></ui-view>
+                  <ui-view class="corner t_l"></ui-view>
+                  <ui-view class="corner r_b"></ui-view>
+                  <ui-view>威胁告警</ui-view>
+                  <ui-text style="color: #FB1616;">27</ui-text>
+                </ui-view>
+              </ui-col>
+              <ui-col width="10"></ui-col>
+              <ui-col vertical-align="middle" align="center">
+                <ui-view class="module_wrap">
+                  <ui-view class="corner t_r"></ui-view>
+                  <ui-view class="corner l_b"></ui-view>
+                  <ui-view class="corner t_l"></ui-view>
+                  <ui-view class="corner r_b"></ui-view>
+                  <ui-view>威胁告警</ui-view>
+                  <ui-text style="color: #5EDD6A;">335</ui-text>
+                </ui-view>
+              </ui-col>
+            </ui-row>
+            <ui-view class="left_content">
+              <ui-row>
+                <ui-col vertical-align="top" align="center">
+                  <ui-view style="width:100%;">
+                    <ui-view class="center_title">Quick V 数据可视化展示</ui-view>
+                    <ui-view class="radar"></ui-view>
+                    <ui-line
+                      value="{{data2}}"
+                      height="250"
+                      line-width = "2"
+                      is-animated= "{{ false }}"
+                      tooltip="true"
+                      body-fill-color="rgba(0,0,0,.1)"
+                      tooltip-width="150"
+                      title-fill-color="#fff"
+                      border-stroke-color="#fff"
+                      fix-axis="{{isFixAxis}}"
+                      axis-color="#fff"
+                    ></ui-line>
+                  </ui-view>
+                </ui-col>
+                <ui-col vertical-align="top" align="center" width="450" class="right_win">
+                  <ui-view class="module_wrap">
+                    <ui-view class="corner t_r"></ui-view>
+                    <ui-view class="corner l_b"></ui-view>
+                    <ui-view class="corner t_l"></ui-view>
+                    <ui-view class="corner r_b"></ui-view>
+                    <ui-view class="title">告警监测走势视图</ui-view>
+                    <ui-line
+                      value="{{data3}}"
+                      height="200"
+                      line-width = "2"
+                      is-animated= "{{ false }}"
+                      tooltip="true"
+                      body-fill-color="rgba(0,0,0,.1)"
+                      tooltip-width="150"
+                      title-fill-color="#fff"
+                      border-stroke-color="#fff"
+                      fix-axis="{{isFixAxis}}"
+                      line-curve="basis"
+                      axis-color="#fff"
+                    ></ui-line>
+                  </ui-view>
+                  <ui-view class="module_wrap">
+                    <ui-view class="corner t_r"></ui-view>
+                    <ui-view class="corner l_b"></ui-view>
+                    <ui-view class="corner t_l"></ui-view>
+                    <ui-view class="corner r_b"></ui-view>
+                    <ui-view class="title">业务账号告警</ui-view>
+                    <ui-row height="60" space-bottom="10" class="grid">
+                      <ui-col vertical-align="middle" align="center">业务账号</ui-col>
+                      <ui-col vertical-align="middle" align="center">使用IP</ui-col>
+                      <ui-col vertical-align="middle" align="center">访问系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide">告警模块</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide">告警模块</ui-col>
+                      <ui-col vertical-align="middle" align="center">告警时间</ui-col>
+                    </ui-row>
+                    <ui-row height="60" space-bottom="10" class="grid">
+                      <ui-col vertical-align="middle" align="center">业务安全系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #3AFED2;" width="60">10.1.1.118</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">工单审批系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #FB1616;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">6/19 11-22-08</ui-col>
+                    </ui-row>
+                    <ui-row height="60" space-bottom="10" class="grid">
+                      <ui-col vertical-align="middle" align="center">业务安全系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #3AFED2;" width="60">10.1.1.118</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">工单审批系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #FB1616;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">6/19 11-22-08</ui-col>
+                    </ui-row>
+                    <ui-row height="60" space-bottom="10" class="grid">
+                      <ui-col vertical-align="middle" align="center">业务安全系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #3AFED2;" width="60">10.1.1.118</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">工单审批系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #FB1616;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">6/19 11-22-08</ui-col>
+                    </ui-row>
+                    <ui-row height="60" space-bottom="10" class="grid">
+                      <ui-col vertical-align="middle" align="center">业务安全系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #3AFED2;" width="60">10.1.1.118</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">工单审批系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #FB1616;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">6/19 11-22-08</ui-col>
+                    </ui-row>
+                    <ui-row height="60" space-bottom="10" class="grid">
+                      <ui-col vertical-align="middle" align="center">业务安全系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #3AFED2;" width="60">10.1.1.118</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #FCB75E;">工单审批系统</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #6FB1FD;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" class="small_hide" style="color: #FB1616;" width="60">三方业务</ui-col>
+                      <ui-col vertical-align="middle" align="center" style="color: #5EDD6A;">6/19 11-22-08</ui-col>
+                    </ui-row>
+                  </ui-view>
+                  <ui-view class="module_wrap">
+                    <ui-view class="corner t_r"></ui-view>
+                    <ui-view class="corner l_b"></ui-view>
+                    <ui-view class="corner t_l"></ui-view>
+                    <ui-view class="corner r_b"></ui-view>
+                    <ui-view class="title">业务系统监测告警分布图</ui-view>
+                    <ui-stacked-bar
+                      value="{{stackedBarData.data}}"
+                      height="150"
+                      is-animated="{{true}}"
+                      tooltip="{{true}}"
+                      is-horizontal = "{{true}}"
+                      body-fill-color	="rgba(0,0,0,0.5)"
+                      tooltip-width="150"
+                      title-fill-color="#fff"
+                      text-fill-color="#fff"
+                      tooltip-text-color="#fff"
+                      border-stroke-color="none"
+                      color-schema="{{stackedBarData.colorSchema}}"
+                      margin="{{margin}}"
+                      axis-color="#fff"
+                      format-date-option="no-format"
+                    ></ui-stacked-bar>
+                  </ui-view>
+                </ui-col>
+              </ui-row>
+            </ui-view>
+          </ui-view>
+        </ui-col>
+      </ui-row>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      isFixAxis: ui.IS_IOS,
+      valueArray: [20, 40, 40],
+      colorArray: ['#3892D9', '#3181C0', '#24689D'],
+      lineWidthArray: [10, 10, 10],
+      groupData: {
+        data: [
+          {
+            group: '代码审计系统',
+            value: 25,
+            date: '01',
+            color: "#27BBEB"
+          },
+          {
+            group: '业务安全系统',
+            value: 22,
+            date: '01',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 11,
+            date: '01',
+            color: "#27BBEB"
+          },
+
+          {
+            group: '代码审计系统',
+            value: 16,
+            date: '02',
+            color: "#27BBEB"
+          },
+          {
+            group: '业务安全系统',
+            value: 25,
+            date: '02',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 21,
+            date: '02',
+            color: "#27BBEB"
+          },
+
+          {
+            group: '代码审计系统',
+            value: 16,
+            date: '03',
+            color: "#27BBEB"
+          },
+          {
+            group: '业务安全系统',
+            value: 10,
+            date: '03',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 26,
+            date: '03',
+            color: "#27BBEB"
+          },
+
+          {
+            group: '代码审计系统',
+            value: 23,
+            date: '04',
+            "color": "#3399ff"
+          },
+          {
+            group: '业务安全系统',
+            value: 4,
+            date: '04',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 33,
+            date: '04',
+            color: "#27BBEB"
+          },
+
+          {
+            group: '代码审计系统',
+            value: 13,
+            date: '05',
+            "color": "#3399ff"
+          },
+          {
+            group: '业务安全系统',
+            value: 24,
+            date: '05',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 33,
+            date: '05',
+            color: "#27BBEB"
+          },
+
+          {
+            group: '代码审计系统',
+            value: 20,
+            date: '06',
+            "color": "#3399ff"
+          },
+          {
+            group: '业务安全系统',
+            value: 24,
+            date: '06',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 3,
+            date: '06',
+            color: "#27BBEB"
+          },
+
+          {
+            group: '代码审计系统',
+            value: 13,
+            date: '07',
+            "color": "#3399ff"
+          },
+          {
+            group: '业务安全系统',
+            value: 18,
+            date: '07',
+            color: "#3BD192"
+          },
+          {
+            group: '工单审批系统',
+            value: 25,
+            date: '07',
+            color: "#27BBEB"
+          }
+        ],
+        colorSchema: ['#3399ff', '#54cd72', '#fdd210'],
+        margin: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        }
+      },
+      legendData: {
+        legend: [
+          {
+            id: 1,
+            quantity: 134,
+            name: '北京'
+          },
+          {
+            id: 2,
+            quantity: 100,
+            name: '上海'
+          },
+          {
+            id: 3,
+            quantity: 234,
+            name: '深圳'
+          }
+        ],
+        colorSchema: ['#27BBEB', '#27BBEB', '#27BBEB']
+      },
+      data3:{
+        dataByTopic: [
+          {
+            topicName: '代码审计系统',
+            topic: 123,
+            color:'rgba(183,51,48, 1)',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 20
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 8
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 16
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 9
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 15
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 5
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 20
+              }
+            ]
+          }, {
+            topicName: '工单审批系统',
+            topic: 345,
+            color:'rgba(73,174,196, 1)',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 35
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 12
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 20
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 10
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 50
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 6
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 30
+              }
+            ]
+          }, {
+            topicName: '业务安全系统',
+            topic: 456,
+            color:'rgba(9,89,109, 1)',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 35
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 25
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 29
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 37
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 45
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 26
+              },
+              {
+                date: '2017-01-22T00:00:00',
+                value: 54
+              }
+            ]
+          }
+        ]
+      },
+      data2:{
+        dataByTopic: [
+          {
+            topicName: '代码审计系统',
+            topic: 123,
+            color:'#FB1616',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 20
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 8
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 16
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 9
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 15
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 5
+              }
+            ]
+          }, {
+            topicName: '工单审批系统',
+            topic: 345,
+            color:'rgba(73,174,196, 1)',
+            dates: [
+              {
+                date: '2017-01-16T00:00:00',
+                value: 35
+              },
+              {
+                date: '2017-01-17T00:00:00',
+                value: 12
+              },
+              {
+                date: '2017-01-18T00:00:00',
+                value: 26
+              },
+              {
+                date: '2017-01-19T00:00:00',
+                value: 14
+              },
+              {
+                date: '2017-01-20T00:00:00',
+                value: 40
+              },
+              {
+                date: '2017-01-21T00:00:00',
+                value: 8
+              }
+            ]
+          }
+        ]
+      },
+      margin: {
+        left: 100,
+        right: 20,
+        top: 20,
+        bottom: 20
+      },
+      stackedBarData: {
+        'data': [
+          {
+            'stack': '业务安全系统',
+            'value': 220,
+            'name': '业务审批告警',
+            'color':'#2C4886'
+          },{
+            'stack': '代码审计系统',
+            'value': 110,
+            'name': '业务审批告警',
+            'color':'#469348'
+          },{
+            'stack': '工单审批系统',
+            'value': 210,
+            'name': '业务审批告警',
+            'color':'#24689D'
+          },
+
+          {
+            'stack': '业务安全系统',
+            'value': 302,
+            'name': '业务办理告警',
+            'color':'#2C4886'
+          },{
+            'stack': '代码审计系统',
+            'value': 130,
+            'name': '业务办理告警',
+            'color':'#469348'
+          },{
+            'stack': '工单审批系统',
+            'value': 182,
+            'name': '业务办理告警',
+            'color':'#24689D'
+          },
+
+          {
+            'stack': '业务安全系统',
+            'value': 201,
+            'name': '业务查询告警',
+            'color':'#2C4886'
+          },{
+            'stack': '代码审计系统',
+            'value': 101,
+            'name': '业务查询告警',
+            'color':'#469348'
+          },{
+            'stack': '工单审批系统',
+            'value': 192,
+            'name': '业务查询告警',
+            'color':'#24689D'
+          },
+
+          {
+            'stack': '业务安全系统',
+            'value': 334,
+            'name': '第三方告警',
+            'color':'#2C4886'
+          },{
+            'stack': '代码审计系统',
+            'value': 134,
+            'name': '第三方告警',
+            'color':'#469348'
+          },{
+            'stack': '工单审批系统',
+            'value': 234,
+            'name': '第三方告警',
+            'color':'#24689D'
+          },
+
+          {
+            'stack': '业务安全系统',
+            'value': 390,
+            'name': '表项操作告警',
+            'color':'#2C4886'
+          },{
+            'stack': '代码审计系统',
+            'value': 90,
+            'name': '表项操作告警',
+            'color':'#469348'
+          },{
+            'stack': '工单审批系统',
+            'value': 290,
+            'name': '表项操作告警',
+            'color':'#24689D'
+          },
+
+        ],
+        colorSchema: ['#469348', '#469348', '#24689D']
+      }
+
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+.chart_wrap{
+  background: #000B38 url('~images/v-007/bg.jpg') no-repeat center center;
+  background-size: 100% 100%;
+  overflow: hidden;
+  .head_title{
+    border-bottom: 1px solid #052C40;
+    position: relative;
+    .logo{
+      position: absolute;
+      top: 5px;
+      left:30px;
+    }
+    .title_content{
+      width: 700px;
+      margin: 0 auto;
+      .ui-view{
+        color: #fff;
+        font-size: 14px;
+        &.active{
+          color: #2A7DFB;
+        }
+      }
+    }
+    .user_wrap{
+      width:120px;
+      position: absolute;
+      top: 0;
+      right: 30px;
+      .ui-view{
+        color:#fff;
+        font-size:14px;
+      }
+    }
+  }
+  .data_content{
+    padding: 20px 10px;
+    .time_win{
+      .ui-row{
+        width:140px;
+        margin: 0 auto;
+        .ui-col{
+          border: 1px solid #1F364E;
+          color: #0C9EFB;
+          font-size: 16px;
+          &.dot{
+            border: 0;
+          }
+        }
+      }
+      .ui-view{
+        text-align: center;
+        font-size: 24px;
+        color: #4FB8FA;
+        line-height: 40px;
+      }
+    }
+    .module_wrap{
+      width: 100%;
+      position: relative;
+      margin-bottom: 5px;
+      border: 1px solid #253B58;
+      -webkit-box-shadow: 0 0 20px #1E5A88 inset;
+      -moz-box-shadow: 0 0 20px #1E5A88 inset;
+      box-shadow: 0 0 20px #1E5A88 inset;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      .corner{
+        width: 20px;
+        height: 10px;
+        border: 1px solid #368CF9;
+        position: absolute;
+        &.t_r {
+          border-bottom: 0;
+          border-left: 0;
+          top: -1px;
+          right: -1px;
+        }
+        &.l_b {
+          border-top: 0;
+          border-right: 0;
+          bottom: -1px;
+          left: -1px;
+        }
+        &.r_b {
+          border-top: 0;
+          border-left: 0;
+          bottom: -1px;
+          right: -1px;
+        }
+        &.t_l {
+          border-bottom: 0;
+          border-right: 0;
+          top: -1px;
+          left: -1px;
+        }
+      }
+      .title{
+        text-indent: 2em;
+        color: #fff;
+        font-size: 14px;
+        line-height: 16px;
+        padding-bottom: 15px;
+        text-align: left;
+      }
+      .ui-level-donut{
+        text-align: center;
+        .ui-canvas{
+          display: inline-block;
+        }
+      }
+    }
+    .grid{
+      background: rgba(45, 62, 90,0.5);
+      .ui-col{
+        color: #fff;
+        font-size: 12px;
+      }
+    }
+    .left_head{
+      // width:100%;
+      .ui-view{
+        color: #fff;
+        font-size: 14px;
+      }
+      .ui-text{
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+    .left_content{
+      .center_title{
+        padding-top: 20px;
+        color: #fff;
+        font-size: 30px;
+      }
+      .radar {
+        // background: -webkit-radial-gradient(center, rgba(27,146,253, 0.3) 0%, rgba(27,146,253, 0) 75%), -webkit-repeating-radial-gradient(rgba(27,146,253, 0) 5.8%, rgba(27,146,253, 0) 18%, #1B92FD 18.6%, rgba(27,146,253, 0) 18.9%), -webkit-linear-gradient(90deg, rgba(27,146,253, 0) 49.5%, #1B92FD 50%, #1B92FD 50%, rgba(27,146,253, 0) 50.2%), -webkit-linear-gradient(0deg, rgba(27,146,253, 0) 49.5%, #1B92FD 50%, #1B92FD 50%, rgba(27,146,253, 0) 50.2%);
+        background: radial-gradient(center, rgba(27,146,253, 0.3) 0%, rgba(27,146,253, 0) 75%), repeating-radial-gradient(rgba(27,146,253, 0) 5.8%, rgba(27,146,253, 0) 18%, #1B92FD 18.6%, rgba(27,146,253, 0) 18.9%), linear-gradient(90deg, rgba(27,146,253, 0) 49.5%, #1B92FD 50%, #1B92FD 50%, rgba(27,146,253, 0) 50.2%), linear-gradient(0deg, rgba(27,146,253, 0) 49.5%, #1B92FD 50%, #1B92FD 50%, rgba(27,146,253, 0) 50.2%);
+        background: -webkit-radial-gradient(center, rgba(27,146,253, 0.3) 0%, rgba(27,146,253, 0) 75%), -webkit-repeating-radial-gradient(rgba(27,146,253, 0) 5.8%, rgba(27,146,253, 0) 18%, #1B92FD 18.6%, rgba(27,146,253, 0) 18.9%), -webkit-linear-gradient(90deg, rgba(27,146,253, 0) 49.5%, #1B92FD 50%, #1B92FD 50%, rgba(27,146,253, 0) 50.2%), -webkit-linear-gradient(0deg, rgba(27,146,253, 0) 49.5%, #1B92FD 50%, #1B92FD 50%, rgba(27,146,253, 0) 50.2%);
+        width: 500px;
+        height: 480px;
+        /*position: relative;
+        left: 50%;
+        top: 50%;*/
+        transform: translate(-0%, -0%);
+        border-radius: 50%;
+        border: 4px solid #1B92FD;
+        overflow: hidden;
+        margin: auto;
+        margin-top: 150px;
+      }
+      .radar:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        animation: blips 5s infinite;
+        animation-timing-function: linear;
+        animation-delay: 1.4s;
+      }
+      .radar:after {
+        content: ' ';
+        display: block;
+        background-image: linear-gradient(44deg, rgba(0, 255, 51, 0) 50%, #29B0FE 100%);
+        width: 50%;
+        height: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: radar-beam 5s infinite;
+        animation-timing-function: linear;
+        transform-origin: bottom right;
+        border-radius: 100% 0 0 0;
+      }
+    }
+  }
+}
+
+
+@keyframes radar-beam {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes blips {
+  14% {
+    background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%);
+  }
+  14.0002% {
+    background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%);
+  }
+  25% {
+    background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%);
+  }
+  26% {
+    background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%);
+    opacity: 1;
+  }
+  100% {
+    background: radial-gradient(2vmin circle at 75% 70%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, #ffffff 10%, #1B92FD 30%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 1450px) and (min-width: 900px){
+  .data_content{
+    .left_win,
+    .right_win{
+      flex: 0 0 330px!important;
+    }
+  }
+  .grid{
+    .small_hide{
+      display:none!important;
+    }
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 900px){
+  .chart_wrap{
+    width:1200px!important;
+    overflow: hidden;
+  }
+}
+
+
+</style>

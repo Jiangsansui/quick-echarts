@@ -1,0 +1,160 @@
+<template>
+<ui-view>
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>普通漏斗</ui-text>
+      <ui-funnel
+        offset-left="50"
+        value="{{funnelValue}}"
+        height="300"
+        total-height="250"
+        up-side="300"
+        down-side="100"
+      ></ui-funnel>
+    </ui-view>
+    <ui-view>
+      <ui-text block>漏斗（显示转化率）</ui-text>
+      <ui-funnel
+        height="300"
+        total-height="250"
+        up-side="300"
+        down-side="100"
+        offset-left="{{ (winWidth-40)/2-190 }}"
+        final-rect
+        show-conversion
+        value="{{funnelValue}}"
+      ></ui-funnel>
+    </ui-view>
+    <ui-view>
+      <ui-text block>漏斗（Slider）</ui-text>
+      <ui-funnel
+        height="350"
+        total-height="250"
+        up-side="300"
+        down-side="100"
+        offset-left="{{ (winWidth-40)/2-190 }}"
+        final-rect
+        show-conversion
+        show-slider
+        slider-x="{{ (winWidth-40)/2+180 }}"
+        line-length="130"
+        show-legend
+        value="{{funnelValue}}"
+      ></ui-funnel>
+    </ui-view>
+    <ui-view>
+      <ui-text block>漏斗（金字塔）</ui-text>
+      <ui-funnel
+        height="350"
+        offset-left="{{ (winWidth-40)/2-190 }}"
+        show-conversion="{{false}}"
+        value-position="left"
+        show-slider
+        final-rect="{{false}}"
+        total-height="250"
+        up-side="300"
+        down-side="100"
+        slider-x="{{ (winWidth-40)/2+180 }}"
+        line-length= "130"
+        show-legend
+        value="{{funnelValue}}"
+      ></ui-funnel>
+    </ui-view>
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  created () {
+    this.mode1 = [{
+      type: 'value',
+      position: 'middle'
+    }, {
+      type: 'text',
+      position: 'right'
+    }]
+    this.mode2 = [{
+      type: 'value',
+      position: 'middle'
+    }, {
+      type: 'text',
+      position: 'right'
+    }, {
+      type: 'ratio',
+      position: 'left'
+    }]
+    this.mode3 = [{
+      type: 'value',
+      position: 'middle'
+    }, {
+      type: 'ratio',
+      position: 'left'
+    }]
+    this.mode4 = [{
+      type: 'value',
+      position: 'left'
+    }]
+    this.$forceUpdate()
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      mode1: [],
+      mode2: [],
+      mode3: [],
+      mode4: [],
+      funnelValue: [
+        {
+          value: 2102,
+          text: '浏览',
+          color: '#45DBFF'
+        }, {
+          value: 4351,
+          text: '注册',
+          color: '#3CC4D2'
+        }, {
+          value: 2310,
+          text: '咨询',
+          color: '#FF5883'
+        }, {
+          value: 4200,
+          text: '使用',
+          color: '#FFAF4D'
+        }, {
+          value: 2000,
+          text: '购买',
+          color: '#53E335'
+        }
+      ]
+    }
+  },
+  methods: {
+    // sliderchange (e) {
+    //   console.log(e)
+    //   ui.showToast({ title: `${e.value}` })
+    // }
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+</style>

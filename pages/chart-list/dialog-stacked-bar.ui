@@ -1,0 +1,245 @@
+<template>
+<ui-view style="overflow:hidden">
+  <ui-view class="chart_wrap" style="{{{ 'min-height': (winHeight*0.8) + 'px'}}}">
+    <ui-view>
+      <ui-text block>堆积柱状图（水平方向）</ui-text>
+      <ui-stacked-bar
+        value="{{stackedBarData.data}}"
+        height="400"
+        is-animated="true"
+        tooltip="true"
+        is-horizontal = "true"
+        body-fill-color="rgba(0,0,0,.7)"
+        tooltip-width="150"
+        title-fill-color="#fff"
+        tooltip-text-color="#fff"
+        border-stroke-color="none"
+        color-schema="{{stackedBarData.colorSchema}}"
+        axis-color="#fff"
+        format-date-option="no-format"
+      ></ui-stacked-bar>
+    </ui-view>
+    <ui-view>
+      <ui-text block>堆积柱状图（百分比）</ui-text>
+      <ui-stacked-bar
+        value="{{stackedBarData2.data}}"
+        height="400"
+        name-label="date"
+        is-horizontal = "true"
+        is-animated="true"
+        color-schema="{{stackedBarData.colorSchema}}"
+        tooltip="true"
+        body-fill-color="rgba(0,0,0,.7)"
+        tooltip-width="150"
+        title-fill-color="#fff"
+        tooltip-text-color="#fff"
+        border-stroke-color="none"
+        axis-color="#fff"
+        format-date-option="no-format"
+      ></ui-stacked-bar>
+    </ui-view>
+    <ui-view>
+      <ui-text block>堆积柱状图（垂直方向）</ui-text>
+      <ui-stacked-bar
+        value="{{stackedBarData.data}}"
+        height="400"
+        is-animated="true"
+        tooltip="true"
+        body-fill-color="rgba(0,0,0,.7)"
+        tooltip-width="150"
+        color-schema="{{stackedBarData.colorSchema}}"
+        title-fill-color="#fff"
+        tooltip-text-color="#fff"
+        border-stroke-color="none"
+        axis-color="#fff"
+        format-date-option="no-format"
+      ></ui-stacked-bar>
+    </ui-view>
+    <ui-view>
+      <ui-text block>堆积柱状图（百分比）</ui-text>
+      <ui-stacked-bar
+        value="{{stackedBarData2.data}}"
+        height="400"
+        is-animated="true"
+        name-label="date"
+        tooltip="true"
+        body-fill-color="rgba(0,0,0,.7)"
+        tooltip-width="150"
+        title-fill-color="#fff"
+        tooltip-text-color="#fff"
+        border-stroke-color="none"
+        color-schema="{{stackedBarData2.colorSchema}}"
+        value-label-format="%"
+        axis-color="#fff"
+        format-date-option="no-format"
+      ></ui-stacked-bar>
+    </ui-view>
+
+  </ui-view>
+</ui-view>
+</template>
+<script>
+export default {
+  config: {
+
+  },
+  data () {
+    return {
+      winHeight: ui.WIN_HEIGHT,
+      winWidth: ui.WIN_WIDTH,
+      isFixAxis: ui.IS_IOS,
+      stackedBarData: {
+        'data': [
+          {
+            'stack': '北京',
+            'value': 0,
+            'name': '2011-01-05',
+          },
+          {
+            'stack': '上海',
+            'value': 23,
+            'name': '2011-01-05',
+          },
+          {
+            'stack': '深圳',
+            'value': 10,
+            'name': '2011-01-05',
+          },
+          {
+            'stack': '北京',
+            'value': 10,
+            'name': '2011-01-06',
+          },
+          {
+            'stack': '上海',
+            'value': 16,
+            'name': '2011-01-06',
+          },
+          {
+            'stack': '深圳',
+            'value': 20,
+            'name': '2011-01-06',
+          },
+          {
+            'stack': '北京',
+            'value': 16,
+            'name': '2011-01-07',
+          },
+          {
+            'stack': '上海',
+            'value': 10,
+            'name': '2011-01-07',
+          },
+          {
+            'stack': '深圳',
+            'value': 26,
+            'name': '2011-01-07',
+          },
+          {
+            'stack': '北京',
+            'value': 23,
+            'name': '2011-01-08',
+          },
+          {
+            'stack': '上海',
+            'value': 0,
+            'name': '2011-01-08',
+          },
+          {
+            'stack': '深圳',
+            'value': 33,
+            'name': '2011-01-08',
+          }
+        ],
+        colorSchema: ['#3399ff', '#54cd72', '#fdd210']
+      },
+      stackedBarData2: {
+        'data': [
+          {
+            'stack': '北京',
+            'value': 0.2,
+            'date': '2011-01-05'
+          },
+          {
+            'stack': '上海',
+            'value': 0.5,
+            'date': '2011-01-05'
+          },
+          {
+            'stack': '深圳',
+            'value': 0.3,
+            'date': '2011-01-05'
+          },
+          {
+            'stack': '北京',
+            'value': 0.3,
+            'date': '2011-01-06'
+          },
+          {
+            'stack': '上海',
+            'value': 0.3,
+            'date': '2011-01-06'
+          },
+          {
+            'stack': '深圳',
+            'value': 0.4,
+            'date': '2011-01-06'
+          },
+          {
+            'stack': '北京',
+            'value': 0.2,
+            'date': '2011-01-07'
+          },
+          {
+            'stack': '上海',
+            'value': 0.4,
+            'date': '2011-01-07'
+          },
+          {
+            'stack': '深圳',
+            'value': 0.4,
+            'date': '2011-01-07'
+          },
+          {
+            'stack': '北京',
+            'value': 0.25,
+            'date': '2011-01-08'
+          },
+          {
+            'stack': '上海',
+            'value': 0.2,
+            'date': '2011-01-08'
+          },
+          {
+            'stack': '深圳',
+            'value': 0.55,
+            'date': '2011-01-08'
+          }
+        ],
+        colorSchema: ['#3399ff', '#54cd72', '#fdd210']
+      },
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+<style lang="less">
+  .chart_wrap{
+    background-color: #01101F;
+    padding:0 20px;
+    .ui-view{
+      text-align:center;
+      padding-bottom:20px;
+      .ui-text{
+        padding:20px 0 10px 0;
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+</style>
